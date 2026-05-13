@@ -13,7 +13,6 @@ Criar um site institucional moderno e organizado para representar uma empresa de
 - MySQL
 - Git
 - PHP
-- Figma
 
 ## 📌 Funcionalidades do Site
 
@@ -41,10 +40,10 @@ Criar um site institucional moderno e organizado para representar uma empresa de
 ## 👥 Integrantes do Grupo
 
 - Nome: Andrei Luna Pereira
-- Nome: Breno
-- Nome: Izadora
-- Nome: Kiara
-- Nome: Vitor
+- Nome: Breno 
+- Nome: Izadora 
+- Nome: Kiara 
+- Nome: Vitor 
 
 ---
 
