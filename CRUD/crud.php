@@ -13,7 +13,7 @@ try {
     function create($pdo, $table, array $data) { 
         $columns = implode(', ', array_keys($data));
         $placeholders = implode(', ', array_fill(0, count($data), '?'));
-
+        
         $sql = "INSERT INTO $table ($columns) VALUES ($placeholders)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array_values($data));
@@ -29,7 +29,7 @@ try {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } 
 
-    function read($pdo, $table, $where = null) { 
+    function read($pdo, $table, $where = null) {
         $sql = "SELECT * FROM $table";
         if ($where) {
             $sql .= " WHERE $where";
