@@ -1,0 +1,153 @@
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'montserrat', sans-serif;
+    }
+    
+    .container-streaming {
+        padding: 40px 5%;
+    }
+
+    .categoria {
+        margin-bottom: 40px;
+    }
+
+    .titulo-categoria {
+        font-size: 1.5rem;
+        color: #1a1a1a;
+        margin-bottom: 15px;
+        font-weight: 700;
+        border-left: 4px solid #fca311;
+        padding-left: 15px;
+    }
+
+    .trilho {
+        display: flex;
+        gap: 30px;
+        overflow-x: auto;
+        padding: 20px;
+        scrollbar-width: none; 
+    }
+
+    .trilho::-webkit-scrollbar {
+        display: none; 
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 auto;
+        width: 300px;
+        height: auto;
+        border-radius: 8px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+        overflow: visible;
+        transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        position: relative;
+        align-items: center;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+        z-index: 10;
+    }
+
+    .estado-produto {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background-color: rgba(125, 168, 224, 0.753);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        z-index: 100;
+    }
+
+    .imagem-produto {
+        width: 70%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .categoria-produto {
+        width: 100%;
+        margin-bottom: 5px;
+        font-size: 17px;
+        color: #fca311;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .nome-produto {
+        width: 100%;
+        font-size: 1.1rem;
+        color: #1a1a1a;
+        font-weight: 500;
+        text-align: left;
+    }
+
+    .codigo-produto {
+        width: 100%;
+        font-size: 0.9rem;
+        color: #555;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .texto-produto {
+        width: 100%;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 0.9rem;
+        color: #555;
+        font-weight: 400;
+        text-align: left;
+    }
+
+    .linha-card {
+        display: flex;
+        width: 100%;
+    }
+
+    .preco-produto {
+        width: 100%;
+        font-size: 1.2rem;
+        color: #000000;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    .quantidade-produto {
+        width: 100%;
+        font-size: 0.9rem;
+        color: #555;
+        font-weight: 400;
+        text-align: right;
+        white-space: nowrap;
+    }
+
+    .btn-detalhes {
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #ffffff;
+        color: #464646;
+        border: 1px solid #505050;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-detalhes:hover {
+        background-color: #023047;
+        color: #fff;
+    }
