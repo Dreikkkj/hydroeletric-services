@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parent {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../assets/icons/home.jpeg);
+    background-size: cover;
+    background-position: center;
+    height: 73vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 8px;
+    color: #fff;
+}
+    
+.div1 {
+    grid-column: span 4 / span 4;
+    grid-row: span 5 / span 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div1 h1 {
+    text-align: center;
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.div2 {
+    grid-row-start: 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div3 {
+    grid-row-start: 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div4 {
+    grid-row-start: 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div5 {
+    grid-row-start: 6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.div1 p, .div2 p, .div3 p, .div4 p, .div5 p {
+    text-align: center;
+    max-width: 650px;
+    margin-bottom: 2rem;
+    color: #C8CDCA;
+}
+
+.destaque {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    margin-top: -120px;
+    padding: 9px;
+    border-radius: 20px;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.destaque svg {
+    color: #D1A73C;
+    margin-right: 5px;
+    width: 15px;
+    height: auto;
+}
+
+.texto-amarelo {
+    color: #D1A73C;
+}
+
+.buttons {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.btn-produtos {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #F4A133;
+    transition: background-color 0.3s ease;
+}
+
+.btn-contato {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease;
+}
