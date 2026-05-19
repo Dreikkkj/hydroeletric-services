@@ -1,0 +1,98 @@
+body {
+    font-family: 'Oswald', sans-serif;
+    background-color:#e5e5e5;
+    margin: 0;
+    padding: 0;
+}
+
+.containerFIN {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 95.5%;
+    padding: 40px;
+}
+
+.maintitle {
+    width: 90%;
+    color: #000000;
+    margin-bottom: 20px;
+    padding: 50px;
+}
+
+.maintitle h1 {
+    font-size: 30px;
+    margin: 0 0 10px 0;
+}
+
+.maintitle p {
+    font-size: 20px;
+    color: #333333ad;
+    margin: 0;
+}
+
+/** Container dos Cards **/
+.financeiro-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: space-between;
+    width: 100%;
+    padding: 50px;
+    margin-left: -24.3px;
+}
+
+.financeiro-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border-radius: 12px;
+    padding: 15px 15px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+    width: 21.5%;
+    height: 110px;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+}
+
+.financeiro-card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #333333;
+}
+
+.financeiro-card p {
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0;
+    color: #000000;
+}
+
+/** Seções Adicionais **/
+.performance-categoria,
+.top-tier,
+.vendasrecente {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px 30px;
+    border: 1px solid #e0e0e0;
+}
+
+.performance-categoria h2,
+.top-tier h2,
+.vendasrecente h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333333;
+    margin: 0 0 15px 0;
+}
+
+.performance-categoria p,
+.top-tier p,
+.vendasrecente p {
+    font-size: 16px;
+    color: #666666;
+    margin: 10px 0;
+}

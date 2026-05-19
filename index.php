@@ -11,6 +11,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
+<a href="./admin/financeiro.php">Financeiro</a>
 </body>
 </html>
