@@ -133,6 +133,16 @@
     font-size: 2rem;
 }
 
+.imagem-sobre {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
 .sobre-empresa {
     padding: 30px 20px;
     background-color: #f9f9f9;
