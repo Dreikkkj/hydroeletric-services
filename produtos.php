@@ -36,7 +36,7 @@
             </ul>
         </nav>
     </header>
-    <main class="container-streaming">
+    <main class="container">
         <section class="categoria">
             <h2 class="titulo-categoria">Veja nossos produtos:</h2>
             

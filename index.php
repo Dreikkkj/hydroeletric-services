@@ -6,6 +6,7 @@
     <title>Hydroeletric Services - Home</title>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" href="CSS/footer.css">
 </head>
 <body>
     <?php
@@ -141,5 +142,8 @@
                 <p>Porque nós centralizamos a responsabilidade. São mais de 20 anos de experiência, um estoque com mais de 500 produtos a pronta entrega, agilidade logística na Grande São Paulo e, acima de tudo, o respeito pelo seu investimento. Deixe a parte complexa da obra com quem realmente entende do assunto.</p>
         </div>
     </section>
+    <?php
+        include 'partials/footer.php';
+    ?>
 </body>
 </html>
