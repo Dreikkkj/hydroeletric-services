@@ -14,6 +14,12 @@ body {
     padding: 40px;
 }
 
+.containerFIN {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 120px 40px 40px 40px;
+}
+
 .maintitle {
     width: 90%;
     color: #000000;
@@ -23,22 +29,22 @@ body {
 }
 
 .maintitle h1 {
-    font-size: 30px;
-    margin: 0 0 10px 0;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
 }
 
 .maintitle p {
-    font-size: 20px;
-    color: #333333ad;
-    margin: 0;
+    font-size: 16px;
+    color: #8c8c8c;
+    font-weight: 400;
 }
 
-/** Container dos Cards **/
 .financeiro-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
     width: 100%;
     padding: 50px;
     margin-left: -25px;
@@ -46,6 +52,13 @@ body {
 }
 
 .financeiro-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 28px 32px;
+    min-height: 140px;
+    width: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f6;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,14 +101,5 @@ body {
 .vendasrecente h2 {
     font-size: 18px;
     font-weight: 700;
-    color: #333333;
-    margin: 0 0 15px 0;
-}
-
-.performance-categoria p,
-.top-tier p,
-.vendasrecente p {
-    font-size: 16px;
-    color: #666666;
-    margin: 10px 0;
+    color: #111827;
 }
