@@ -10,7 +10,6 @@
 body {
     background-color: #eeeeee;
     color: #333;
-    padding: 40px 20px;
 }
 
 .conteiner {
@@ -19,6 +18,7 @@ body {
     margin: 0 auto;
     gap: 20px;
     align-items: flex-start;
+    padding: 40px 20px;
 }
 
 .carrinho-principal {
