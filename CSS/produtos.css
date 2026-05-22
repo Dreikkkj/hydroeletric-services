@@ -5,10 +5,9 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
-
 }
 
-.container-streaming {
+.container {
     padding: 40px 5%;
 }
 
