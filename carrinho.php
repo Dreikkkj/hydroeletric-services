@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="CSS/carrinho.css">
 </head>
 <body>
-
+    <?php
+        include 'partials/header.php';
+    ?>
     <div class="conteiner">
         <main class="carrinho-principal">
             <div class="caixa-carrinho">
@@ -110,6 +112,8 @@
             </div>
         </div>
     </div>
-
+    <?php
+        include 'partials/footer.php';
+    ?>
 </body>
 </html>
