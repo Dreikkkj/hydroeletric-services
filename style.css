@@ -1,105 +1,378 @@
-body {
-    font-family: 'Oswald', sans-serif;
-    background-color:#fcfcfc93;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-
 }
 
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #fcfbfa;
+    color: #1a1a1a;
+    padding: 40px 20px;
+}
+
+/**Conteiners**/
 .containerFIN {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin: 35px auto 50px auto;
-    padding: 40px;
-}
-
-.containerFIN {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 120px 40px 40px 40px;
+    gap: 24px;
 }
 
 .maintitle {
-    width: 90%;
-    color: #000000;
-    margin-bottom: 20px;
-    padding: 50px;
-    margin: -5px 0 0 -24.3px;
-}
-
-.maintitle h1 {
-    font-size: 32px;
-    font-weight: 700;
-    color: #1a1a1a;
     margin-bottom: 8px;
 }
 
-.maintitle p {
-    font-size: 16px;
-    color: #8c8c8c;
-    font-weight: 400;
+.maintitle h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
 }
 
-.financeiro-container {
+.maintitle p {
+    font-size: 14px;
+    color: #707070;
+}
+
+/* Grid de Cobertura dos Cards Superiores */
+.kpi-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    width: 100%;
-    padding: 50px;
-    margin-left: -25px;
-    margin-top: -50px;
+    gap: 16px;
 }
 
 .financeiro-card {
     background-color: #ffffff;
-    border-radius: 12px;
-    padding: 28px 32px;
-    min-height: 140px;
-    width: 100%;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f3f4f6;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    border-radius: 12px;
-    padding: 15px 15px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
-    width: 20.3%;
-    height: 100px;
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    gap: 8px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .financeiro-card h2 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666666;
+}
+
+/* Badges de Ícones do Layout */
+.icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.badge-receita {
+    background-color: #fef6e7;
+    color: #f5a623;
+}
+
+.badge-custo {
+    background-color: #fdf2f2;
+    color: #e04f5f;
+}
+
+.badge-lucro {
+    background-color: #edfcf5;
+    color: #27ae60;
+}
+
+.badge-margem {
+    background-color: #f4f5f7;
+    color: #666;
+    font-weight: bold;
+}
+
+.valor {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Tendências dentro dos cards */
+.mais {
+    font-size: 12px;
+    font-weight: 600;
+    color: #10b981;
+}
+
+.menos {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ef4444;
+}
+
+.categoria {
+    font-size: 10px;
+    color: #999;
+}
+
+/* Estrutura de colunas do meio */
+.conteudo {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+}
+
+/* Bloco base para seções brancas */
+.bloco {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.cabecalho {
+    margin-bottom: 20px;
+}
+
+.cabecalho h2 {
     font-size: 16px;
     font-weight: 700;
-    margin: 0 0 10px 0;
-    color: #bdbcbc;
+    color: #111;
 }
 
-.financeiro-card p {
-    font-size: 30px;
+.subtitulo {
+    font-size: 13px;
+    color: #8c8c8c;
+    margin-top: 2px;
+}
+
+/* Lista de Categorias com Barras de Progresso */
+.lista {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.cat-name {
     font-weight: 600;
-    margin: 0;
-    color: #000000;
+    color: #333;
 }
 
-/** Seções Adicionais **/
-.performance-categoria,
-.top-tier {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px 30px;
-    border: 1px solid #e0e0e0;
-    margin: 20px 0;
-    width: 45%;
+.cat-stats {
+    display: flex;
+    gap: 12px;
+    color: #666;
 }
 
-.performance-categoria h2,
-.top-tier h2,
-.vendasrecente h2 {
-    font-size: 18px;
+.icon1 {
+    width: 23px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-top: -8px;
+}
+
+/* Componente da Barra */
+.barra {
+    width: 100%;
+    height: 8px;
+    background-color: #f3f4f6;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #f59e0b;
+    border-radius: 99px;
+}
+
+.rodape {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.lucro-indicator {
+    color: #10b981;
+    font-weight: 500;
+}
+
+/* Top Produtos - Ranking */
+
+.ranking {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rank-number {
+    width: 24px;
+    height: 24px;
+    background-color: #fef6e7;
+    color: #f5a623;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
     font-weight: 700;
+}
+
+.dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+}
+
+.subtexto {
+    font-size: 12px;
+    color: #999;
+}
+
+.preco {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+}
+
+.top-produtos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.top-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-item-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Bolinha do Ranking */
+.top-rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Cor do 1º lugar */
+.rank-first {
+    background-color: #ea580c;
+    color: #ffffff;
+}
+
+/* Cor do 2º ao 5º lugar */
+.rank-other {
+    background-color: #f0f6fc;
+    color: #0c3e6b;
+}
+
+.top-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.top-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0c3e6b;
+}
+
+.top-subtext {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.top-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0c3e6b;
+}
+
+/* Badges (Tags) */
+.badge {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.badge-bruto { background-color: #fffdf5; color: #b45309; border-color: #fde047; }
+.badge-ferramentas { background-color: #f0f6fc; color: #0c3e6b; border-color: #aebfd0; }
+.badge-acabamento { background-color: #fffaf5; color: #c2410c; border-color: #fdba74; }
+.badge-default { background-color: #f3f4f6; color: #374151; border-color: #d1d5db; }
+
+.item-details {
+    color: #9ca3af;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.item-value {
+    font-weight: 700;
+    font-size: 15px;
     color: #111827;
+}
+
+/* Barras de Progresso */
+.progress-bg {
+    background-color: #f3f4f6;
+    height: 8px;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 6px;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+
+.fill-default { background-color: #fca311; }
+
+.item-percentage {
+    color: #9ca3af;
+    font-size: 13px;
+    font-weight: 500;
 }
