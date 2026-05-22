@@ -57,9 +57,17 @@ body {
     vertical-align: middle;
 }
 
-.txt-esquerda { text-align: left; }
-.txt-centro { text-align: center; }
-.txt-direita { text-align: right; }
+.txt-esquerda { 
+    text-align: left; 
+}
+
+.txt-centro { 
+    text-align: center; 
+}
+
+.txt-direita { 
+    text-align: right; 
+}
 
 .col-produto {
     display: flex;
@@ -103,7 +111,6 @@ body {
 .preco-atual {
     white-space: nowrap;
     font-size: 18px;
-    color: #00a650;
     font-weight: bold;
 }
 
@@ -154,11 +161,10 @@ body {
     color: #ff4d4d;
 }
 
-/* --- Nova coluna que agrupa os cards da direita --- */
 .coluna-lateral {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Espaço físico entre o card de cima e o card de baixo */
+    gap: 15px;
     width: 320px;
 }
 
@@ -213,7 +219,7 @@ body {
 }
 
 .caixa-pagamento input[type="radio"] {
-    accent-color: #00a650;
+    accent-color: #1A0F60;
     width: 18px;
     height: 18px;
     cursor: pointer;
@@ -242,12 +248,8 @@ body {
     color: #666;
 }
 
-.destaque-sucesso {
-    color: #00a650 !important;
-}
-
 .botao-continuar {
-    background-color: #00a650;
+    background-color: #F4A133;
     color: white;
     border: none;
     padding: 18px;
@@ -259,11 +261,60 @@ body {
 }
 
 .botao-continuar:hover {
-    background-color: #008c43;
+    background-color: #d88c29;
 }
 
-/* --- Estilos do NOVO CARD SEPARADO de Instalação --- */
-.card-instalacao-separado {
+.card-cep {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.card-cep p{
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+.caixa-cep {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background-color: #fff;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.2s;
+}
+
+.caixa-cep:hover {
+    background-color: #f9f9f9;
+}
+
+.caixa-cep input[type="number"] {
+    accent-color: #14A650;
+    padding-left: 5px;
+    width: 200px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.caixa-cep button {
+    background-color: #1A0F60;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    width: 90px;
+    height: 30px;
+    transition: background-color 0.2s;
+}
+
+.caixa-cep button:hover {
+    background-color: #8B9CA2;
+}
+
+.card-instalacao {
     background: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 4px;
@@ -286,7 +337,7 @@ body {
 }
 
 .caixa-instalacao input[type="checkbox"] {
-    accent-color: #00a650;
+    accent-color: #1A0F60;
     width: 18px;
     height: 18px;
     cursor: pointer;

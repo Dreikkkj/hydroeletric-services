@@ -16,14 +16,6 @@
                 </div>
                 
                 <table class="tabela-carrinho">
-                    <thead>
-                        <tr>
-                            <th class="txt-esquerda">Produto</th>
-                            <th class="txt-centro">Quantidade</th>
-                            <th class="txt-direita">Preço</th>
-                            <th></th>
-                        </tr>
-                    </thead>
                     <tbody>
                         <tr>
                             <td class="col-produto">
@@ -89,14 +81,22 @@
                     </div>
                     <div class="detalhes-pagamento">
                         <strong>R$ 499,99</strong>
-                        <span class="destaque-sucesso">com desconto à vista no boleto ou pix</span>
+                        <span>com desconto à vista no boleto ou pix</span>
                     </div>
                 </label>
 
                 <button class="botao-continuar">CONTINUAR</button>
             </section>
 
-            <div class="card-instalacao-separado">
+            <div class="card-cep">
+                <p>Adicionar o cep: </p>
+                <div class="caixa-cep">
+                    <input type="number" class="cep">
+                    <button class="btn-calcular">calcular</button>
+                </div>
+            </div>
+
+            <div class="card-instalacao">
                 <label class="caixa-instalacao">
                     <input type="checkbox" name="adicionar_instalacao" value="sim">
                     <div class="icone">
@@ -108,7 +108,6 @@
                     </div>
                 </label>
             </div>
-
         </div>
     </div>
 
