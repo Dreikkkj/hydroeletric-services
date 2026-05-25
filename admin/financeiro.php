@@ -10,6 +10,15 @@ if (isset($pdo)) {
     }
 }
 
+$categorias = [
+    1 => 'Fios',
+    2 => 'Cabos',
+    3 => 'Disjuntores',
+    4 => 'Tubulações',
+    5 => 'Conexão Hidráulica',
+    6 => 'Caixas d\'água',
+];
+
 $valor_total_estoque = 0;
 $total_unidades = 0;
 $produtos_cadastrados = 0;
@@ -22,18 +31,21 @@ if (!empty($produtos) && is_array($produtos)) {
     foreach ($produtos as $produto) {
         $qtd = isset($produto['estoque']) ? intval($produto['estoque']) : 0;
         $preco = isset($produto['preco']) ? floatval($produto['preco']) : 0;
-        $categoria = $produto['categoria_id_produtos'] ?? 'Outros';
+        $categoriaId = isset($produto['categoria_id_produtos']) ? intval($produto['categoria_id_produtos']) : null;
+        $categoria = $categorias[$categoriaId] ?? 'Outros';
         $valor_deste_item = $qtd * $preco;
 
         $valor_total_estoque += $valor_deste_item;
         $total_unidades += $qtd;
 
         if (!isset($dados_categoria[$categoria])) {
+            $slug = strtolower(preg_replace('/[^a-z0-9]+/','-', iconv('UTF-8', 'ASCII//TRANSLIT', $categoria)));
+            $slug = trim($slug, '-');
             $dados_categoria[$categoria] = [
                 'valor' => 0,
                 'qtd_produtos' => 0,
                 'qtd_unidades' => 0,
-                'slug' => strtolower(str_replace(' ', '-', (string)$categoria))
+                'slug' => $slug ?: 'default'
             ];
         }
         $dados_categoria[$categoria]['valor'] += $valor_deste_item;
@@ -80,34 +92,34 @@ if (!empty($produtos) && is_array($produtos)) {
             <div class="financeiro-card">
                 <div class="card-header">
                     <h2>Receita Total</h2>
-                    <span class="icon badge-receita">📈</span>
+                    <span class="icon badge-receita"><img src="../assets/icons/show_chart.png" alt="Ícone de gráfico"></span>
                 </div>
-                <p class="valor">R$ 67.400,00</p>
+                <p class="valor">R$ <?php echo number_format($valor_total_estoque, 2, ',', '.'); ?></p>
                 <span class="mais">↑ 15.8% vs. mês anterior</span>
             </div>
 
             <div class="financeiro-card">
                 <div class="card-header">
                     <h2>Custo Total</h2>
-                    <span class="icon badge-custo">🛍️</span>
+                    <span class="icon badge-custo"><img src="../assets/icons/bag.png" alt="Ícone de sacola"></span>
                 </div>
-                <p class="valor">R$ 40.300,00</p>
+                <p class="valor">R$ <?php echo number_format(40300, 2, ',', '.'); ?></p>
                 <span class="menos">↓ 14.8% vs. mês anterior</span>
             </div>
 
             <div class="financeiro-card">
                 <div class="card-header">
                     <h2>Lucro Bruto</h2>
-                    <span class="icon badge-lucro">💵</span>
+                    <span class="icon badge-lucro"><img src="../assets/icons/moeda.png" alt="Ícone de moeda"></span>
                 </div>
-                <p class="valor">R$ 27.100,00</p>
+                <p class="valor">R$ <?php echo number_format(27100, 2, ',', '.'); ?></p>
                 <span class="mais">↑ 17.3% vs. mês anterior</span>
             </div>
 
             <div class="financeiro-card">
                 <div class="card-header">
                     <h2>Margem Média</h2>
-                    <span class="icon badge-margem">%</span>
+                    <span class="icon badge-margem"><img src="../assets/icons/percent.png" alt="Ícone de porcentagem"></span>
                 </div>
                 <p class="valor">40.2%</p>
                 <span class="categoria">Sobre todas as categorias</span>
@@ -124,7 +136,8 @@ if (!empty($produtos) && is_array($produtos)) {
                 <?php foreach ($dados_categoria as $nome_cat => $dados): ?>
                     <?php
                     $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
-                    $slug_class = in_array($dados['slug'], ['Fios', 'Cabos', 'Disjuntores', 'Tubulações', 'Conexão Hidráulica', 'Caixas d\'água']) ? $dados['slug'] : 'default';
+                    $allowedSlugs = ['fios', 'cabos', 'disjuntores', 'tubulacoes', 'conexao-hidraulica', 'caixas-d-agua'];
+                    $slug_class = in_array($dados['slug'], $allowedSlugs, true) ? $dados['slug'] : 'default';
                     ?>
                     <div class="category-item">
                         <div class="item-header">
@@ -148,7 +161,7 @@ if (!empty($produtos) && is_array($produtos)) {
 
             <section class="bloco top">
                 <div class="cabecalho">
-                    <h2>Top Produtos</h2>
+                    <h2>Top Produtos <span class="icon badge-top trophy-icon"><img src="../assets/icons/trophy.png" alt="Ícone de troféu"></span></h2>
                     <p class="subtitulo">Por receita no mês atual</p>
                 </div>
                 <div class="top-produtos-list">

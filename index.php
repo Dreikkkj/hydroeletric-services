@@ -12,5 +12,6 @@
 </head>
 <body>
 <a href="./admin/financeiro.php">Financeiro</a>
+<a href="./admin/estoque.php">Estoque</a>
 </body>
 </html>

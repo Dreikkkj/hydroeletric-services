@@ -143,9 +143,16 @@ body {
 }
 
 .cabecalho h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 16px;
     font-weight: 700;
     color: #111;
+}
+
+.cabecalho h2 .trophy-icon {
+    order: -1;
 }
 
 .subtitulo {
