@@ -40,10 +40,10 @@ Criar um site institucional moderno e organizado para representar uma empresa de
 ## 👥 Integrantes do Grupo
 
 - Nome: Andrei Luna Pereira
-- Nome: Breno 
-- Nome: Izadora 
-- Nome: Kiara 
-- Nome: Vitor 
+- Nome: Breno Bacic
+- Nome: Izadora Marques
+- Nome: Kiara Cardenes
+- Nome: Vitor Oliveira
 
 ---
 
