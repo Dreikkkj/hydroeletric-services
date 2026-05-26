@@ -88,8 +88,9 @@
                         <span>com desconto à vista no boleto ou pix</span>
                     </div>
                 </label>
-
-                <button class="botao-continuar">CONTINUAR</button>
+                <a href="confirmar-pagamento.php">
+                    <button class="botao-continuar">CONTINUAR</button>
+                </a>
             </section>
 
             <div class="card-cep">

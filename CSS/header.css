@@ -13,7 +13,6 @@ a {
 }
 
 header {
-    /* background-color: var(--background); */
     color: var(--textHeader);
     padding: 20px;
     border-bottom: 2px solid #ffffff;
