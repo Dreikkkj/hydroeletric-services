@@ -395,11 +395,12 @@ body {
     transition: width 0.5s ease-in-out;
 }
 
-/**Estilização do Estoque**/
+/** -- ESTOQUE  --**/
 
 /**Titulo e subtitulo**/
 .maintitleEST {
     margin-left: 30px;
+    margin-top: 5%;
 }
 
 .maintitleEST h1 {
@@ -421,7 +422,7 @@ body {
     align-items: center;
     gap: 12px;
     margin-bottom: 24px;
-    margin-top: 5%;
+    margin-top: 2%;
     margin-left: 30px;
 }
 
@@ -511,6 +512,7 @@ body {
 .estoque-table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 2%;
 }
 
 .estoque-table th,
@@ -543,3 +545,37 @@ body {
     font-size: 15px;
 }
 
+.estoque-table td.acoes-icones {
+    white-space: nowrap;
+    min-width: 140px;
+}
+
+.acoes-icones {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.acoes-icones a {
+    display: inline-flex;
+}
+
+.iconedit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: #f8fafc;
+    transition: background-color 0.2s ease;
+}
+
+.iconedit:hover {
+    background-color: #e2e8f0;
+}
+
+.iconedit img {
+    width: 18px;
+    height: 18px;
+}

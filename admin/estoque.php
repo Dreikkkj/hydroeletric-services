@@ -93,7 +93,7 @@ $estoque_minimo = 50;
                         echo '<td>' . intval($produto['estoque'] ?? 0) . '</td>';
                         $status = (intval($produto['estoque'] ?? 0) > 0) ? 'Disponível' : 'Esgotado';
                         echo '<td>' . $status . '</td>';
-                        echo '<td><a href="editar_produto.php?id=' . intval($produto['id_produtos']) . '">Editar</a> | <a href="excluir_produto.php?id=' . intval($produto['id_produtos']) . '" onclick="return confirm(\'Tem certeza que deseja excluir este produto?\')">Excluir</a></td>';
+                        echo '<td class="acoes-icones"><a href="registrarmovimentacao.php?id=' . intval($produto['id_produtos']) . '"><div class="iconedit"><img src="../assets/icons/arrow.png" alt="Registrar Movimentação"></div></a><a href="editar_produto.php?id=' . intval($produto['id_produtos']) . '"><div class="iconedit"><img src="../assets/icons/edit.png" alt="Editar"></div></a><a href="excluir_produto.php?id=' . intval($produto['id_produtos']) . '" onclick="return confirm(\'Tem certeza que deseja excluir este produto?\')"><div class="iconedit"><img src="../assets/icons/delete.png" alt="Excluir"></div></a></td>';
                         echo '</tr>';
                     }
                 } else {
