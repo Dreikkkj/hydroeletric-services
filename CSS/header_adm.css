@@ -1,16 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #dfe3eb;
-    font-family: 'Montserrat';
-}
-
 header {
     background-color: #023047;
     padding: 30px;
@@ -43,17 +30,12 @@ nav a:hover {
     color: white;
 }
 
-.a {
-    display: flex;
-    align-items: center;
-}
-
 .user {
     position: absolute;
-    right: 10px;
+    right: 40px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .adm {
@@ -64,9 +46,10 @@ nav a:hover {
     border-radius: 10px;
 }
 
-.adm img{
+.adm i {
     background-color: #fba21477;
-    padding: 4px;
+    color: white;
+    padding: 8px 10px;
     border-radius: 20px;
 }
 
