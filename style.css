@@ -6,576 +6,243 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #fcfbfa;
+    background-color: #f9f9f9;
     color: #1a1a1a;
-    padding: 40px 20px;
+    padding: 30px;
 }
 
-/**Conteiners**/
-.containerFIN {
+.container-estoque {
     max-width: 1400px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-}
-
-.maintitle {
-    margin-bottom: 8px;
-}
-
-.maintitle h1 {
-    font-size: 28px;
-    font-weight: 700;
-    color: #111;
-    margin-bottom: 4px;
-}
-
-.maintitle p {
-    font-size: 14px;
-    color: #707070;
-}
-
-/* Grid de Cobertura dos Cards Superiores */
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-
-.financeiro-card {
     background-color: #ffffff;
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.financeiro-card h2 {
-    font-size: 13px;
-    font-weight: 500;
-    color: #666666;
-}
-
-/* Badges de Ícones do Layout */
-.icon {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.badge-receita {
-    background-color: #fef6e7;
-    color: #f5a623;
-}
-
-.badge-custo {
-    background-color: #fdf2f2;
-    color: #e04f5f;
-}
-
-.badge-lucro {
-    background-color: #edfcf5;
-    color: #27ae60;
-}
-
-.badge-margem {
-    background-color: #f4f5f7;
-    color: #666;
-    font-weight: bold;
-}
-
-.valor {
-    font-size: 24px;
-    font-weight: 700;
-    color: #111;
-}
-
-/* Tendências dentro dos cards */
-.mais {
-    font-size: 12px;
-    font-weight: 600;
-    color: #10b981;
-}
-
-.menos {
-    font-size: 12px;
-    font-weight: 600;
-    color: #ef4444;
-}
-
-.categoria {
-    font-size: 10px;
-    color: #999;
-}
-
-/* Estrutura de colunas do meio */
-.conteudo {
-    display: grid;
-    grid-template-columns: 1.6fr 1fr;
-    gap: 24px;
-}
-
-/* Bloco base para seções brancas */
-.bloco {
-    background-color: #ffffff;
-    border: 1px solid #f0f0f0;
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 24px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
-.cabecalho {
-    margin-bottom: 20px;
-}
-
-.cabecalho h2 {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #111;
-}
-
-.cabecalho h2 .trophy-icon {
-    order: -1;
-}
-
-.subtitulo {
-    font-size: 13px;
-    color: #8c8c8c;
-    margin-top: 2px;
-}
-
-/* Lista de Categorias com Barras de Progresso */
-.lista {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.info {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-}
-
-.cat-name {
-    font-weight: 600;
-    color: #333;
-}
-
-.cat-stats {
-    display: flex;
-    gap: 12px;
-    color: #666;
-}
-
-.icon1 {
-    width: 23px;
-    height: auto;
-    vertical-align: middle;
-    margin-right: 10px;
-    margin-top: -8px;
-}
-
-/* Componente da Barra */
-.barra {
-    width: 100%;
-    height: 8px;
-    background-color: #f3f4f6;
-    border-radius: 99px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: #f59e0b;
-    border-radius: 99px;
-}
-
-.rodape {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #9ca3af;
-}
-
-.lucro-indicator {
-    color: #10b981;
-    font-weight: 500;
-}
-
-/* Top Produtos - Ranking */
-
-.ranking {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.rank-number {
-    width: 24px;
-    height: 24px;
-    background-color: #fef6e7;
-    color: #f5a623;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.dados {
-    display: flex;
-    flex-direction: column;
-}
-
-.nome {
-    font-size: 14px;
-    font-weight: 600;
-    color: #222;
-}
-
-.subtexto {
-    font-size: 12px;
-    color: #999;
-}
-
-.preco {
-    font-size: 14px;
-    font-weight: 700;
-    color: #111;
-}
-
-.top-produtos-list {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.top-item {
+.header-estoque {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.top-item-left {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
-/* Bolinha do Ranking */
-.top-rank {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-/* Cor do 1º lugar */
-.rank-first {
-    background-color: #ea580c;
-    color: #ffffff;
-}
-
-/* Cor do 2º ao 5º lugar */
-.rank-other {
-    background-color: #f0f6fc;
-    color: #0c3e6b;
-}
-
-.top-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.top-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: #0c3e6b;
-}
-
-.top-subtext {
-    font-size: 13px;
-    color: #9ca3af;
-    font-weight: 500;
-}
-
-.top-value {
-    font-size: 15px;
-    font-weight: 700;
-    color: #0c3e6b;
-}
-
-/* Badges (Tags) */
-.badge {
-    padding: 4px 12px;
-    border-radius: 16px;
-    font-size: 13px;
-    font-weight: 600;
-    border: 1px solid transparent;
-}
-
-.badge-bruto {
-    background-color: #fffdf5;
-    color: #b45309;
-    border-color: #fde047;
-}
-
-.badge-ferramentas {
-    background-color: #f0f6fc;
-    color: #0c3e6b;
-    border-color: #aebfd0;
-}
-
-.badge-acabamento {
-    background-color: #fffaf5;
-    color: #c2410c;
-    border-color: #fdba74;
-}
-
-.badge-default {
-    background-color: #f3f4f6;
-    color: #374151;
-    border-color: #d1d5db;
-}
-
-.item-details {
-    color: #9ca3af;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.item-value {
-    font-weight: 700;
-    font-size: 15px;
-    color: #111827;
-}
-
-/* Barras de Progresso */
-.progress-bg {
-    background-color: #f3f4f6;
-    height: 8px;
-    border-radius: 4px;
-    width: 100%;
-    margin-bottom: 6px;
-}
-
-.progress-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease-in-out;
-}
-
-/** -- ESTOQUE  --**/
-
-/**Titulo e subtitulo**/
-.maintitleEST {
-    margin-left: 30px;
-    margin-top: 5%;
+    margin-bottom: 24px;
 }
 
 .maintitleEST h1 {
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
-    color: #111;
+    color: #111111;
     margin-bottom: 4px;
 }
 
 .maintitleEST p {
     font-size: 14px;
-    color: #707070;
+    color: #666666;
 }
 
-/* Filtros de estoque */
+.btn-novo-produto {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.btn-novo-produto:hover {
+    background-color: #333333;
+}
+
 .filtros {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 24px;
-    margin-top: 2%;
-    margin-left: 30px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
 }
 
-.filtros > button {
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    color: #1f2937;
-    font-weight: 600;
-    padding: 10px 18px;
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666666;
     cursor: pointer;
-    transition: all 0.2s ease;
+    border-radius: 6px;
+    transition: all 0.2s;
 }
 
-.filtros > button:hover{
-    border-color: #a5b4fc;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+.tab-btn.active {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-weight: 600;
 }
 
-/**Filtrar por nome/categoria**/
+/**filtros**/
 .search-container {
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    flex: 0 1 auto;
-    min-width: auto;
-    margin-left: 30px;
+    gap: 12px;
+    margin-bottom: 24px;
 }
 
 .search-container input {
-    flex: 0 1 450px;
-    max-width: 500px;
-    min-width: 140px;
-    padding: 10px 12px 10px 30px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #111827;
-    background-image: url("assets/icons/search.png");
-    background-repeat: no-repeat;
-    background-position: 14px center;
-    background-size: 16px 16px;
+    flex: 1;
+    max-width: 320px;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
 }
 
-.search-container button {
-    border: 1px solid #d1d5db;
-    background-color: #ffffff;
-    border-radius: 10px;
+.filtroclass {
     padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    outline: none;
+    min-width: 160px;
     cursor: pointer;
 }
 
-.search-container button img {
-    width: 16px;
-    height: 16px;
+/* --- Tabela de Produtos --- */
+.tabela-produtos {
+    overflow-x: auto;
 }
 
-.search-container select,
-.filtroclass {
-    padding: 10px 14px;
-    border: 1px solid #d1d5db;
-    border-radius: 10px;
-    background-color: #ffffff;
-    color: #111827;
-    min-width: 180px;
+.estoque-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
 }
 
-.search-container select:focus,
-.search-container input:focus,
-.filtros > button:focus {
-    outline: none;
-    border-color: #6366f1;
+.estoque-table th {
+    color: #8c8c8c;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
 }
 
-.fill-default {
-    background-color: #fca311;
+.estoque-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f6f6f6;
+    vertical-align: middle;
+    color: #1a1a1a;
+    font-size: 14px;
 }
 
-.item-percentage {
-    color: #9ca3af;
+.produto-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.produto-cell img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+}
+
+.produto-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.produto-nome {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.produto-sub {
+    font-size: 12px;
+    color: #999999;
+}
+
+.sku-cell {
+    color: #666666;
+    font-family: monospace;
+}
+
+.preco-cell {
+    font-weight: 500;
+}
+
+.estoque-cell {
+    font-weight: 700; 
+    color: #111111;
+}
+
+/**Categoria**/
+.badge-categoria {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    padding: 4px 10px;
+    border-radius: 6px;
     font-size: 13px;
     font-weight: 500;
 }
 
-/**Estoque em forma de tabela**/
-.estoque-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 2%;
-}
-
-.estoque-table th,
-.estoque-table td {
-    padding: 10px;
-    border-bottom: 2px solid #e2e8f0;
-    text-align: left;
-    vertical-align: middle;
-}
-
-.estoque-table th {
-    background-color: #f8fafc;
-    color: #4a5568;
+.badge-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
     font-weight: 600;
-    font-size: 14px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    text-align: center;
 }
 
-.estoque-table tbody tr {
-    transition: background 0.2s ease;
+.status-ok {
+    background-color: #ecfdf5;
+    color: #10b981;
 }
 
-.estoque-table tbody tr:hover {
-    background-color: #f1f5f9;
+.status-medio {
+    background-color: #fffbeb;
+    color: #f59e0b;
 }
 
-.estoque-table td {
-    color: #2d3748;
-    font-size: 15px;
+.status-critico {
+    background-color: #fef2f2;
+    color: #ef4444;
 }
 
-.estoque-table td.acoes-icones {
-    white-space: nowrap;
-    min-width: 140px;
-}
-
+/* --Ações-- */
 .acoes-icones {
     display: flex;
-    gap: 10px;
-    width: 100%;
-}
-
-.acoes-icones a {
-    display: inline-flex;
+    justify-content: flex-end;
+    gap: 8px;
 }
 
 .iconedit {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    border-radius: 8px;
-    background-color: #f8fafc;
-    transition: background-color 0.2s ease;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background 0.2s;
 }
 
 .iconedit:hover {
-    background-color: #e2e8f0;
+    background-color: #f0f0f0;
 }
 
 .iconedit img {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+}
+
+.iconedit:hover img {
+    opacity: 1;
 }
