@@ -95,7 +95,7 @@ if (!empty($produtos) && is_array($produtos)) {
                     <span class="icon badge-receita"><img src="../assets/icons/show_chart.png" alt="Ícone de gráfico"></span>
                 </div>
                 <p class="valor">R$ <?php echo number_format($valor_total_estoque, 2, ',', '.'); ?></p>
-                <span class="mais">↑ 15.8% vs. mês anterior</span>
+                <span class="mais"><?php echo '↑ 15.8% vs. mês anterior'; ?></span>
             </div>
 
             <div class="financeiro-card">

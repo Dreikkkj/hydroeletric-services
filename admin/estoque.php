@@ -20,14 +20,40 @@ $estoque_minimo = 50;
 </head>
 
 <body>
-    <div class="container">
+    <div class="maintitleEST">
         <!-- Conteúdo do estoque -->
         <h1>Controle de Estoque</h1>
         <p>Gerencie produtos, estoque e movimentações.</p>
+    </div>
+    <div class="filtros">
+        <button class="produtos"><?php echo 'Produtos'; ?></button>
+        <button class="movimentacoes"><?php echo 'Movimentações'; ?></button>
+    </div>
+
+    <div class="search-container">
+        <input type="text" placeholder="Buscar Produtos" id="searchInput">
+        <select class="filtroclass">
+            <option value="">Todas as categorias</option>
+            <option value="1">Fios</option>
+            <option value="2">Cabos</option>
+            <option value="3">Disjuntores</option>
+            <option value="4">Tubulações</option>
+            <option value="5">Conexão Hidráulica</option>
+            <option value="6">Caixas d'água</option>
+        </select>
+
+        <select class="filtroclass" id="sortSelect">
+            <option value="">Ordenar por</option>
+            <option value="nome_asc">Nome (A-Z)</option>
+            <option value="nome_desc">Nome (Z-A)</option>
+            <option value="preco_asc">Preço (Menor para Maior)</option>
+            <option value="preco_desc">Preço (Maior para Menor)</option>
+        </select>
 
     </div>
+
     <div class="tabela-produtos">
-        <table>
+        <table class="estoque-table">
             <thead>
                 <tr>
                     <th>NOME</th>
@@ -58,7 +84,8 @@ $estoque_minimo = 50;
                 if (!empty($produtos) && is_array($produtos)) {
                     foreach ($produtos as $produto) {
                         echo '<tr>';
-                        echo '<td>' . htmlspecialchars($produto['nome_produtos'] ?? '') . '</td>';
+                        $fotoProduto = !empty($produto['capa']) ? $produto['capa'] : '../assets/icons/noimage.png';
+                        echo '<td><img src="' . htmlspecialchars($fotoProduto) . '" alt="imagem do produto" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px; vertical-align: middle;">' . htmlspecialchars($produto['nome_produtos'] ?? '') . '</td>';
                         echo '<td>' . htmlspecialchars($produto['sku'] ?? '') . '</td>';
                         $categoriaTexto = $categorias[$produto['categoria_id_produtos']] ?? 'Desconhecido';
                         echo '<td>' . htmlspecialchars($categoriaTexto) . '</td>';
@@ -75,9 +102,7 @@ $estoque_minimo = 50;
                 ?>
             </tbody>
         </table>
-
     </div>
-
 </body>
 
 </html>

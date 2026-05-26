@@ -344,10 +344,29 @@ body {
     border: 1px solid transparent;
 }
 
-.badge-bruto { background-color: #fffdf5; color: #b45309; border-color: #fde047; }
-.badge-ferramentas { background-color: #f0f6fc; color: #0c3e6b; border-color: #aebfd0; }
-.badge-acabamento { background-color: #fffaf5; color: #c2410c; border-color: #fdba74; }
-.badge-default { background-color: #f3f4f6; color: #374151; border-color: #d1d5db; }
+.badge-bruto {
+    background-color: #fffdf5;
+    color: #b45309;
+    border-color: #fde047;
+}
+
+.badge-ferramentas {
+    background-color: #f0f6fc;
+    color: #0c3e6b;
+    border-color: #aebfd0;
+}
+
+.badge-acabamento {
+    background-color: #fffaf5;
+    color: #c2410c;
+    border-color: #fdba74;
+}
+
+.badge-default {
+    background-color: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+}
 
 .item-details {
     color: #9ca3af;
@@ -376,10 +395,151 @@ body {
     transition: width 0.5s ease-in-out;
 }
 
-.fill-default { background-color: #fca311; }
+/**Estilização do Estoque**/
+
+/**Titulo e subtitulo**/
+.maintitleEST {
+    margin-left: 30px;
+}
+
+.maintitleEST h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.maintitleEST p {
+    font-size: 14px;
+    color: #707070;
+}
+
+/* Filtros de estoque */
+.filtros {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    margin-top: 5%;
+    margin-left: 30px;
+}
+
+.filtros > button {
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    color: #1f2937;
+    font-weight: 600;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filtros > button:hover{
+    border-color: #a5b4fc;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/**Filtrar por nome/categoria**/
+.search-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    flex: 0 1 auto;
+    min-width: auto;
+    margin-left: 30px;
+}
+
+.search-container input {
+    flex: 0 1 450px;
+    max-width: 500px;
+    min-width: 140px;
+    padding: 10px 12px 10px 30px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #111827;
+    background-image: url("assets/icons/search.png");
+    background-repeat: no-repeat;
+    background-position: 14px center;
+    background-size: 16px 16px;
+}
+
+.search-container button {
+    border: 1px solid #d1d5db;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.search-container button img {
+    width: 16px;
+    height: 16px;
+}
+
+.search-container select,
+.filtroclass {
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #111827;
+    min-width: 180px;
+}
+
+.search-container select:focus,
+.search-container input:focus,
+.filtros > button:focus {
+    outline: none;
+    border-color: #6366f1;
+}
+
+.fill-default {
+    background-color: #fca311;
+}
 
 .item-percentage {
     color: #9ca3af;
     font-size: 13px;
     font-weight: 500;
 }
+
+/**Estoque em forma de tabela**/
+.estoque-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.estoque-table th,
+.estoque-table td {
+    padding: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.estoque-table th {
+    background-color: #f8fafc;
+    color: #4a5568;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.estoque-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.estoque-table tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+.estoque-table td {
+    color: #2d3748;
+    font-size: 15px;
+}
+
