@@ -11,7 +11,7 @@
 <body>
 
     <?php
-        include 'partials/header.php';
+        include 'partials/header_admin.php';
     ?>
 
     <a href="" class="cproduto">+ Novo produto</a>
