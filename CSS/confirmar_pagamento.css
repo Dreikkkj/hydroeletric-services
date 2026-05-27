@@ -54,32 +54,6 @@ a {
   padding: 35px;
 }
 
-.dismiss {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  background-color: #47c9a2;
-  color: #fff;
-  font-weight: 700;
-  border: 1px solid #fff;
-  font-size: 1rem;
-  font-weight: 300;
-  width: 30px;
-  height: 30px;
-  border-radius: 7px;
-  z-index: 10;
-  transition: .3s ease;
-}
-
-.dismiss:hover {
-  background-color: #fff;
-  color: #47c9a2;
-}
-
 .header {
   padding: 1.25rem 1rem 1rem 1rem;
 }
@@ -97,6 +71,7 @@ a {
   border-radius: 9999px;
   animation: animate .6s linear alternate-reverse infinite;
   transition: .6s ease;
+  margin-bottom: 1.1rem;
 }
 
 .image svg {
@@ -111,7 +86,7 @@ a {
 }
 
 .title {
-  color: #066e29;
+  color: #fff;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.5rem;
@@ -119,7 +94,7 @@ a {
 
 .message {
   margin-top: 0.5rem;
-  color: #595b5f;
+  color: #e6ffe0;
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -132,4 +107,69 @@ a {
   to {
     transform: scale(1.09);
   }
+}
+
+.price {
+  margin-top: 1.25rem;
+  color: var(--primaryBlue);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.content-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+  margin-top: 0.5rem;
+}
+
+.linha::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #e2e2e2;
+  margin-top: 0.75rem;
+  position: absolute;
+  left: 0;
+  top: 50%;
+}
+
+.linha span {
+  color: var(--primaryBlue);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.linha p {
+  color: var(--primaryBlue);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.content-info-btn {
+  margin-top: 1.5rem;
+  width: 75%;
+  border: 2px solid #47c9a2;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  color: #47c9a2;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.content-info-btn:hover {
+  background-color: #47c9a2;
+  color: #fff;
+  transition: 0.3s ease;
 }
