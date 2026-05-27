@@ -25,7 +25,6 @@ $estoque_minimo = 50;
                 <h1>Controle de Estoque</h1>
                 <p>Gerencie produtos, estoque e movimentações.</p>
             </div>
-            <a href="novo_produto.php" class="btn-novo-produto">+ Novo Produto</a>
         </div>
 
         <div class="filtros">
@@ -82,7 +81,7 @@ $estoque_minimo = 50;
                         5 => 'Conexão Hidráulica',
                         6 => 'Caixas d\'água',
                     ];
-                        // Estoque
+                    // Estoque
                     if (!empty($produtos) && is_array($produtos)) {
                         foreach ($produtos as $produto) {
                             $qtdEstoque = intval($produto['estoque'] ?? 0);
