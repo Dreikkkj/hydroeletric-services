@@ -58,17 +58,10 @@
         
         <div class="parteFooter redes">
             <h3>Redes Sociais</h3>
-<<<<<<< HEAD
-            <ul>
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
-=======
             <ul style="list-style: none;">
                 <li><a href="https://www.linkedin.com/company/hydroeletric" target="_blank">LinkedIn</a></li>
                 <li><a href="https://twitter.com/hydroeletric" target="_blank">Twitter</a></li>
                 <li><a href="https://www.instagram.com/hydroeletric" target="_blank">Instagram</a></li>
->>>>>>> 57d1123487e069eb943b0020bf49031feb1e65d5
             </ul>
         </div>
     </div>
