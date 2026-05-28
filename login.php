@@ -11,7 +11,7 @@
         <section>
             <div class="border">
                 <h2>Login</h2>
-                <form method="">
+                <form method="POST" action="login_processar.php">
 
                     <div class="e">
                         <label for="email">Email</label>
@@ -25,7 +25,7 @@
 
                     <p class="escS"><a href="">Esqueceu a senha?</a></p>
 
-                    <button type="submit">Entar</button>
+                    <button type="submit">Entrar</button>
                 </form>
                 <p class="cadastro">Não tem uma conta? <a href="./cadastro.html">Cadastre-se</a></p>
             </div>

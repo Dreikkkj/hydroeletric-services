@@ -1,4 +1,13 @@
-<header>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // Garante que a sessão está ativa para ler o "crachá"
+}
+
+// Verifica se existe alguém logado e se esse alguém é admin
+$isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'admin';
+?>
+
+<header class="<?php echo $isAdmin ? 'header-admin' : ''; ?>">
     <nav>
         <div>
             <img src="assets/icons/Logo2.png" alt="Logo"> 
@@ -20,6 +29,17 @@
                     </svg>
                 </a>
             </li>
+
+            <?php if ($isAdmin): ?>
+            <li class="header-admin-icon">
+                <a href="admin_dashboard.php" title="Painel Admin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+                        <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m-7-2.5a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 1 1-.707.707L4.5 8.232a.5.5 0 0 1 0-.707M11 8a.5.5 0 0 1 .707 0l1.414 1.414a.5.5 0 1 1-.707.707L11.732 8.5a.5.5 0 0 1 0-.707M1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8"/>
+                    </svg>
+                </a>
+            </li>
+            <?php endif; ?>
+
             <li class="btn-promocao"><a href="catalogo.php">Catálogo</a></li>
             <li class="btn-entrar"><a href="login.php">Entrar</a></li>
         </ul>
