@@ -89,7 +89,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
                     </div>
                     <div class="detalhes-pagamento">
                         <strong>R$ 588,22</strong>
-                        <span>12x de R$ 49,02 s/ juros</span>
+                        <select name="quantidade_parcelas" class="select-parcelas" onclick="event.stopPropagation();">
+                            <?php
+                            $valor_total = 588.22;
+                            $max_parcelas = 12;
+                            
+                            for ($i = 1; $i <= $max_parcelas; $i++) {
+                                $valor_parcela = $valor_total / $i;
+                                $valor_formatado = number_format($valor_parcela, 2, ',', '.');
+                                $selected = ($i == 12) ? 'selected' : '';
+                                
+                                echo "<option value=\"$i\" $selected>{$i}x de R$ {$valor_formatado} s/ juros</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                 </label>
 
