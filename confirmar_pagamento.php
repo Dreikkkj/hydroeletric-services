@@ -4,14 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/confirmar-pagamento.css">
+    <link rel="stylesheet" href="CSS/confirmar_pagamento.css">
     <title>Confirmar Pagamento</title>
 </head>
 
 <body>
     <div class="container">
         <div class="card">
-            <button class="dismiss" type="button">X</button>
             <div class="header">
 
                 <div class="div_image_v">
@@ -26,10 +25,31 @@
                             </g>
                         </svg>
                     </div>
-                </div>
-                <div class="content">
+
                     <span class="title">Pedido Concluido</span>
                     <p class="message">Obrigado por sua compra. Seu pacote será entregue dentro de 2 dias úteis após a compra</p>
+                </div>
+                <div class="content">
+                    <p class="price">R$ 199.99</p>
+
+                    <div class="content-info">
+                        <div class="linha linha-separacao">
+                            <span>Id do pedido:</span>
+                            <p>0000-0</p>
+                        </div>
+
+                        <div class="linha">
+                            <span>Data e hora:</span>
+                            <p>18 Mar - 15:32</p>
+                        </div>
+
+                        <div class="linha">
+                            <span>Método de pagamento:</span>
+                            <p>Pix</p>
+                        </div>
+
+                        <a href="index.php" class="content-info-btn">Voltar ao Site</a>
+                    </div>
                 </div>
             </div>
         </div>
