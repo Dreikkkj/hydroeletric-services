@@ -5,9 +5,9 @@
                 <img src="assets/icons/Icon_logo.png" alt="Logo da empresa">
                 <h3>HydroEletric</h3>
             </div>
-            <a href="#">Sobre nós</a>
+            <a href="index.php#sobre-nos">Sobre nós</a>
             <p>Colocar o sobre a empresa, em resumo.</p>
-            <a href="./website/paginas/cadastro/termos.html">Termos e condições</a>
+            <a href="termos.php">Termos e condições</a>
         </div>
 
         <div class="linhaFooter"></div>
@@ -15,10 +15,10 @@
         <div class="parteFooter">
             <h3>Links</h3>
             <ul style="list-style: none;">
-                <li><a href="#">home</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Contato</a></li>
-                <li><a href="#">catálogo</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="produtos.php">Produtos</a></li>
+                <li><a href="contato.php">Contato</a></li>
+                <li><a href="catalogo.php">Catálogo</a></li>
             </ul>
         </div>
 
@@ -59,9 +59,9 @@
         <div class="parteFooter">
             <h3>Redes Sociais</h3>
             <ul style="list-style: none;">
-                <li><a href="#">LinkedIn</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/company/hydroeletric" target="_blank">LinkedIn</a></li>
+                <li><a href="https://twitter.com/hydroeletric" target="_blank">Twitter</a></li>
+                <li><a href="https://www.instagram.com/hydroeletric" target="_blank">Instagram</a></li>
             </ul>
         </div>
     </div>
