@@ -1,3 +1,19 @@
+<?php
+$mostrar_instalacao = false;
+$cep_digitado = '';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
+    $cep_digitado = preg_replace('/[^0-9]/', '', $_POST['cep']);
+
+    if (strlen($cep_digitado) > 0) {
+        $primeiro_digito = substr($cep_digitado, 0, 1);
+
+        if ($primeiro_digito === '0' || $primeiro_digito === '1') {
+            $mostrar_instalacao = true;
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -94,13 +110,16 @@
             </section>
 
             <div class="card-cep">
-                <p>Adicionar o cep: </p>
-                <div class="caixa-cep">
-                    <input type="number" class="cep">
-                    <button class="btn-calcular">calcular</button>
-                </div>
+                <p>Adicionar o CEP: </p>
+                <form action="" method="POST">
+                    <div class="caixa-cep">
+                        <input type="number" name="cep" class="cep" value="<?php echo htmlspecialchars($cep_digitado); ?>" required>
+                        <button type="submit" class="btn-calcular">calcular</button>
+                    </div>
+                </form>
             </div>
 
+            <?php if ($mostrar_instalacao): ?>
             <div class="card-instalacao">
                 <label class="caixa-instalacao">
                     <input type="checkbox" name="adicionar_instalacao" value="sim">
@@ -113,7 +132,8 @@
                     </div>
                 </label>
             </div>
-        </div>
+            <?php endif; ?>
+            </div>
     </div>
     <?php
         include 'partials/footer.php';
