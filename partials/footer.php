@@ -6,7 +6,6 @@
                 <h3>HydroEletric</h3>
             </div>
             <a href="index.php#sobre-nos">Sobre nós</a>
-            <p>Colocar o sobre a empresa, em resumo.</p>
             <a href="termos.php">Termos e condições</a>
         </div>
 
