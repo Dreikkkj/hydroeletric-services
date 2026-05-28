@@ -65,3 +65,4 @@ CREATE TABLE historico_estoque (
     motivo VARCHAR(255) NOT NULL,
     FOREIGN KEY (produto_id) REFERENCES produtos(id_produtos) ON DELETE CASCADE
 );
+
