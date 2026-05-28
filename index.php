@@ -12,6 +12,6 @@
 </head>
 <body>
 <a href="./admin/financeiro.php">Financeiro</a>
-<a href="./admin/estoque.php">Estoque</a>
+<a href="./admin/movimentacao.php">Movimentação</a>
 </body>
 </html>
