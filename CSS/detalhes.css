@@ -87,68 +87,41 @@ a {
   color: #777;
 }
 
-.product-info h1 {
-  margin-bottom: 20px;
+.categoria-item {
+  display: inline-block;
+  background-color: var(--primaryBlue);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.prod-info h1 {
+  margin-bottom: 5px;
+  color: var(--textHeader);
+}
+
+.sku-item {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .preco {
   font-size: 22px;
-  margin-bottom: 5px;
-}
-
-.parcela {
-  font-size: 13px;
-  margin-bottom: 20px;
-}
-
-.section {
-  margin-bottom: 20px;
-}
-
-.color-option {
-  width: 25px;
-  height: 25px;
-  background: black;
-  border-radius: 50%;
-  margin-top: 10px;
-}
-
-.size-title {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.sizes {
-  display: flex;
-  gap: 10px;
-}
-
-.sizes button {
-  border: 1px solid #000;
-  padding: 8px 12px;
-  border-radius: 50px;
-  cursor: pointer;
-}
-
-.sizes button:hover {
-  background: black;
-  color: white;
-  transition: 0.2s ease-in-out;
-}
-
-.sizes button:focus {
-  background: black;
-  color: white;
-  transition: 0.2s ease-in-out;  
+  margin-bottom: 25px;
 }
 
 .btn-buy {
   width: 100%;
   padding: 15px;
-  background: linear-gradient(to right, #7318c9, #55006e);
-  color: white;
-  border: none;
+  background: transparent;
+  border: 2px solid var(--primaryOrange);
+  color: var(--primaryOrange);
   border-radius: 30px;
   font-weight: bold;
   margin: 20px 0;
@@ -157,8 +130,9 @@ a {
 
 .btn-buy:hover {
   transition: 0.2s linear;
+  color: white;
+  background: var(--primaryOrange);
   transform: scale(1.05);
-  box-shadow: 0 0 15px #4e006194;
 }
 
 .cep-box {
