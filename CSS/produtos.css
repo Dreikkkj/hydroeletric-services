@@ -83,6 +83,19 @@
     gap: 8px;
 }
 
+.btn-aplicar {
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #191060;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
 .grid-produtos {
     display: grid;
     grid-template-columns: repeat(4, 1fr); 
@@ -124,8 +137,9 @@
 }
 
 .imagem-produto {
-    width: 75%;
-    height: auto;
+    width: 70%;
+    height: 90%;
+    object-fit: cover;
     border-radius: 8px;
     margin-bottom: 10px;
 }
