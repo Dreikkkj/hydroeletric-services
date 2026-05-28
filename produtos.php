@@ -23,9 +23,9 @@
                     <details open>
                         <summary>Categoria</summary>
                         <div class="conteudo-filtro">
-                            <label><input type="checkbox" checked> Cabos</label>
-                            <label><input type="checkbox"> Ferramentas</label>
-                            <label><input type="checkbox"> Iluminação</label>
+                            <label><input type="radio" name="categoria" checked> Cabos</label>
+                            <label><input type="radio" name="categoria"> Ferramentas</label>
+                            <label><input type="radio" name="categoria"> Iluminação</label>
                         </div>
                     </details>
 
@@ -40,109 +40,36 @@
                     <details>
                         <summary>Faixa de Preço</summary>
                         <div class="conteudo-filtro">
-                            <label><input type="checkbox"> Até R$ 50,00</label>
-                            <label><input type="checkbox"> R$ 50 a R$ 150</label>
-                            <label><input type="checkbox"> Acima de R$ 150</label>
+                            <label><input type="radio" name="preco" checked> Até R$ 50,00</label>
+                            <label><input type="radio" name="preco"> R$ 50 a R$ 150</label>
+                            <label><input type="radio" name="preco"> Acima de R$ 150</label>
                         </div>
                     </details>
                 </aside>
-
+                
                 <div class="grid-produtos">
-                    <div class="card">
-                        <p class="estado-produto">Em estoque</p>
-                        <img src="https://eletrorastro.fbitsstatic.net/img/p/fio-rigido-6-00mm-750v-vermelho-rolo-com-25-metros-corfio-93852/284540.jpg?w=800&h=800&v=202604131433" alt="produto" class="imagem-produto">
-                        <p class="categoria-produto">Cabo</p>
-                        <h3 class="nome-produto">Fio Rígido 6.00mm 750V Vermelho - Corfio</h3>
-                        <p class="codigo-produto">Código: 93852</p>
-                        <p class="texto-produto">Preço</p>
-                        <div class="linha-card">
-                            <p class="preco-produto">R$ 150,00</p>
-                            <p class="quantidade-produto">600 disp.</p>
-                        </div>
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                    
-                    <div class="card">
-                        <p class="estado-produto">Em estoque</p>
-                        <img src="https://eletrorastro.fbitsstatic.net/img/p/fio-rigido-6-00mm-750v-vermelho-rolo-com-25-metros-corfio-93852/284540.jpg?w=800&h=800&v=202604131433" alt="produto" class="imagem-produto">
-                        <p class="categoria-produto">Cabo</p>
-                        <h3 class="nome-produto">Fio Rígido 6.00mm 750V Vermelho - Corfio</h3>
-                        <p class="codigo-produto">Código: 93852</p>
-                        <p class="texto-produto">Preço</p>
-                        <div class="linha-card">
-                            <p class="preco-produto">R$ 150,00</p>
-                            <p class="quantidade-produto">600 disp.</p>
-                        </div>
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
+                    <?php
+                    require_once 'CRUD/crud.php';
+                    $produtos = readAll($pdo, 'produtos');
 
-                    <div class="card">
-                        <p class="estado-produto">Em estoque</p>
-                        <img src="https://eletrorastro.fbitsstatic.net/img/p/fio-rigido-6-00mm-750v-vermelho-rolo-com-25-metros-corfio-93852/284540.jpg?w=800&h=800&v=202604131433" alt="produto" class="imagem-produto">
-                        <p class="categoria-produto">Cabo</p>
-                        <h3 class="nome-produto">Fio Rígido 6.00mm 750V Vermelho - Corfio</h3>
-                        <p class="codigo-produto">Código: 93852</p>
-                        <p class="texto-produto">Preço</p>
-                        <div class="linha-card">
-                            <p class="preco-produto">R$ 150,00</p>
-                            <p class="quantidade-produto">600 disp.</p>
-                        </div>
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <p class="estado-produto">Em estoque</p>
-                        <img src="https://eletrorastro.fbitsstatic.net/img/p/fio-rigido-6-00mm-750v-vermelho-rolo-com-25-metros-corfio-93852/284540.jpg?w=800&h=800&v=202604131433" alt="produto" class="imagem-produto">
-                        <p class="categoria-produto">Cabo</p>
-                        <h3 class="nome-produto">Fio Rígido 6.00mm 750V Vermelho - Corfio</h3>
-                        <p class="codigo-produto">Código: 93852</p>
-                        <p class="texto-produto">Preço</p>
-                        <div class="linha-card">
-                            <p class="preco-produto">R$ 150,00</p>
-                            <p class="quantidade-produto">600 disp.</p>
-                        </div>
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <p class="estado-produto">Em estoque</p>
-                        <img src="https://eletrorastro.fbitsstatic.net/img/p/fio-rigido-6-00mm-750v-vermelho-rolo-com-25-metros-corfio-93852/284540.jpg?w=800&h=800&v=202604131433" alt="produto" class="imagem-produto">
-                        <p class="categoria-produto">Cabo</p>
-                        <h3 class="nome-produto">Fio Rígido 6.00mm 750V Vermelho - Corfio</h3>
-                        <p class="codigo-produto">Código: 93852</p>
-                        <p class="texto-produto">Preço</p>
-                        <div class="linha-card">
-                            <p class="preco-produto">R$ 150,00</p>
-                            <p class="quantidade-produto">600 disp.</p>
-                        </div>
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-
-                    <div class="card">
-                        <p class="estado-produto">Em estoque</p>
-                        <img src="https://eletrorastro.fbitsstatic.net/img/p/fio-rigido-6-00mm-750v-vermelho-rolo-com-25-metros-corfio-93852/284540.jpg?w=800&h=800&v=202604131433" alt="produto" class="imagem-produto">
-                        <p class="categoria-produto">Cabo</p>
-                        <h3 class="nome-produto">Fio Rígido 6.00mm 750V Vermelho - Corfio</h3>
-                        <p class="codigo-produto">Código: 93852</p>
-                        <p class="texto-produto">Preço</p>
-                        <div class="linha-card">
-                            <p class="preco-produto">R$ 150,00</p>
-                            <p class="quantidade-produto">600 disp.</p>
-                        </div>
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
+                    foreach ($produtos as $produtos) {
+                        echo "<div class='card'>";
+                        echo "<p class='estado-produto'>" . $produtos["estado"] . "</p>";
+                        echo "<img src='" . $produtos["capa"] . "' alt='produto' class='imagem-produto'>";
+                        echo "<p class='categoria-produto'>" . $produtos["categoria_id_produtos"] . "</p>";
+                        echo "<h3 class='nome-produto'>" . $produtos["nome_produtos"] . "</h3>";
+                        echo "<p class='codigo-produto'>Código: " . $produtos["sku"] . "</p>";
+                        echo "<p class='texto-produto'>Preço</p>";
+                        echo "<div class='linha-card'>";
+                        echo "<p class='preco-produto'>R$ " . number_format($produtos["preco"], 2, ',', '.') . "</p>";
+                        echo "<p class='quantidade-produto'>" . $produtos["estoque"] . " disp.</p>";
+                        echo "</div>";
+                        echo "<a href='#' target='_blank'>";
+                        echo "<button class='btn-detalhes'>Ver Detalhes</button>";
+                        echo "</a>";
+                        echo "</div>";
+                    }
+                    ?>
                 </div>
             </div>
         </section>
