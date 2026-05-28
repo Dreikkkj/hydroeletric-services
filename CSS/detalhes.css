@@ -82,9 +82,8 @@ a {
   margin-bottom: 10px;
 }
 
-.indicador a {
-  text-decoration: none;
-  color: #777;
+.indicador a:hover {
+  text-decoration: underline;
 }
 
 .categoria-item {
