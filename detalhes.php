@@ -12,18 +12,19 @@
     <?php require_once 'partials/header.php'; ?>
 
     <main class="prod-main">
-        <p class="indicador"><a href="index.php">Home</a> | <a href="produtos.php">Produtos</a> | <a href="detalhes.php">Cabo Flexível 2,5mm²</a></p>
+        
         <div class="prod-container">
             
             <div class="prod-gallery">
+                <p class="indicador"><a href="index.php">Home</a> | <a href="produtos.php">Produtos</a> | <a href="detalhes.php">Cabo Flexível 2,5mm²</a></p>
+                
+                <div class="main-img">
+                    <img src="assets/icons/Logo.png" id="mainImg">
+                </div>
                 
                 <div class="mini-img">
                     <img src="assets/icons/Logo.png">
                     <img src="assets/icons/Logo.png">
-                </div>
-
-                <div class="main-img">
-                    <img src="assets/icons/Logo.png" id="mainImg">
                 </div>
             </div>
 
@@ -34,9 +35,6 @@
                 <span class="sku-item">CFL-025-001</span>
 
                 <h2 class="preco">R$ 4,50</h2>
-
-
-                <button class="btn-buy"><a href="carrinho.php">ADICIONAR AO CARRINHO</a></button>
 
                 <div class="desc">
                     <p>
@@ -49,6 +47,8 @@
                     absorção de impacto para o dia a dia.
                     </p>
                 </div>
+
+                <button class="btn-buy"><a href="carrinho.php">ADICIONAR AO CARRINHO <i class="bi bi-cart-plus"></i></a></button>
             </div>
         </div>
     </main>
