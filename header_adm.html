@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>estoque</title>
-    <link rel="stylesheet" href="./css/estoque.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&icon_names=monitoring,settings,store,storefront,view_comfy_alt" />
-    
-</head>
-<body>
-    <header>
+    <header class="admin-topbar">
         <nav>
             <div class="sites">
-                <a href=""><span class="material-symbols-outlined">view_comfy_alt</span>Dashboard</a>
-                <a href=""><span class="material-symbols-outlined">store</span>Estoque</a>
-                <a href=""><span class="material-symbols-outlined">monitoring</span>Financeiro</a>
-                <a href=""><span class="material-symbols-outlined">settings</span>configurações</a>
-                <a href=""><span class="material-symbols-outlined">storefront</span>Ver Loja</a>
+                <a href="../admin"><span class="material-symbols-outlined">Dashboard</span></a>
+                <a href="../admin/estoque.php"><span class="material-symbols-outlined">Estoque</span></a>
+                <a href="../admin/financeiro.php"><span class="material-symbols-outlined">Financeiro</span></a>
+                <a href="../admin/configuracoes"><span class="material-symbols-outlined">configurações</span></a>
+                <a href="../admin/loja"><span class="material-symbols-outlined">Ver Loja</span></a>
             </div>
             <div class="user">
                 <div class="adm">
@@ -27,10 +16,3 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section>
-            <div></div>
-        </section>
-    </main>
-</body>
-</html>

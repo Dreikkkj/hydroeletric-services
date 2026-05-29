@@ -15,9 +15,13 @@ $estoque_minimo = 50;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="../CSS/header_adm.css"> 
 </head>
 
 <body>
+    <?php
+    require_once __DIR__ . '/../header_adm.html';
+    ?>
     <div class="container-estoque">
 
         <div class="header-estoque">

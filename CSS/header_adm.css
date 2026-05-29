@@ -11,7 +11,7 @@ body {
     font-family: 'Montserrat';
 }
 
-header {
+.admin-topbar {
     background-color: #023047;
     padding: 30px;
 }
