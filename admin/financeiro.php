@@ -39,7 +39,7 @@ if (!empty($produtos) && is_array($produtos)) {
         $total_unidades += $qtd;
 
         if (!isset($dados_categoria[$categoria])) {
-            $slug = strtolower(preg_replace('/[^a-z0-9]+/','-', iconv('UTF-8', 'ASCII//TRANSLIT', $categoria)));
+            $slug = strtolower(preg_replace('/[^a-z0-9]+/', '-', iconv('UTF-8', 'ASCII//TRANSLIT', $categoria)));
             $slug = trim($slug, '-');
             $dados_categoria[$categoria] = [
                 'valor' => 0,
@@ -81,7 +81,6 @@ if (!empty($produtos) && is_array($produtos)) {
 </head>
 
 <body>
-
     <div class="containerFIN">
         <header class="maintitle">
             <h1>Resumo Financeiro</h1>
@@ -92,10 +91,11 @@ if (!empty($produtos) && is_array($produtos)) {
             <div class="financeiro-card">
                 <div class="card-header">
                     <h2>Receita Total</h2>
-                    <span class="icon badge-receita"><img src="../assets/icons/show_chart.png" alt="Ícone de gráfico"></span>
+                    <span class="icon badge-receita"><img src="../assets/icons/show_chart.png"
+                            alt="Ícone de gráfico"></span>
                 </div>
                 <p class="valor">R$ <?php echo number_format($valor_total_estoque, 2, ',', '.'); ?></p>
-                <span class="mais">↑ 15.8% vs. mês anterior</span>
+                <span class="mais"><?php echo '↑ 15.8% vs. mês anterior'; ?></span>
             </div>
 
             <div class="financeiro-card">
@@ -119,7 +119,8 @@ if (!empty($produtos) && is_array($produtos)) {
             <div class="financeiro-card">
                 <div class="card-header">
                     <h2>Margem Média</h2>
-                    <span class="icon badge-margem"><img src="../assets/icons/percent.png" alt="Ícone de porcentagem"></span>
+                    <span class="icon badge-margem"><img src="../assets/icons/percent.png"
+                            alt="Ícone de porcentagem"></span>
                 </div>
                 <p class="valor">40.2%</p>
                 <span class="categoria">Sobre todas as categorias</span>
@@ -129,63 +130,77 @@ if (!empty($produtos) && is_array($produtos)) {
         <div class="conteudo">
 
             <div class="valor-categoria card-categorias bloco">
-                <div class="card-header">
-                    <h3><img src="../assets/icons/graph.png" class="icon1" alt="Ícone">Valor por Categoria</h3>
+                <div class="card-header-cat">
+                    <h3>Performance por Categoria</h3>
+                    <p class="subtitulo-cat">Receita, custo e margem por categoria no mês</p>
                 </div>
 
-                <?php foreach ($dados_categoria as $nome_cat => $dados): ?>
-                    <?php
-                    $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
-                    $allowedSlugs = ['fios', 'cabos', 'disjuntores', 'tubulacoes', 'conexao-hidraulica', 'caixas-d-agua'];
-                    $slug_class = in_array($dados['slug'], $allowedSlugs, true) ? $dados['slug'] : 'default';
-                    ?>
-                    <div class="category-item">
-                        <div class="item-header">
-                            <div class="item-info">
-                                <span class="badge badge-<?= $slug_class ?>"><?= htmlspecialchars($nome_cat) ?></span>
-                                <span class="item-details"><?= $dados['qtd_produtos'] ?> produtos &middot;
-                                    <?= $dados['qtd_unidades'] ?> un.</span>
+                <div class="categorias-list">
+                    <?php foreach ($dados_categoria as $nome_cat => $dados): ?>
+                        <?php
+                        $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
+                        
+                        $margem = "39.1%"; 
+                        $custo = $dados['valor'] * 0.60;
+                        $lucro = $dados['valor'] - $custo;
+                        ?>
+
+                        <div class="category-item">
+                            <div class="item-header">
+                                <span class="category-name"><?= htmlspecialchars($nome_cat) ?></span>
+                                <div class="item-metrics">
+                                    <span class="metrics-un"><?= number_format($dados['qtd_unidades'], 0, '', '.') ?> un.</span>
+                                    <span class="metrics-margin"><?= $margem ?></span>
+                                    <span class="metrics-revenue">R$ <?= number_format($dados['valor'], 2, ',', '.') ?></span>
+                                </div>
                             </div>
-                            <div class="item-value">R$ <?= number_format($dados['valor'], 2, ',', '.') ?></div>
-                        </div>
 
-                        <div class="progress-bg">
-                            <div class="progress-fill fill-<?= $slug_class ?>"
-                                style="width: <?= number_format($porcentagem, 1, '.', '') ?>%;"></div>
-                        </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: <?= number_format($porcentagem, 1, '.', '') ?>%;"></div>
+                            </div>
 
-                        <div class="item-percentage"><?= number_format($porcentagem, 1, ',', '.') ?>% do total</div>
-                    </div>
-                <?php endforeach; ?>
+                            <div class="item-footer">
+                                <span class="metrics-cost">Custo: R$ <?= number_format($custo, 2, ',', '.') ?></span>
+                                <span class="metrics-profit">Lucro: R$ <?= number_format($lucro, 2, ',', '.') ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
             <section class="bloco top">
                 <div class="cabecalho">
-                    <h2>Top Produtos <span class="icon badge-top trophy-icon"><img src="../assets/icons/trophy.png" alt="Ícone de troféu"></span></h2>
+                    <h2>Top Produtos <span class="icon badge-top trophy-icon"><img src="../assets/icons/trophy.png"
+                                alt="Ícone de troféu"></span></h2>
                     <p class="subtitulo">Por receita no mês atual</p>
                 </div>
+
                 <div class="top-produtos-list">
                     <?php
                     $top_5 = array_slice($ranking_produtos, 0, 5);
-
                     foreach ($top_5 as $index => $item):
                         $rank_class = ($index === 0) ? 'rank-first' : 'rank-other';
                         ?>
+
                         <div class="top-item">
                             <div class="top-item-left">
                                 <div class="top-rank <?= $rank_class ?>">
                                     <?= $index + 1 ?>
                                 </div>
+
                                 <div class="top-info">
                                     <div class="top-name"> <?= htmlspecialchars($item['nome']) ?>
                                     </div>
+
                                     <div class="top-subtext"><?= $item['quantidade'] ?> un. &times;
                                         R$<?= number_format($item['preco'], 2, ',', '.') ?>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="top-value">R$<?= number_format($item['valor_total'], 2, ',', '.') ?>
                             </div>
+
                         </div>
                     <?php endforeach; ?>
                 </div>
