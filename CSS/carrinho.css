@@ -316,7 +316,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.caixa-cep input[type="number"] {
+.caixa-cep input[type="text"] {
     accent-color: #14A650;
     padding-left: 5px;
     width: 200px;
