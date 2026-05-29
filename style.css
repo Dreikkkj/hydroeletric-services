@@ -161,70 +161,103 @@ body {
     margin-top: 2px;
 }
 
-/* Lista de Categorias com Barras de Progresso */
-.lista {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+/* --- Performance por Categoria (Design atualizado) --- */
+
+.card-header-cat {
+    margin-bottom: 24px;
 }
 
-.item {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
+.card-header-cat h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 4px;
 }
 
-.info {
+.subtitulo-cat {
+    font-size: 13px;
+    color: #a1a1aa; 
+}
+
+.categorias-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-item .item-header {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
+    align-items: flex-end;
+    margin-bottom: 6px;
 }
 
-.cat-name {
+.category-name {
+    font-size: 15px;
     font-weight: 600;
-    color: #333;
+    color: #333333;
 }
 
-.cat-stats {
+.item-metrics {
     display: flex;
-    gap: 12px;
-    color: #666;
+    align-items: center;
+    gap: 16px;
 }
 
-.icon1 {
-    width: 23px;
-    height: auto;
-    vertical-align: middle;
-    margin-right: 10px;
-    margin-top: -8px;
+.metrics-un {
+    font-size: 13px;
+    color: #a1a1aa;
 }
 
-/* Componente da Barra */
-.barra {
+.metrics-margin {
+    font-size: 13px;
+    font-weight: 700;
+    color: #10b981; 
+}
+
+.metrics-revenue {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+    min-width: 100px;
+    text-align: right;
+}
+
+.category-item .progress-bg {
     width: 100%;
-    height: 8px;
-    background-color: #f3f4f6;
-    border-radius: 99px;
+    height: 6px;
+    background-color: #f4f4f5; 
+    border-radius: 4px;
+    margin-bottom: 6px;
     overflow: hidden;
 }
 
-.progress-fill {
+.category-item .progress-fill {
     height: 100%;
-    background-color: #f59e0b;
-    border-radius: 99px;
+    background-color: #f59e0b; 
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
 }
 
-.rodape {
+.category-item .item-footer {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    color: #9ca3af;
+    font-size: 13px;
 }
 
-.lucro-indicator {
-    color: #10b981;
-    font-weight: 500;
+.metrics-cost {
+    color: #a1a1aa; 
 }
+
+.metrics-profit {
+    color: #10b981; 
+}
+
 
 /* Top Produtos - Ranking */
 
@@ -366,33 +399,6 @@ body {
     background-color: #f3f4f6;
     color: #374151;
     border-color: #d1d5db;
-}
-
-.item-details {
-    color: #9ca3af;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.item-value {
-    font-weight: 700;
-    font-size: 15px;
-    color: #111827;
-}
-
-/* Barras de Progresso */
-.progress-bg {
-    background-color: #f3f4f6;
-    height: 8px;
-    border-radius: 4px;
-    width: 100%;
-    margin-bottom: 6px;
-}
-
-.progress-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.5s ease-in-out;
 }
 
 /**Estoque**/

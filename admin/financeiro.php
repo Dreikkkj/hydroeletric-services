@@ -130,35 +130,42 @@ if (!empty($produtos) && is_array($produtos)) {
         <div class="conteudo">
 
             <div class="valor-categoria card-categorias bloco">
-                <div class="card-header">
-                    <h3><img src="../assets/icons/graph.png" class="icon1" alt="Ícone">Valor por Categoria</h3>
+                <div class="card-header-cat">
+                    <h3>Performance por Categoria</h3>
+                    <p class="subtitulo-cat">Receita, custo e margem por categoria no mês</p>
                 </div>
 
-                <?php foreach ($dados_categoria as $nome_cat => $dados): ?>
-                    <?php
-                    $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
-                    $allowedSlugs = ['fios', 'cabos', 'disjuntores', 'tubulacoes', 'conexao-hidraulica', 'caixas-d-agua'];
-                    $slug_class = in_array($dados['slug'], $allowedSlugs, true) ? $dados['slug'] : 'default';
-                    ?>
+                <div class="categorias-list">
+                    <?php foreach ($dados_categoria as $nome_cat => $dados): ?>
+                        <?php
+                        $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
+                        
+                        $margem = "39.1%"; 
+                        $custo = $dados['valor'] * 0.60;
+                        $lucro = $dados['valor'] - $custo;
+                        ?>
 
-                    <div class="category-item">
-                        <div class="item-header">
-                            <div class="item-info">
-                                <span class="badge badge-<?= $slug_class ?>"><?= htmlspecialchars($nome_cat) ?></span>
-                                <span class="item-details"><?= $dados['qtd_produtos'] ?> produtos &middot;
-                                    <?= $dados['qtd_unidades'] ?> un.</span>
+                        <div class="category-item">
+                            <div class="item-header">
+                                <span class="category-name"><?= htmlspecialchars($nome_cat) ?></span>
+                                <div class="item-metrics">
+                                    <span class="metrics-un"><?= number_format($dados['qtd_unidades'], 0, '', '.') ?> un.</span>
+                                    <span class="metrics-margin"><?= $margem ?></span>
+                                    <span class="metrics-revenue">R$ <?= number_format($dados['valor'], 2, ',', '.') ?></span>
+                                </div>
                             </div>
-                            <div class="item-value">R$ <?= number_format($dados['valor'], 2, ',', '.') ?></div>
-                        </div>
 
-                        <div class="progress-bg">
-                            <div class="progress-fill fill-<?= $slug_class ?>"
-                                style="width: <?= number_format($porcentagem, 1, '.', '') ?>%;"></div>
-                        </div>
+                            <div class="progress-bg">
+                                <div class="progress-fill" style="width: <?= number_format($porcentagem, 1, '.', '') ?>%;"></div>
+                            </div>
 
-                        <div class="item-percentage"><?= number_format($porcentagem, 1, ',', '.') ?>% do total</div>
-                    </div>
-                <?php endforeach; ?>
+                            <div class="item-footer">
+                                <span class="metrics-cost">Custo: R$ <?= number_format($custo, 2, ',', '.') ?></span>
+                                <span class="metrics-profit">Lucro: R$ <?= number_format($lucro, 2, ',', '.') ?></span>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
 
             <section class="bloco top">
@@ -179,7 +186,6 @@ if (!empty($produtos) && is_array($produtos)) {
                             <div class="top-item-left">
                                 <div class="top-rank <?= $rank_class ?>">
                                     <?= $index + 1 ?>
-
                                 </div>
 
                                 <div class="top-info">
@@ -189,7 +195,6 @@ if (!empty($produtos) && is_array($produtos)) {
                                     <div class="top-subtext"><?= $item['quantidade'] ?> un. &times;
                                         R$<?= number_format($item['preco'], 2, ',', '.') ?>
                                     </div>
-
                                 </div>
                             </div>
 
