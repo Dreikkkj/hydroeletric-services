@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
 :root {
     --primaryOrange: #fca311;
     --primaryBlue: #023047;
@@ -106,7 +115,7 @@ nav img {
 nav ul {
     list-style: none;
     display: flex;
-}  
+}
 
 .header-itens {
     margin-right: 25px;
@@ -165,8 +174,8 @@ nav ul {
 
 .btn-entrar a {
     background-color: #fff;
-    border: var(--primaryOrange) solid 2px;  
-    color: var(--primaryOrange);  
+    border: var(--primaryOrange) solid 2px;
+    color: var(--primaryOrange);
     padding: 10px 15px;
     border-radius: 5px;
     transition: 0.3s ease;

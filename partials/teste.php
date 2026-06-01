@@ -10,14 +10,14 @@ $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'ad
 <header class="<?php echo $isAdmin ? 'header-admin' : ''; ?>">
     <nav>
         <div>
-            <img src="assets/icons/Logo2.png" alt="Logo">
-        </div>
-
+            <img src="assets/icons/Logo2.png" alt="Logo"> 
+        </div>   
+        
         <div class="search-header">
             <input type="text" placeholder="Pesquisar...">
             <i class="bi bi-search"></i>
         </div>
-
+        
         <ul>
             <li class="header-itens"><a href="index.php">Home</a></li>
             <li class="header-itens"><a href="produtos.php">Produtos</a></li>
@@ -39,11 +39,7 @@ $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'ad
             <?php endif; ?>
 
             <li class="btn-promocao"><a href="catalogo.php">Catálogo</a></li>
-            <?php if (isset($_SESSION['usuario_nome'])): ?>
-                <li class="btn-entrar"><a href="logout.php">Sair (<?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>)</a></li>
-            <?php else: ?>
-                <li class="btn-entrar"><a href="login.php">Entrar</a></li>
-            <?php endif; ?>
+            <li class="btn-entrar"><a href="login.php">Entrar</a></li>
         </ul>
     </nav>
 </header>
