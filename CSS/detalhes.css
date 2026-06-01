@@ -149,3 +149,42 @@ a {
   margin-bottom: 10px;
   color: #333;
 }
+
+.estoque-info {
+  margin: 20px 0;
+  padding: 12px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.estoque-info p {
+  margin: 0;
+  color: #333;
+}
+
+.btn-buy:disabled {
+  border-color: #ccc;
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.btn-buy:disabled:hover {
+  background: transparent;
+  transform: scale(1);
+  color: #ccc;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: var(--primaryBlue);
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  background-color: var(--primaryOrange);
+}
