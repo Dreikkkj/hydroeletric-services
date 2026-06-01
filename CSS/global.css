@@ -195,15 +195,14 @@ nav ul {
     transition: 0.3s;
 }
 
-.header-admin-icon i {
-    color: var(--primaryOrange);
+.header-admin-icon svg {
+    color: var(--textHeader);
     transition: 0.3s;
 }
 
-.header-admin-icon i:hover {
+.header-admin-icon svg:hover {
     color: var(--primaryOrange);
-    filter: brightness(115%);
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 header.header-admin {

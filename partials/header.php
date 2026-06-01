@@ -1,9 +1,8 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start(); // Garante que a sessão está ativa para ler o "crachá"
+    session_start();
 }
 
-// Verifica se existe alguém logado e se esse alguém é admin
 $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'admin';
 ?>
 
@@ -14,8 +13,13 @@ $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'ad
         </div>
 
         <div class="search-header">
-            <input type="text" placeholder="Pesquisar...">
-            <i class="bi bi-search"></i>
+            <form action="busca.php" method="GET" class="search-header">
+                <input type="text" name="q" placeholder="Pesquisar..." required>
+                
+                <button type="submit" class="btn-search">
+                    <i class="bi bi-search"></i>
+                </button>
+            </form>
         </div>
 
         <ul>
