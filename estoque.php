@@ -81,7 +81,7 @@
                             <td class="estoque"><?= $produtos['estoque'] ?></td>
                             <td class="status"><span><?= $situacao ?></span></td>
                             <td class="acoes">
-                                <a href="alterar_produto.php?id=<?= $produtos['id_produtos'] ?>"><i class="bi bi-pencil"></i></a> <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('Quer excluir esta carta?')" ><i class="bi bi-trash"></i></a> 
+                                <a href="alterar_produto.php?id=<?= $produtos['id_produtos'] ?>"><i class="bi bi-pencil"></i></a> <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('deseja excluir esste produto?')" ><i class="bi bi-trash"></i></a> 
                             </td>
                         </tr>
                         <?php
