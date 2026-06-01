@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+:root {
+    --primaryOrange: #fca311;
+    --primaryBlue: #023047;
+    --highlightYellow: #ffe864;
+    --card: #fff;
+    --background: #fff;
+    --textHeader: #464646;
+}
+
+body {
+    background-color: var(--background);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.prod-main {
+  padding: 40px 60px;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+}
+
+.prod-container {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.prod-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  max-width: 600px;
+}
+
+.mini-img {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.mini-img img {
+    width: 70px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.mini-img img:hover,
+.mini-img img.active {
+    border: 1px solid #00000011;
+}
+
+.main-img img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
+.prod-info {
+  max-width: 400px;
+}
+
+.indicador {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.indicador a:hover {
+  text-decoration: underline;
+}
+
+.categoria-item {
+  display: inline-block;
+  background-color: var(--primaryBlue);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.prod-info h1 {
+  margin-bottom: 5px;
+  color: var(--textHeader);
+}
+
+.sku-item {
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.preco {
+  font-size: 22px;
+  margin-bottom: 25px;
+}
+
+.btn-buy {
+  width: 100%;
+  padding: 15px;
+  background: transparent;
+  border: 2px solid var(--primaryOrange);
+  color: var(--primaryOrange);
+  border-radius: 30px;
+  font-weight: bold;
+  margin: 20px 0;
+  cursor: pointer;
+}
+
+.btn-buy:hover {
+  transition: 0.2s linear;
+  color: white;
+  background: var(--primaryOrange);
+  transform: scale(1.05);
+}
+
+.btn-buy i {
+  margin-left: 8px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.desc p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #333;
+}
