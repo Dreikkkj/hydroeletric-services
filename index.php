@@ -56,7 +56,7 @@ require_once 'CRUD/crud.php';
     
     <h1 class="texto-apresentacao">↓ Bem-vindo à Hydroeletric Services ↓</h1>
 
-    <section class="sobre-empresa">
+    <section class="sobre-empresa" id="sobre-nos">
         <div class="container-sobre">
             <h2 class="texto-amarelo-sobre">Quem Somos</h2>
             <p>Com mais de 20 anos de tradição no mercado, a <strong>Hydroeletric Services</strong> nasceu com o propósito de oferecer soluções definitivas e seguras para obras e reformas. Nossa expertise vai muito além de fornecer os melhores fios, cabos, disjuntores, tubulações e conexões hidráulicas. Nós entendemos que uma obra bem-sucedida precisa da combinação perfeita entre materiais de ponta e uma execução técnica impecável.</p>
