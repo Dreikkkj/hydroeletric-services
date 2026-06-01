@@ -43,6 +43,7 @@ nav img {
     position: relative;
     max-width: 550px;
     width: 100%;
+    isolation: isolate;
 }
 
 .search-header::after, .search-header::before {

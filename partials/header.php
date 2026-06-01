@@ -13,12 +13,8 @@ $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'ad
         </div>
 
         <div class="search-header">
-            <form action="busca.php" method="GET">
+            <form action="busca.php" method="GET" class="search-header">
                 <input type="text" name="q" placeholder="Pesquisar..." required>
-
-                <button type="submit" class="btn-search">
-                    <i class="bi bi-search"></i>
-                </button>
             </form>
         </div>
 
