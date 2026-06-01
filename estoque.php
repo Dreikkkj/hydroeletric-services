@@ -1,3 +1,7 @@
+<?php
+    require_once 'CRUD/crud.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,7 +18,7 @@
         include 'partials/header_admin.php';
     ?>
 
-    <a href="" class="cproduto">+ Novo produto</a>
+    <a href="cadastro_produto.php" class="cproduto">+ Novo produto</a>
     <main>
         <section>
             <div class="inicio">
@@ -31,11 +35,12 @@
                 <div class="filtros">
                     <input type="search" placeholder="🔍︎ Buscar produto">
                     <select>
-                        <option value="">Todas as Categorias</option>
-                        <option value="">fios</option>
-                        <option value="">disjuntores</option>
-                        <option value="">tubulaçoes</option>
-                        <option value="">conexoes</option>
+                        <option value="">Todos</option>
+                        <option value="">Fios</option>
+                        <option value="">Cabos</option>
+                        <option value="">Disjuntores</option>
+                        <option value="">Tubulaçoes</option>
+                        <option value="">Conexão Hidráulica</option>
                         <option value="">Caixas d'água</option>
                     </select>
                 </div>
@@ -55,21 +60,33 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+                            $lerProdutos = readAll($pdo, $tabela_join );
+                            $qt_min = 50;
+
+                            foreach($lerProdutos as $produtos){
+                                
+                                if ($produtos['estoque'] <= $qt_min) {
+                                    $situacao = 'CRÍTICO';
+                                } else {
+                                    $situacao = 'OK';
+                                };
+                        ?>
                         <tr>
-                            <td class="produto">Cabo Fleível 2,5mm²</td>
-                            <td>CFL-025-001</td>
-                            <td class="categoria">Cabos</td>
-                            <td class="preco">R$4,50</td>
-                            <td class="estoque">850</td>
-                            <td class="status"><span>Ok</span></td>
+                            <td class="produto"><?= $produtos['nome_produtos'] ?></td>
+                            <td><?= $produtos['sku'] ?></td>
+                            <td class="categoria"><?= $produtos['nome_categorias'] ?></td>
+                            <td class="preco">R$ <?= $produtos['preco'] ?></td>
+                            <td class="estoque"><?= $produtos['estoque'] ?></td>
+                            <td class="status"><span><?= $situacao ?></span></td>
                             <td class="acoes">
-                                <div>
-                                    <button>+</button> 
-                                    <button>-</button>
-                                </div>
-                                <a href=""><i class="bi bi-pencil"></i></a> <a href=""><i class="bi bi-trash"></i></a> 
+                                <a href="alterar_produto.php?id=<?= $produtos['id_produtos'] ?>"><i class="bi bi-pencil"></i></a> <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('Quer excluir esta carta?')" ><i class="bi bi-trash"></i></a> 
                             </td>
                         </tr>
+                        <?php
+                            };
+                        ?>
                     </tbody>
                 </table>
             </div>

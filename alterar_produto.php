@@ -1,3 +1,52 @@
+<?php
+    require_once 'CRUD/crud.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        $id = $_POST['id_produtos'];
+
+        $produtososAtualizados = [
+            'nome_produtos' => $_POST['produto'],
+            'descricao' => $_POST['descricao'],
+            'sku' => $_POST['sku'],
+            'categoria_id_produtos' => $_POST['categoria_id_produtos'],
+            'preco' => $_POST['preco'],
+            'estoque' => $_POST['estoque']
+        ];
+
+        if ($_FILES['capa']['error'] == 0) {
+
+            $extensao = pathinfo(
+                $_FILES['capa']['name'],
+                PATHINFO_EXTENSION
+            );
+
+            $novoNome = 'capa_' . uniqid() . '.' . $extensao;
+            $dir = 'uploads/';
+
+            if (!is_dir($dir)) {
+                mkdir($dir, 0755, true);
+            }
+
+            $caminho = $dir . $novoNome;
+
+            move_uploaded_file(
+                $_FILES['capa']['tmp_name'],
+                $caminho
+            );
+            $produtososAtualizados['capa'] = $caminho;
+        }
+
+        update($pdo, 'produtos', $produtososAtualizados, 'id_produtos = ' . $id);
+
+        header('Location: estoque.php');
+        exit;
+    }
+    $id = $_GET['id'] ?? null;
+
+    $produtos = read($pdo, 'produtos', 'id_produtos = ' . $id);
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -17,38 +66,43 @@
     <main>
         <section>
             <div class="border">
+
                 <h2>Alterar produtos</h2>
-                <form  method="" >
+
+                <form  method="POST" enctype="multipart/form-data" >
+                    <input type="hidden" name="id_produtos" value="<?= $id ?>">
+
                     <label for="produto">Nome do produto</label>
-                    <input type="text" name="produto" required>
+                    <input type="text" name="produto" value="<?= $produtos['nome_produtos'] ?>">
 
                     <label for="descricao">Descrição do produto</label>
-                    <textarea name="descricao" required></textarea>
+                    <textarea name="descricao"><?= $produtos['descricao'] ?></textarea>
 
                     <div class="sc">
                         <div class="s">
                             <label for="sku">SKU</label>
-                            <input type="text" name="sku">
+                            <input type="text" name="sku" value="<?= $produtos['sku'] ?>">
                         </div>
 
                         <div class="c">
-                            <label for="categoria" class="c">Categoria</label>
-                            <select name="categoria_id_produtos" required>
+                            <label for="categoria_id_produtos" class="c">Categoria</label>
+                            <select name="categoria_id_produtos">
                                 <option disabled selected></option>
-                                <option value="">fios</option>
-                                <option value="">disjuntores</option>
-                                <option value="">tubulaçoes</option>
-                                <option value="">conexoes</option>
-                                <option value="">Caixas d'água</option>
+                                <option value="1" <?= ($produtos['categoria_id_produtos'] == '1') ? 'selected' : '' ?>>Fios</option>
+                                <option value="2" <?= ($produtos['categoria_id_produtos'] == '2') ? 'selected' : '' ?>>Cabos</option>
+                                <option value="3" <?= ($produtos['categoria_id_produtos'] == '3') ? 'selected' : '' ?>>Disjuntores</option>
+                                <option value="4" <?= ($produtos['categoria_id_produtos'] == '4') ? 'selected' : '' ?>>Tubulaçoes</option>
+                                <option value="5" <?= ($produtos['categoria_id_produtos'] == '5') ? 'selected' : '' ?>>Conexão Hidráulica</option>
+                                <option value="6" <?= ($produtos['categoria_id_produtos'] == '6') ? 'selected' : '' ?>>Caixas d'água</option>
                             </select>
                         </div>
                     </div>
 
                     <label for="preco">Preço unitário</label>
-                    <input type="number" min="1" step="0.01" name="preco" required>
+                    <input type="number" min="1" step="0.01" name="preco" value="<?= $produtos['preco'] ?>">
 
                     <label for="estoque">Estoque do produto</label>
-                    <input type="number" min="1" name="estoque" required>
+                    <input type="number" min="1" name="estoque" value="<?= $produtos['estoque'] ?>">
 
                     <div class="file">
                         <label for="arquivo">Imagem do produto</label>
@@ -57,10 +111,10 @@
                             <p>Clique para enviar uma imagem</p>
                         </label>
 
-                        <input type="file" id="arquivo" name="arquivo">
+                        <input type="file" id="arquivo" name="capa" accept="image/*">
                     </div>
 
-                    <button type="submit">Cadastrar</button>
+                    <button type="submit">Alterar</button>
                 </form>
             </div>
         </section>
