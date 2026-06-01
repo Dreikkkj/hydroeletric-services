@@ -12,16 +12,16 @@
     <?php require_once 'partials/header.php'; ?>
 
     <main class="prod-main">
-        
+
         <div class="prod-container">
-            
+
             <div class="prod-gallery">
                 <p class="indicador"><a href="index.php">Home</a> | <a href="produtos.php">Produtos</a> | <a href="detalhes.php">Cabo Flexível 2,5mm²</a></p>
-                
+
                 <div class="main-img">
                     <img src="assets/icons/Logo.png" id="mainImg">
                 </div>
-                
+
                 <div class="mini-img">
                     <img src="assets/icons/Logo.png">
                     <img src="assets/icons/Logo.png">
