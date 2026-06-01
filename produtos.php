@@ -118,7 +118,7 @@
                         echo "<p class='preco-produto'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</p>";
                         echo "<p class='quantidade-produto'>" . $produto["estoque"] . " disp.</p>";
                         echo "</div>";
-                        echo "<a href='#' target='_blank'>";
+                        echo "<a href='detalhes.php?id=" . $produto["id_produtos"] . "'>";
                         echo "<button class='btn-detalhes'>Ver Detalhes</button>";
                         echo "</a>";
                         echo "</div>";

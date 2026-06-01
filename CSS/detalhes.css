@@ -120,6 +120,12 @@ a {
   margin-bottom: 25px;
 }
 
+.buy-section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
 .btn-buy {
   width: 100%;
   padding: 15px;
@@ -149,4 +155,22 @@ a {
   font-size: 14px;
   margin-bottom: 10px;
   color: #333;
+}
+
+form {
+  width: 100%;
+}
+
+input[type="number"] {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+  transition: 0.2s;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--primaryOrange);
 }
