@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    --primaryOrange: #fca311;
+    --primaryBlue: #023047;
+    --highlightYellow: #ffe864;
+    --card: #fff;
+    --background: #fff;
+    --textHeader: #464646;
+}
+
 .busca-main {
     min-height: 60vh;
     padding: 40px 20px;
