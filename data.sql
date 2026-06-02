@@ -61,3 +61,4 @@ INSERT INTO usuarios (nome, email, senha, perfil, ultimo_acesso, status) VALUES
 ('Carlos Ferreira', 'carlos@grupo3.com.br', '123456', 'Estoque', '2026-05-13', 'Ativo'),
 ('Ana Souza', 'ana@grupo3.com.br', '123456', 'Vendas', '2026-05-12', 'Ativo'),
 ('Pedro Lima', 'pedro@grupo3.com.br', '123456', 'Vendas', '2026-05-01', 'Inativo');
+

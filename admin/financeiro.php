@@ -140,7 +140,7 @@ if (!empty($produtos) && is_array($produtos)) {
                         <?php
                         $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
                         
-                        $margem = "39.1%"; 
+                        $margem = "39.1%";
                         $custo = $dados['valor'] * 0.60;
                         $lucro = $dados['valor'] - $custo;
                         ?>
