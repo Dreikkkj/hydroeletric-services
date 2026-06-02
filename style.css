@@ -161,7 +161,7 @@ body {
     margin-top: 2px;
 }
 
-/* --- Performance por Categoria (Design atualizado) --- */
+/* -- Performance por Categoria -- */
 
 .card-header-cat {
     margin-bottom: 24px;
@@ -259,7 +259,7 @@ body {
 }
 
 
-/* Top Produtos - Ranking */
+/* Top Produtos */
 
 .ranking {
     display: flex;
@@ -485,7 +485,7 @@ body {
     cursor: pointer;
 }
 
-/* --- Tabela de Produtos --- */
+/* -- Tabela de Produtos -- */
 .tabela-produtos {
     overflow-x: auto;
 }
