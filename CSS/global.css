@@ -196,12 +196,12 @@ nav ul {
     transition: 0.3s;
 }
 
-.header-admin-icon svg {
+.header-admin-icon i {
     color: var(--textHeader);
     transition: 0.3s;
 }
 
-.header-admin-icon svg:hover {
+.header-admin-icon i:hover {
     color: var(--primaryOrange);
     transform: scale(1.2);
 }
