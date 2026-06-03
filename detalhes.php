@@ -1,3 +1,22 @@
+<?php
+    require_once 'CRUD/crud.php';
+
+    if (!isset($_GET['id'])) {
+        header('Location: produtos.php');
+        exit;
+    }
+
+    $produto_id = (int)$_GET['id'];
+    $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+    $produto = read($pdo, $tabela_join, "produtos.id_produtos = $produto_id");
+
+    if (!$produto) {
+        header('Location: produtos.php');
+        exit;
+    }
+
+    $estoque_texto = $produto["estoque"] > 0 ? "Em estoque" : "Esgotado";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,7 +25,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/detalhes.css">
     <link rel="stylesheet" href="CSS/global.css">
-    <title>Document</title>
+    <title><?php echo htmlspecialchars($produto['nome_produtos']); ?> - Detalhes</title>
 </head>
 <body>
     <?php require_once 'partials/header.php'; ?>
@@ -16,39 +35,42 @@
         <div class="prod-container">
 
             <div class="prod-gallery">
-                <p class="indicador"><a href="index.php">Home</a> | <a href="produtos.php">Produtos</a> | <a href="detalhes.php">Cabo Flexível 2,5mm²</a></p>
+                <p class="indicador"><a href="index.php">Home</a> | <a href="produtos.php">Produtos</a> | <a href="detalhes.php?id=<?php echo $produto_id; ?>"><?php echo htmlspecialchars($produto['nome_produtos']); ?></a></p>
 
                 <div class="main-img">
-                    <img src="assets/icons/Logo.png" id="mainImg">
+                    <img src="<?php echo htmlspecialchars($produto['capa']); ?>" id="mainImg" alt="<?php echo htmlspecialchars($produto['nome_produtos']); ?>">
                 </div>
 
                 <div class="mini-img">
-                    <img src="assets/icons/Logo.png">
-                    <img src="assets/icons/Logo.png">
+                    <img src="<?php echo htmlspecialchars($produto['capa']); ?>" onclick="document.getElementById('mainImg').src=this.src" alt="Imagem do produto">
                 </div>
             </div>
 
             <div class="prod-info">
-                <div class="categoria-item">Cabos</div>
+                <div class="categoria-item"><?php echo htmlspecialchars($produto['nome_categorias']); ?></div>
 
-                <h1>Cabo Flexível 2,5mm²</h1>
-                <span class="sku-item">CFL-025-001</span>
+                <h1><?php echo htmlspecialchars($produto['nome_produtos']); ?></h1>
+                <span class="sku-item"><?php echo htmlspecialchars($produto['sku']); ?></span>
 
-                <h2 class="preco">R$ 4,50</h2>
+                <h2 class="preco">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></h2>
 
                 <div class="desc">
-                    <p>
-                    O cabo flexível 2,5mm² é ideal para aplicações elétricas de baixa tensão.
-                    Sua construção resistente garante durabilidade e segurança.
-                    </p>
-
-                    <p>
-                    Equipado com amortecimento Air visível, proporciona leveza e
-                    absorção de impacto para o dia a dia.
-                    </p>
+                    <p><?php echo htmlspecialchars($produto['descricao']); ?></p>
                 </div>
 
-                <button class="btn-buy"><a href="carrinho.php">ADICIONAR AO CARRINHO <i class="bi bi-cart-plus"></i></a></button>
+                <?php if ($produto["estoque"] > 0): ?>
+                <form action="CRUD/controle_carrinho.php" method="POST">
+                    <input type="hidden" name="acao" value="adicionar">
+                    <input type="hidden" name="produto_id" value="<?php echo $produto_id; ?>">
+                    <input type="hidden" name="redirect" value="../carrinho.php">
+                    <div class="buy-section">
+                        <input type="number" name="quantidade" value="1" min="1" max="<?php echo $produto['estoque']; ?>" style="width: 60px; padding: 8px;">
+                        <button type="submit" class="btn-buy">ADICIONAR AO CARRINHO <i class="bi bi-cart-plus"></i></button>
+                    </div>
+                </form>
+                <?php else: ?>
+                <button class="btn-buy" disabled style="opacity: 0.5; cursor: not-allowed;">PRODUTO ESGOTADO</button>
+                <?php endif; ?>
             </div>
         </div>
     </main>

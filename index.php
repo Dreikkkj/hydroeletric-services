@@ -4,7 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require_once 'CRUD/crud.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

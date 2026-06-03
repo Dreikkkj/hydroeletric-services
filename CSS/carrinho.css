@@ -231,6 +231,31 @@ body {
     color: #555;
 }
 
+.select-parcelas {
+    margin-top: 5px;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 12px;
+    color: #555;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.select-parcelas:hover {
+    background-color: #fff;
+    border-color: #8B9CA2;
+}
+
+.select-parcelas:focus {
+    border-color: #1A0F60;
+    background-color: #fff;
+}
+
 .detalhes-pagamento {
     display: flex;
     flex-direction: column;
@@ -291,7 +316,7 @@ body {
     background-color: #f9f9f9;
 }
 
-.caixa-cep input[type="number"] {
+.caixa-cep input[type="text"] {
     accent-color: #14A650;
     padding-left: 5px;
     width: 200px;

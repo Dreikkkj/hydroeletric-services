@@ -1,6 +1,15 @@
 <?php
+session_start();
+require_once 'CRUD/crud.php';
+
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = [];
+}
+
 $mostrar_instalacao = false;
 $cep_digitado = '';
+$valor_total = 0;
+$quantidade_total = 0;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
     $cep_digitado = preg_replace('/[^0-9]/', '', $_POST['cep']);
@@ -13,6 +22,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
         }
     }
 }
+
+foreach ($_SESSION['carrinho'] as $item) {
+    $valor_total += $item['preco'] * $item['quantidade'];
+    $quantidade_total += $item['quantidade'];
+}
+
+$valor_com_taxa = $valor_total * 1.177;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -23,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/carrinho.css">
     <link rel="stylesheet" href="CSS/global.css">
-
 </head>
 <body>
     <?php
@@ -38,30 +53,50 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
                 
                 <table class="tabela-carrinho">
                     <tbody>
+                        <?php if (empty($_SESSION['carrinho'])): ?>
                         <tr>
-                            <td class="col-produto">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdP4Gy-14zORrHW9bJmZMBLoPFbEHPDh7DSQ&s" alt="Fio Rígido 6.00mm">
-                                <h2 class="titulo-item">Fio Rígido 6.00mm 750V Vermelho - Corfio</h2>
-                            </td>
-                            <td class="col-quantidade">
-                                <input type="number" value="1" min="1" class="entrada-quantidade">
-                            </td>
-                            <td class="col-preco">
-                                <span class="preco-atual">R$ 499,99</span>
-                            </td>
-                            <td class="col-remover">
-                                <button class="botao-remover" title="Remover item">✕</button>
+                            <td colspan="4" style="text-align: center; padding: 40px; color: #999;">
+                                Seu carrinho está vazio
                             </td>
                         </tr>
+                        <?php else: ?>
+                        <?php foreach ($_SESSION['carrinho'] as $produto_id => $item): ?>
+                        <tr>
+                            <td class="col-produto">
+                                <img src="<?php echo htmlspecialchars($item['imagem']); ?>" alt="<?php echo htmlspecialchars($item['nome']); ?>">
+                                <h2 class="titulo-item"><?php echo htmlspecialchars($item['nome']); ?></h2>
+                            </td>
+                            <td class="col-quantidade">
+                                <form action="CRUD/controle_carrinho.php" method="POST" style="display: flex; gap: 5px;">
+                                    <input type="hidden" name="acao" value="atualizar">
+                                    <input type="hidden" name="produto_id" value="<?php echo $produto_id; ?>">
+                                    <input type="number" name="quantidade" value="<?php echo $item['quantidade']; ?>" min="1" class="entrada-quantidade" onchange="this.form.submit()">
+                                </form>
+                            </td>
+                            <td class="col-preco">
+                                <span class="preco-atual">R$ <?php echo number_format($item['preco'] * $item['quantidade'], 2, ',', '.'); ?></span>
+                            </td>
+                            <td class="col-remover">
+                                <a href="CRUD/controle_carrinho.php?acao=remover&produto_id=<?php echo $produto_id; ?>" onclick="return confirm('Tem certeza que deseja remover este item?');">
+                                    <button type="button" class="botao-remover" title="Remover item">✕</button>
+                                </a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
             
             <div class="acoes-carrinho">
-                <button class="botao-limpar-carrinho">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
-                    Limpar carrinho
-                </button>
+                <?php if (!empty($_SESSION['carrinho'])): ?>
+                <a href="CRUD/controle_carrinho.php?acao=limpar" onclick="return confirm('Tem certeza que deseja limpar o carrinho?');">
+                    <button type="button" class="botao-limpar-carrinho">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path></svg>
+                        Limpar carrinho
+                    </button>
+                </a>
+                <?php endif; ?>
             </div>
         </main>
 
@@ -76,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
                 <div class="conteudo-resumo">
                     <div class="linha-resumo">
                         <span>Valor dos Produtos</span>
-                        <span>R$ 499,99</span>
+                        <span>R$ <?php echo number_format($valor_total, 2, ',', '.'); ?></span>
                     </div>
                     <div class="linha-resumo">
                         <span>Frete</span>
@@ -90,8 +125,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
                     </div>
                     <div class="detalhes-pagamento">
-                        <strong>R$ 588,22</strong>
-                        <span>12x de R$ 49,02 s/ juros</span>
+                        <strong>R$ <?php echo number_format($valor_com_taxa, 2, ',', '.'); ?></strong>
+                        <select name="quantidade_parcelas" class="select-parcelas" onclick="event.stopPropagation();">
+                            <?php
+                            $max_parcelas = 12;
+
+                            for ($i = 1; $i <= $max_parcelas; $i++) {
+                                $valor_parcela = $valor_com_taxa / $i;
+                                $valor_formatado = number_format($valor_parcela, 2, ',', '.');
+                                $selected = ($i == 12) ? 'selected' : '';
+
+                                echo "<option value=\"$i\" $selected>{$i}x de R$ {$valor_formatado} s/ juros</option>";
+                            }
+                            ?>
+                        </select>
                     </div>
                 </label>
 
@@ -101,20 +148,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
                     </div>
                     <div class="detalhes-pagamento">
-                        <strong>R$ 499,99</strong>
+                        <strong>R$ <?php echo number_format($valor_total, 2, ',', '.'); ?></strong>
                         <span>com desconto à vista no boleto ou pix</span>
                     </div>
                 </label>
-                <a href="confirmar_pagamento.php">
+                <a href="CRUD/confirmar-pagamento.php">
                     <button class="botao-continuar">CONTINUAR</button>
                 </a>
             </section>
 
             <div class="card-cep">
                 <p>Adicionar o CEP: </p>
-                <form action="" method="POST">
+                <form method="POST">
                     <div class="caixa-cep">
-                        <input type="number" name="cep" class="cep" value="<?php echo htmlspecialchars($cep_digitado); ?>" required>
+                        <input type="text" name="cep" class="cep" value="<?php echo htmlspecialchars($cep_digitado); ?>" placeholder="00000-000" required>
                         <button type="submit" class="btn-calcular">calcular</button>
                     </div>
                 </form>
