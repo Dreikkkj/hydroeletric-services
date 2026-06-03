@@ -11,12 +11,13 @@ require_once 'CRUD/crud.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydroeletric Services - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/global.css">
 </head>
 <body>
     <?php
-        include 'partials/header.php';
+        require_once 'partials/header.php';
     ?>
     <div class="parent">
         <div class="div1">
@@ -149,7 +150,7 @@ require_once 'CRUD/crud.php';
         </div>
     </section>
     <?php
-        include 'partials/footer.php';
+        require_once 'partials/footer.php';
     ?>
 </body>
 </html>
