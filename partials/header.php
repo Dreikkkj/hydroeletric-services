@@ -1,14 +1,23 @@
-<header>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+$isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'admin';
+?>
+
+<header class="<?php echo $isAdmin ? 'header-admin' : ''; ?>">
     <nav>
         <div>
-            <img src="assets/icons/Logo2.png" alt="Logo"> 
-        </div>   
-        
-        <div class="search-header">
-            <input type="text" placeholder="Pesquisar...">
-            <i class="bi bi-search"></i>
+            <img src="assets/icons/Logo2.png" alt="Logo">
         </div>
-        
+
+        <div class="search-header">
+            <form action="busca.php" method="GET" class="search-header">
+                <input type="text" name="q" placeholder="Pesquisar..." required>
+            </form>
+        </div>
+
         <ul>
             <li class="header-itens"><a href="index.php">Home</a></li>
             <li class="header-itens"><a href="produtos.php">Produtos</a></li>
@@ -20,8 +29,21 @@
                     </svg>
                 </a>
             </li>
+
+            <?php if ($isAdmin): ?>
+            <li class="header-admin-icon">
+                <a href="admin_dashboard.php" title="Painel Admin">
+                    <i class="bi bi-gear-fill"></i>
+                </a>
+            </li>
+            <?php endif; ?>
+
             <li class="btn-promocao"><a href="catalogo.php">Catálogo</a></li>
-            <li class="btn-entrar"><a href="login.php">Entrar</a></li>
+            <?php if (isset($_SESSION['usuario_nome'])): ?>
+                <li class="btn-entrar"><a href="logout.php">Sair (<?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>)</a></li>
+            <?php else: ?>
+                <li class="btn-entrar"><a href="login.php">Entrar</a></li>
+            <?php endif; ?>
         </ul>
     </nav>
 </header>

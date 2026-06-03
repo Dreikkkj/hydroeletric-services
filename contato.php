@@ -5,13 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/contato.css">
-    <link rel="stylesheet" href="CSS/global.css">
-    <title>Hydroeletric Services</title>
+    <title>Document</title>
 </head>
 <body>
-    <?php
-        include 'partials/header.php';
-    ?>
+    <header>
+        <nav>
+            <div>
+               <img src="Images/logo2 (1).png" alt="Logo"> 
+            </div>   
+            
+            <div class="search-header">
+                <input type="text" placeholder="Pesquisar...">
+                <i class="bi bi-search"></i>
+            </div>
+            
+            <ul>
+                <li class="header-itens"><a href="#">Home</a></li>
+                <li class="header-itens"><a href="#">Produtos</a></li>
+                <li class="header-itens"><a href="#">Contato</a></li>
+                <li class="header-cart">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5M3.14 5l.5 2H5V5zM6 5v2h2V5zm3 0v2h2V5zm3 0v2h1.36l.5-2zm1.11 3H12v2h.61zM11 8H9v2h2zM8 8H6v2h2zM5 8H3.89l.5 2H5zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0m9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2m-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="btn-promocao"><a href="#">Catálogo</a></li>
+                <li class="btn-entrar"><a href="#">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
     
     <main class="main-contato">
         <div class="text-contato">
@@ -28,7 +51,7 @@
                 <div class="dados-loja">
                     <div class="item-dado">
                         <span><i class="bi bi-geo-alt-fill"></i></span>
-                        <p><span class="item-dado-title">Endereço:</span><br>Rua das tecnologia, 123 - Centro</p>
+                        <p><span class="item-dado-title">Endereço:</span><br>Rua da Tecnologia, 123 - Res. Hipica Jaguari</p>
                     </div>
 
                     <div class="item-dado">
@@ -50,10 +73,9 @@
                 </div>
 
                 <div class="mapa">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d722441.7148868192!2d-46.87024174915749!3d-23.470183316939018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce50525cb0bf3d%3A0x8bf524d47bc7cfda!2sFullTech%20Inform%C3%A1tica!5e0!3m2!1spt-BR!2sbr!4v1772564467915!5m2!1spt-BR!2sbr"
-                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.7520892168877!2d-46.54837292377783!3d-22.92251313843503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ceca48b2829c27%3A0xc39c99c79af4184!2sR.%20da%20Tecnologia%2C%20123%20-%20Res.%20Hipica%20Jaguari%2C%20Bragan%C3%A7a%20Paulista%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1780424076698!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
 
@@ -96,8 +118,5 @@
 
         </div>
     </main>
-    <?php
-        include 'partials/footer.php';
-    ?>
 </body>
 </html>
