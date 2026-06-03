@@ -188,6 +188,36 @@ nav ul {
     color: #fff;
 }
 
+/* CASO ADMINISTRADOR ESTEJA LOGADO: */
+
+.header-admin-icon a {
+    margin-right: 25px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s;
+}
+
+.header-admin-icon i {
+    color: var(--textHeader);
+    transition: 0.3s;
+}
+
+.header-admin-icon i:hover {
+    color: var(--primaryOrange);
+    transform: scale(1.2);
+}
+
+header.header-admin {
+    border-bottom: 2px solid var(--primaryOrange);
+    background-color: #fdfdfd;
+}
+
+header.header-admin .header-admin-icon svg {
+    color: var(--primaryBlue);
+}
+
+/* FOOTER */
+
 footer {
     background-color: #023047;
     color: #f5f5f5;

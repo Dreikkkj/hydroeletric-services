@@ -1,21 +1,11 @@
 <footer>
     <div class="barraFooter">
-<<<<<<< HEAD
         <div class="parteFooter sobre">
             <div class="TituloFooter">
                 <img src="assets/icons/Icon_logo.png" alt="Logo da HydroEletric">
                 <h3>HydroEletric</h3>
             </div>
             <a href="index.php#sobre-nos">Sobre nós</a>
-=======
-        <div class="parteFooter">
-            <div class="TituloFooter">
-                <img src="assets/icons/Icon_logo.png" alt="Logo da empresa">
-                <h3>HydroEletric</h3>
-            </div>
-            <a href="index.php#sobre-nos">Sobre nós</a>
-            <p>Colocar o sobre a empresa, em resumo.</p>
->>>>>>> breno
             <a href="termos.php">Termos e condições</a>
         </div>
 
