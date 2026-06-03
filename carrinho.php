@@ -20,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/carrinho.css">
     <link rel="stylesheet" href="CSS/global.css">
 
@@ -104,7 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
                         <span>com desconto à vista no boleto ou pix</span>
                     </div>
                 </label>
-                <a href="confirmar-pagamento.php">
+                <a href="confirmar_pagamento.php">
                     <button class="botao-continuar">CONTINUAR</button>
                 </a>
             </section>
