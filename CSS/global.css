@@ -140,14 +140,14 @@ nav ul {
     transition: 0.3s;
 }
 
-.header-cart svg {
-    width: 20px;
-    height: 20px;
+.header-cart i {
+    font-size: 20px;
     color: var(--textHeader);
+    margin-right: 5px;
     transition: 0.3s;
 }
 
-.header-cart svg:hover {
+.header-cart i:hover {
     color: var(--primaryOrange);
     transform: scale(1.2);
 }
