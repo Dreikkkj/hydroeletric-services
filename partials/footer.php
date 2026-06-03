@@ -5,7 +5,6 @@
                 <img src="assets/icons/Icon_logo.png" alt="Logo da HydroEletric">
                 <h3>HydroEletric</h3>
             </div>
-<<<<<<< HEAD
             <p>Sua parceira ideal em soluções elétricas e hidráulicas com qualidade e segurança.</p>
             <div class="footer-links-secondary">
                 <a href="termos.php">Termos e condições</a>
@@ -20,21 +19,6 @@
                 <li><a href="produtos.php">Produtos</a></li>
                 <li><a href="#">Catálogo</a></li>
                 <li><a href="#sobre">Sobre nós</a></li>
-=======
-            <a href="index.php#sobre-nos">Sobre nós</a>
-            <a href="termos.php">Termos e condições</a>
-        </div>
-
-        <div class="linhaFooter"></div>
-
-        <div class="parteFooter">
-            <h3>Links</h3>
-            <ul style="list-style: none;">
-                <li><a href="index.php">Home</a></li>
-                <li><a href="produtos.php">Produtos</a></li>
-                <li><a href="contato.php">Contato</a></li>
-                <li><a href="catalogo.php">Catálogo</a></li>
->>>>>>> main
             </ul>
         </div>
 

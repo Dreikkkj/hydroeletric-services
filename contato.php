@@ -25,7 +25,7 @@
             <div class="info-contato">
                 <p class="info-contato-title">Informações de Contato</p>
         
-                <div class="dados-loja">
+                <div class="dado    s-loja">
                     <div class="item-dado">
                         <span><i class="bi bi-geo-alt-fill"></i></span>
                         <p><span class="item-dado-title">Endereço:</span><br>Rua das tecnologia, 123 - Centro</p>
