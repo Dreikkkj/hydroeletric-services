@@ -19,9 +19,6 @@ $estoque_minimo = 50;
 </head>
 
 <body>
-    <?php
-    require_once __DIR__ . '/../header_adm.html';
-    ?>
     <div class="container-estoque">
 
         <div class="header-estoque">

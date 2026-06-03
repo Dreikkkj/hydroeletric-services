@@ -82,9 +82,6 @@ if (!empty($produtos) && is_array($produtos)) {
 </head>
 
 <body>
-    <?php
-    require_once __DIR__ . '/../header_adm.html';
-    ?>
     <div class="containerFIN">
         <header class="maintitle">
             <h1>Resumo Financeiro</h1>
@@ -143,7 +140,7 @@ if (!empty($produtos) && is_array($produtos)) {
                     <?php foreach ($dados_categoria as $nome_cat => $dados): ?>
                         <?php
                         $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
-
+                        
                         $margem = "39.1%";
                         $custo = $dados['valor'] * 0.60;
                         $lucro = $dados['valor'] - $custo;
@@ -153,17 +150,14 @@ if (!empty($produtos) && is_array($produtos)) {
                             <div class="item-header">
                                 <span class="category-name"><?= htmlspecialchars($nome_cat) ?></span>
                                 <div class="item-metrics">
-                                    <span class="metrics-un"><?= number_format($dados['qtd_unidades'], 0, '', '.') ?>
-                                        un.</span>
+                                    <span class="metrics-un"><?= number_format($dados['qtd_unidades'], 0, '', '.') ?> un.</span>
                                     <span class="metrics-margin"><?= $margem ?></span>
-                                    <span class="metrics-revenue">R$
-                                        <?= number_format($dados['valor'], 2, ',', '.') ?></span>
+                                    <span class="metrics-revenue">R$ <?= number_format($dados['valor'], 2, ',', '.') ?></span>
                                 </div>
                             </div>
 
                             <div class="progress-bg">
-                                <div class="progress-fill" style="width: <?= number_format($porcentagem, 1, '.', '') ?>%;">
-                                </div>
+                                <div class="progress-fill" style="width: <?= number_format($porcentagem, 1, '.', '') ?>%;"></div>
                             </div>
 
                             <div class="item-footer">
