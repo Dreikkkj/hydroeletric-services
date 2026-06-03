@@ -103,7 +103,7 @@ h4 {
     max-height: 450px;
     border-radius: 6px;
     background-color: #efefef;
-    box-shadow: 15px 25px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 15px 25px 10px rgba(0, 0, 0, 0.2);
     overflow: auto;
     margin-bottom: 70px;
 }
@@ -117,30 +117,29 @@ h4 {
 table {
     width: 100%;
     border-radius: 6px;
-    overflow: hidden;
     border-collapse: collapse;
 }
 
 
 thead {
-    color: #737373;
+    position: sticky;
+    top: 0;
+    z-index: 0;
 }
 
 
-tbody tr {
+tr {
     background-color: white;
     color: black;
 }
 
 
 th {
+    background-color: #efefef;
+    color: #737373;
     text-align: center;
     font-size: 20px;
     padding: 25px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: #efefef
 }
 
 
