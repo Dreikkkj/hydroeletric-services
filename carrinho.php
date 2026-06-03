@@ -152,7 +152,7 @@ $valor_com_taxa = $valor_total * 1.177;
                         <span>com desconto à vista no boleto ou pix</span>
                     </div>
                 </label>
-                <a href="CRUD/confirmar-pagamento.php">
+                <a href="CRUD/confirmar_pagamento.php">
                     <button class="botao-continuar">CONTINUAR</button>
                 </a>
             </section>
