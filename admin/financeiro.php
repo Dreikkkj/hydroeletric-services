@@ -78,6 +78,7 @@ if (!empty($produtos) && is_array($produtos)) {
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../CSS/header_adm.css">
 </head>
 
 <body>
@@ -140,7 +141,7 @@ if (!empty($produtos) && is_array($produtos)) {
                         <?php
                         $porcentagem = $valor_total_estoque > 0 ? ($dados['valor'] / $valor_total_estoque) * 100 : 0;
                         
-                        $margem = "39.1%"; 
+                        $margem = "39.1%";
                         $custo = $dados['valor'] * 0.60;
                         $lucro = $dados['valor'] - $custo;
                         ?>
