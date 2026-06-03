@@ -9,7 +9,9 @@ $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'ad
 <header class="<?php echo $isAdmin ? 'header-admin' : ''; ?>">
     <nav>
         <div>
-            <img src="assets/icons/Logo2.png" alt="Logo">
+            <a href="index.php">
+                <img src="assets/icons/Logo2.png" alt="Logo">
+            </a>
         </div>
 
         <div class="search-header">
