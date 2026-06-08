@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
+    <a href="" class="h">
+        <img src="./imagem/Logo_i.png">
+    </a>
     <main>
         <section>
             <div class="border">
@@ -23,8 +26,13 @@
                     </div>
                     <input type="password" name="senha" required>
 
+<<<<<<< HEAD:login.php
                     <p class="escS"><a href="esqueceu_senha.php">Esqueceu a senha?</a></p>
 
+=======
+                    <p class="escS"><a href="">Esqueceu a senha?</a></p>
+                    
+>>>>>>> origin/kiara:login.html
                     <button type="submit">Entrar</button>
                 </form>
                 <p class="cadastro">Não tem uma conta? <a href="./cadastro.php">Cadastre-se</a></p>
