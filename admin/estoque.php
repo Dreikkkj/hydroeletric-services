@@ -33,7 +33,7 @@
         <section>
             <div class="inicio">
                 <h2>Controle de Estoque</h2>
-                <h4>Gerencie proutos, estoque e movimentações</h4>
+                <h4>Gerencie produtos, estoque e movimentações</h4>
 
 
                 <div class="l">
