@@ -26,13 +26,8 @@
                     </div>
                     <input type="password" name="senha" required>
 
-<<<<<<< HEAD:login.php
                     <p class="escS"><a href="esqueceu_senha.php">Esqueceu a senha?</a></p>
 
-=======
-                    <p class="escS"><a href="">Esqueceu a senha?</a></p>
-                    
->>>>>>> origin/kiara:login.html
                     <button type="submit">Entrar</button>
                 </form>
                 <p class="cadastro">Não tem uma conta? <a href="./cadastro.php">Cadastre-se</a></p>
