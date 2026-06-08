@@ -32,7 +32,6 @@
             <?php foreach ($lista_promocoes as $produto):
                 $preco_original = $produto['preco'];
                 
-                
                 $preco_exibir = $preco_original * 0.80; 
                 $com_desconto = true;
             ?>
@@ -56,10 +55,10 @@
                         <div class="card-promocao-preco">
                             <span class="card-promocao-descricao">Preço</span>
                             <?php if ($com_desconto): ?>
-                                <p style="text-decoration: line-through; color: #ccc; font-size: 0.9em; margin: 0;">
+                                <p class="card-promocao-preco-original">
                                     R$ <?= number_format($preco_original, 2, ',', '.') ?>
                                 </p>
-                                <p style="color: #28a745; font-weight: bold; margin: 0;">
+                                <p class="card-promocao-preco-desconto">
                                     R$ <?= number_format($preco_exibir, 2, ',', '.') ?>
                                 </p>
                             <?php else: ?>

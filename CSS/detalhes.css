@@ -173,3 +173,33 @@ input[type="number"]:focus {
   outline: none;
   border-color: var(--primaryOrange);
 }
+
+/* Caso esteja em promoção */
+
+.preco-original {
+  text-decoration: line-through;
+  color: #777;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.preco-desconto-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.preco-desconto {
+  color: #28a745;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.desconto-label {
+  background-color: var(--primaryOrange);
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
