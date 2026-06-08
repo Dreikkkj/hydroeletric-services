@@ -55,10 +55,10 @@
                         <div class="card-promocao-preco">
                             <span class="card-promocao-descricao">Preço</span>
                             <?php if ($com_desconto): ?>
-                                <p class="card-promocao-preco-original">
+                                <p style="text-decoration: line-through; color: #888; font-weight: normal; font-size: 0.9em; margin: 0;">
                                     R$ <?= number_format($preco_original, 2, ',', '.') ?>
                                 </p>
-                                <p class="card-promocao-preco-desconto">
+                                <p style="color: #28a745; font-weight: bold; margin: 0;">
                                     R$ <?= number_format($preco_exibir, 2, ',', '.') ?>
                                 </p>
                             <?php else: ?>
