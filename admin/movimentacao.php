@@ -55,7 +55,7 @@ function badgeAcao($acao)
 
 <body>
     <?php
-    require_once 'partials/header_admin.php';
+    require_once __DIR__ . '/../partials/header_admin.php';
     ?>
     <div class="container-estoque">
 

@@ -70,10 +70,6 @@ if (!empty($produtos) && is_array($produtos)) {
 <html lang="pt-BR">
 
 <head>
-    <?php
-    require_once 'admin/header_admin.php';
-    ?>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resumo Financeiro</title>
@@ -87,9 +83,9 @@ if (!empty($produtos) && is_array($produtos)) {
 
 <body>
     <?php 
-    require_once 'partials/header_admin.php';
+    require_once __DIR__ . '/../partials/header_admin.php';
     ?>
-    
+
     <div class="containerFIN">
         <header class="maintitle">
             <h1>Resumo Financeiro</h1>
