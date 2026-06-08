@@ -1,0 +1,661 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #f9f9f9;
+    color: #1a1a1a;
+    padding: 30px;
+}
+
+/**Conteiners**/
+.containerFIN {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.maintitle {
+    margin-bottom: 8px;
+}
+
+.maintitle h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.maintitle p {
+    font-size: 14px;
+    color: #707070;
+}
+
+/* Grid de Cobertura dos Cards Superiores */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.financeiro-card {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.financeiro-card h2 {
+    font-size: 13px;
+    font-weight: 500;
+    color: #666666;
+}
+
+/* Badges de Ícones do Layout */
+.icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.badge-receita {
+    background-color: #fef6e7;
+    color: #f5a623;
+}
+
+.badge-custo {
+    background-color: #fdf2f2;
+    color: #e04f5f;
+}
+
+.badge-lucro {
+    background-color: #edfcf5;
+    color: #27ae60;
+}
+
+.badge-margem {
+    background-color: #f4f5f7;
+    color: #666;
+    font-weight: bold;
+}
+
+.valor {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111;
+}
+
+/* Tendências dentro dos cards */
+.mais {
+    font-size: 12px;
+    font-weight: 600;
+    color: #10b981;
+}
+
+.menos {
+    font-size: 12px;
+    font-weight: 600;
+    color: #ef4444;
+}
+
+.categoria {
+    font-size: 10px;
+    color: #999;
+}
+
+/* Estrutura de colunas do meio */
+.conteudo {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 24px;
+}
+
+/* Bloco base para seções brancas */
+.bloco {
+    background-color: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.cabecalho {
+    margin-bottom: 20px;
+}
+
+.cabecalho h2 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+}
+
+.cabecalho h2 .trophy-icon {
+    order: -1;
+}
+
+.subtitulo {
+    font-size: 13px;
+    color: #8c8c8c;
+    margin-top: 2px;
+}
+
+/* -- Performance por Categoria -- */
+
+.card-header-cat {
+    margin-bottom: 24px;
+}
+
+.card-header-cat h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 4px;
+}
+
+.subtitulo-cat {
+    font-size: 13px;
+    color: #a1a1aa; 
+}
+
+.categorias-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.category-item .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 6px;
+}
+
+.category-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.item-metrics {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.metrics-un {
+    font-size: 13px;
+    color: #a1a1aa;
+}
+
+.metrics-margin {
+    font-size: 13px;
+    font-weight: 700;
+    color: #10b981; 
+}
+
+.metrics-revenue {
+    font-size: 15px;
+    font-weight: 700;
+    color: #111111;
+    min-width: 100px;
+    text-align: right;
+}
+
+.category-item .progress-bg {
+    width: 100%;
+    height: 6px;
+    background-color: #f4f4f5; 
+    border-radius: 4px;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+.category-item .progress-fill {
+    height: 100%;
+    background-color: #f59e0b; 
+    border-radius: 4px;
+    transition: width 0.5s ease-in-out;
+}
+
+.category-item .item-footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.metrics-cost {
+    color: #a1a1aa; 
+}
+
+.metrics-profit {
+    color: #10b981; 
+}
+
+
+/* Top Produtos */
+
+.ranking {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rank-number {
+    width: 24px;
+    height: 24px;
+    background-color: #fef6e7;
+    color: #f5a623;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.dados {
+    display: flex;
+    flex-direction: column;
+}
+
+.nome {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+}
+
+.subtexto {
+    font-size: 12px;
+    color: #999;
+}
+
+.preco {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+}
+
+.top-produtos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.top-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-item-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Bolinha do Ranking */
+.top-rank {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Cor do 1º lugar */
+.rank-first {
+    background-color: #ea580c;
+    color: #ffffff;
+}
+
+/* Cor do 2º ao 5º lugar */
+.rank-other {
+    background-color: #f0f6fc;
+    color: #0c3e6b;
+}
+
+.top-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.top-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: #0c3e6b;
+}
+
+.top-subtext {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.top-value {
+    font-size: 15px;
+    font-weight: 700;
+    color: #0c3e6b;
+}
+
+/* Badges (Tags) */
+.badge {
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+
+.badge-bruto {
+    background-color: #fffdf5;
+    color: #b45309;
+    border-color: #fde047;
+}
+
+.badge-ferramentas {
+    background-color: #f0f6fc;
+    color: #0c3e6b;
+    border-color: #aebfd0;
+}
+
+.badge-acabamento {
+    background-color: #fffaf5;
+    color: #c2410c;
+    border-color: #fdba74;
+}
+
+.badge-default {
+    background-color: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+/**Estoque**/
+.container-estoque {
+    max-width: 1400px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.header-estoque {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.maintitleEST h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.maintitleEST p {
+    font-size: 14px;
+    color: #666666;
+}
+
+.filtros {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 12px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666666;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/**filtros**/
+.search-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.search-container input {
+    flex: 1;
+    max-width: 320px;
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.filtroclass {
+    padding: 10px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #374151;
+    font-size: 14px;
+    outline: none;
+    min-width: 160px;
+    cursor: pointer;
+}
+
+/* -- Tabela de Produtos -- */
+.tabela-produtos {
+    overflow-x: auto;
+}
+
+.estoque-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.estoque-table th {
+    color: #8c8c8c;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.estoque-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #f6f6f6;
+    vertical-align: middle;
+    color: #1a1a1a;
+    font-size: 14px;
+}
+
+.produto-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.produto-cell img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: #f9f9f9;
+}
+
+.produto-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.produto-nome {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.produto-sub {
+    font-size: 12px;
+    color: #999999;
+}
+
+.sku-cell {
+    color: #666666;
+    font-family: monospace;
+}
+
+.preco-cell {
+    font-weight: 500;
+}
+
+.estoque-cell {
+    font-weight: 700;
+    color: #111111;
+}
+
+/**Categoria**/
+.badge-categoria {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.badge-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.status-ok {
+    background-color: #ecfdf5;
+    color: #10b981;
+}
+
+.status-medio {
+    background-color: #fffbeb;
+    color: #f59e0b;
+}
+
+.status-critico {
+    background-color: #fef2f2;
+    color: #ef4444;
+}
+
+/* --- Movimentações --- */
+.movimentacao-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.movimentacao-badge-entrada {
+    background-color: #ecfdf5;
+    color: #059669;
+}
+
+.movimentacao-badge-saida {
+    background-color: #fef2f2;
+    color: #dc2626;
+}
+
+.movimentacao-badge-ajuste {
+    background-color: #fffbeb;
+    color: #d97706;
+}
+
+.movimentacao-qtd-positiva {
+    color: #059669;
+    font-weight: 700;
+}
+
+.movimentacao-qtd-negativa {
+    color: #dc2626;
+    font-weight: 700;
+}
+
+/* --Ações-- */
+.acoes-icones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.iconedit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: background 0.2s;
+}
+
+.iconedit:hover {
+    background-color: #f0f0f0;
+}
+
+.iconedit img {
+    width: 16px;
+    height: 16px;
+    opacity: 0.6;
+}
+
+.iconedit:hover img {
+    opacity: 1;
+}
