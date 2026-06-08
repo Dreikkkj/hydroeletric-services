@@ -51,8 +51,8 @@ $sql_categorias = mysqli_query($conn, "SELECT * FROM categoria ORDER BY nome_cat
     <title>Configurações - Sistema</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="css/dashboard.css"> 
-    <link rel="stylesheet" href="css/config-style.css"> 
+    <link rel="stylesheet" href="../CSS/dashboard.css"> 
+    <link rel="stylesheet" href="../CSS/config-style.css"> 
 </head>
 <body>
 
