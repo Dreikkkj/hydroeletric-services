@@ -15,11 +15,9 @@ CREATE TABLE produtos(
     sku VARCHAR(100) NOT NULL,
     categoria_id_produtos INT,
     preco DECIMAL(10,2) NOT NULL,
-    preco_promocao DECIMAL(10,2) NULL DEFAULT NULL,
     estoque INT,
     descricao TEXT,
     capa VARCHAR(500),
-    em_promocao TINYINT(1) DEFAULT 0,
     FOREIGN KEY (categoria_id_produtos)
     REFERENCES categoria(id_categorias)
 );
@@ -132,3 +130,7 @@ INSERT INTO usuarios (nome, email, senha, tipo, ultimo_acesso, status) VALUES
 ('Carlos Ferreira', 'carlos@grupo3.com.br', '123456', 'Estoque', '2026-05-13', 'Ativo'),
 ('Ana Souza', 'ana@grupo3.com.br', '123456', 'Vendas', '2026-05-12', 'Ativo'),
 ('Pedro Lima', 'pedro@grupo3.com.br', '123456', 'Vendas', '2026-05-01', 'Inativo');
+
+ALTER TABLE produtos ADD COLUMN em_promocao TINYINT(1) DEFAULT 0 AFTER capa;
+
+UPDATE produtos SET em_promocao = 1 WHERE id_produtos IN (1,2,3,4,5,6,7,8);
