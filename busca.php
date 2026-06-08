@@ -10,10 +10,10 @@ $termo_pesquisa = isset($_GET['q']) ? trim($_GET['q']) : '';
 $resultados = [];
 
 if (!empty($termo_pesquisa)) {
-    $sql = "SELECT * FROM produtos WHERE nome_produtos LIKE ? OR descricao LIKE ?";
+    $sql = "SELECT * FROM produtos WHERE nome_produtos LIKE ?";
     $stmt = $pdo->prepare($sql);
     $termo_busca = '%' . $termo_pesquisa . '%';
-    $stmt->execute([$termo_busca, $termo_busca]);
+    $stmt->execute([$termo_busca]);
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
