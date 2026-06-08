@@ -53,23 +53,33 @@
                 <span class="sku-item"><?php echo htmlspecialchars($produto['sku']); ?></span>
 
                 <?php
-                    $preco_exibir = $produto['preco'];
+                    $preco_original = $produto['preco'];
+                    $preco_exibir = $preco_original;
                     $com_desconto = false;
-                    if ($produto['em_promocao'] == 1 && !empty($produto['preco_promocao'])) {
-                        $preco_exibir = $produto['preco_promocao'];
+
+                    if ($produto['em_promocao'] == 1) {
+                        $preco_exibir = $preco_original * 0.80; 
                         $com_desconto = true;
                     }
                 ?>
 
                 <?php if ($com_desconto): ?>
-                    <h2 class="preco" style="text-decoration: line-through; color: #ccc; font-size: 0.9em;">
-                        R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
-                    </h2>
-                    <h2 class="preco" style="color: #28a745; font-weight: bold;">
-                        R$ <?php echo number_format($preco_exibir, 2, ',', '.'); ?>
-                    </h2>
+                    <p class="preco-original">
+                        R$ <?= number_format($preco_original, 2, ',', '.') ?>
+                    </p>
+                    <div class="preco-desconto-container">
+                       <p class="preco-desconto">
+                            R$ <?= number_format($preco_exibir, 2, ',', '.') ?>
+                        </p>
+                        <span class="desconto-label">
+                            – 20% OFF
+                        </span> 
+                    </div>
+                    
                 <?php else: ?>
-                    <h2 class="preco">R$ <?php echo number_format($preco_exibir, 2, ',', '.'); ?></h2>
+                    <p style="font-weight: bold; font-size: 1.8em; color: #000; margin: 0;">
+                        R$ <?= number_format($preco_exibir, 2, ',', '.') ?>
+                    </p>
                 <?php endif; ?>
 
                 <div class="desc">

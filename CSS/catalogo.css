@@ -431,3 +431,16 @@ nav ul {
     color: #fff;
     border-color: #023047;
 }
+
+.card-promocao-preco-original {
+    text-decoration: line-through;
+    color: #ccc;
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.card-promocao-preco-desconto {
+    color: #28a745;
+    font-weight: bold;
+    margin: 0;
+}
