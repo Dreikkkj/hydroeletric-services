@@ -9,11 +9,11 @@ $filtro = $_GET['filtro'] ?? 'semana';
 if ($filtro === 'mes') {
     $activeSemana = "";
     $activeMes = "active";
-    
+
     // Conta movimentações do mês atual
     $sqlCardMov = "SELECT COUNT(*) FROM movimentacoes WHERE MONTH(data_hora) = MONTH(CURRENT_DATE()) AND YEAR(data_hora) = YEAR(CURRENT_DATE())";
     $subtituloMov = "Neste mês";
-    
+
     // Busca movimentações da tabela filtrando pelo mês atual
     $sqlTabelaMov = "SELECT m.*, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
@@ -23,11 +23,11 @@ if ($filtro === 'mes') {
 } else {
     $activeSemana = "active";
     $activeMes = "";
-    
+
     // Conta movimentações dos últimos 7 dias reais
     $sqlCardMov = "SELECT COUNT(*) FROM movimentacoes WHERE data_hora >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
     $subtituloMov = "Últimos 7 dias";
-    
+
     // Busca movimentações da tabela filtrando pelos últimos 7 dias reais
     $sqlTabelaMov = "SELECT m.*, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
@@ -73,6 +73,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="pt-BR" translate="no">
+
 <head>
     <meta charset="UTF-8">
     <meta name="google" content="notranslate">
@@ -80,16 +81,17 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../CSS/dashboard.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
     <div class="main-container">
-        
+
         <div class="dashboard-header">
             <div>
                 <h1>Dashboard</h1>
                 <p class="subtitle">Visão geral do estoque e movimentações</p>
             </div>
-            
+
             <div class="filter-buttons">
                 <a href="dashboard.php?filtro=semana" class="btn-filter <?= $activeSemana ?>">Esta Semana</a>
                 <a href="dashboard.php?filtro=mes" class="btn-filter <?= $activeMes ?>">Este Mês</a>
@@ -132,10 +134,11 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
                         <span>0</span>
                     </div>
                     <div class="chart-area">
-                        <?php foreach ($categoriasGrafico as $cat => $qtd): 
+                        <?php foreach ($categoriasGrafico as $cat => $qtd):
                             $alturaPorcentagem = ($qtd / $maxGrafico) * 100;
-                            if ($alturaPorcentagem > 100) $alturaPorcentagem = 100;
-                        ?>
+                            if ($alturaPorcentagem > 100)
+                                $alturaPorcentagem = 100;
+                            ?>
                             <div class="chart-bar-wrapper">
                                 <div class="chart-bar" style="height: <?= $alturaPorcentagem ?>%;"></div>
                                 <span class="chart-label"><?= $cat ?></span>
@@ -148,7 +151,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
             <div class="critical-card">
                 <h3>Estoque Crítico</h3>
                 <p class="subtitle">Itens com menos de 50 unidades</p>
-                
+
                 <div class="critical-list">
                     <?php if (empty($produtosCriticos)): ?>
                         <p class="empty-critical">Nenhum item abaixo de 50 unidades.</p>
@@ -191,13 +194,14 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
                 <tbody>
                     <?php if (empty($movimentacoes)): ?>
                         <tr>
-                            <td colspan="6" class="table-empty-message">Nenhuma movimentação para o período selecionado.</td>
+                            <td colspan="6" class="table-empty-message">Nenhuma movimentação para o período selecionado.
+                            </td>
                         </tr>
                     <?php else: ?>
-                        <?php foreach ($movimentacoes as $mov): 
+                        <?php foreach ($movimentacoes as $mov):
                             $badgeClass = ($mov['tipo'] == 'Entrada') ? 'badge-entrada' : 'badge-saida';
                             $prefixo = ($mov['tipo'] == 'Entrada') ? '+' : '-';
-                        ?>
+                            ?>
                             <tr>
                                 <td><?= $mov['data_formatada'] ?></td>
                                 <td><strong><?= htmlspecialchars($mov['nome_produtos']) ?></strong></td>
@@ -214,4 +218,5 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
 
     </div>
 </body>
+
 </html>
