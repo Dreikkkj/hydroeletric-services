@@ -7,17 +7,37 @@ if (!isset($_SESSION['usuario_nome']) || empty($_SESSION['carrinho'])) {
     exit;
 }
 
-$valor_total = 0;
-foreach ($_SESSION['carrinho'] as $item) {
-    $valor_total += $item['preco'] * $item['quantidade'];
-}
+foreach ($_SESSION['carrinho'] as $produto_id => $item) {
+    $quantidade_comprada = (int)$item['quantidade'];
 
-$metodo_pagamento = $_SESSION['metodo_pagamento'] ?? 'parcelado';
-$quantidade_parcelas = $_SESSION['quantidade_parcelas'] ?? 12;
+    $produto_banco = read($pdo, 'produtos', "id_produtos = $produto_id");
+
+    if ($produto_banco) {
+        $estoque_anterior = (int)$produto_banco['estoque'];
+        
+        $estoque_atual = $estoque_anterior - $quantidade_comprada;
+        if ($estoque_atual < 0) {
+            $estoque_atual = 0; 
+        }
+
+        update($pdo, 'produtos', ['estoque' => $estoque_atual], "id_produtos = $produto_id");
+
+        $dados_movimentacao = [
+            'produto_id'       => $produto_id,
+            'tipo'             => 'Saída',
+            'quantidade'       => $quantidade_comprada,
+            'estoque_anterior' => $estoque_anterior,
+            'estoque_atual'    => $estoque_atual,
+            'motivo'           => 'Venda cliente: ' . $_SESSION['usuario_nome']
+        ];
+        create($pdo, 'movimentacoes', $dados_movimentacao);
+    }
+}
 
 $_SESSION['carrinho'] = [];
 unset($_SESSION['metodo_pagamento']);
 unset($_SESSION['quantidade_parcelas']);
+unset($_SESSION['adicionar_instalacao']);
 
 header('Location: ../pagamento_sucesso.php');
 exit;

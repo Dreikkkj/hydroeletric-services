@@ -23,7 +23,7 @@
                     </div>
                     <input type="password" name="senha" required>
 
-                    <p class="escS"><a href="">Esqueceu a senha?</a></p>
+                    <p class="escS"><a href="esqueceu_senha.php">Esqueceu a senha?</a></p>
 
                     <button type="submit">Entrar</button>
                 </form>
