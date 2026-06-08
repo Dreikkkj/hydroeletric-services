@@ -9,7 +9,17 @@
     <title>Document</title>
 </head>
 <body>
-    <?php require_once 'partials/header.php'; ?>
+    <?php
+    require_once 'partials/header.php';
+    require_once 'CRUD/crud.php';
+
+    $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+    $lista_promocoes = readAll($pdo, $tabela_join, "em_promocao = 1 LIMIT 8");
+
+    if (empty($lista_promocoes)) {
+        $lista_promocoes = readAll($pdo, $tabela_join, "LIMIT 8");
+    }
+    ?>
 
     <main class="main-promocao">
         <div class="text-promocao">
@@ -17,247 +27,41 @@
             <h1>Produtos em Destaque</h1>
             <p>Confira nossos principais materiais hidráulicos e elétricos com os melhores preços de São Paulo.</p>
         </div>
-<!-- <?php echo $situacao === 'em-estoque' ? 'em-estoque' : 'fora-de-estoque'; ?> -->
+
         <div class="container-promocao">
+            <?php foreach ($lista_promocoes as $produto): ?>
             <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+                <p class="situacao <?= ($produto['estoque'] > 0) ? 'em-estoque' : 'fora-estoque' ?>">
+                    <?= ($produto['estoque'] > 0) ? 'Em Estoque' : 'Fora de Estoque' ?>
+                </p>
 
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
                 <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
+                    <img src="<?= htmlspecialchars($produto['capa']) ?>" alt="<?= htmlspecialchars($produto['nome_produtos']) ?>">
                 </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
                 <div class="card-promocao-info">
                     <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
+                        <span class="card-promocao-categoria"><?= htmlspecialchars($produto['nome_categorias']) ?></span>
+                        <h3><?= htmlspecialchars($produto['nome_produtos']) ?></h3>
+                        <span class="card-promocao-descricao"><?= htmlspecialchars($produto['sku']) ?> - metro</span>
                     </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
                     <div class="card-promocao-linha">
                         <div class="card-promocao-preco">
                             <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
+                            <p>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
                         </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
+                        <span class="card-promocao-estoque"><?= $produto['estoque'] ?> disp.</span>
                     </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
 
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
                     <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
+                        <a href="detalhes.php?id=<?= $produto['id_produtos'] ?>" target="_blank">
                             <button class="btn-detalhes">Ver Detalhes</button>
                         </a>
                     </div>
                 </div>
             </div>
-
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-promocao">
-                <p class="situacao em-estoque">Em Estoque</p>
-                
-                <div class="card-promocao-img">
-                    <img src="Images/cabo-flexivel-2.5mm.jpeg" alt="Produto 1">
-                </div>
-                
-                <div class="card-promocao-info">
-                    <div class="card-promocao-info-details">
-                        <span class="card-promocao-categoria">CABOS</span>
-                        <h3>Kit Hidráulico Completo</h3>
-                        <span class="card-promocao-descricao">CFL-025-001 - metro</span>
-                    </div>
-                    
-                    <div class="card-promocao-linha">
-                        <div class="card-promocao-preco">
-                            <span class="card-promocao-descricao">Preço</span>
-                            <p>R$ 4,50</p>
-                        </div>
-                        <span class="card-promocao-estoque">600 disp.</span>
-                    </div>
-                    
-                    <div class="card-promocao-btn">
-                        <a href="#" target="_blank">
-                            <button class="btn-detalhes">Ver Detalhes</button>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </main>
 

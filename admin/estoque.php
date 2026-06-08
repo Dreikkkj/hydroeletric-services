@@ -66,6 +66,7 @@
                             <th>PREÇO</th>
                             <th>ESTOQUE</th>
                             <th>STATUS</th>
+                            <th>PROMOÇÃO</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
@@ -89,8 +90,16 @@
                             <td class="preco">R$ <?= $produtos['preco'] ?></td>
                             <td class="estoque"><?= $produtos['estoque'] ?></td>
                             <td class="status"><span class="<?= $cor ?>"><?= $situacao ?></span></td>
+                            <td class="acoes-promocao">
+                                <form method="POST" action="CRUD/toggle_promocao.php" style="display:inline;">
+                                    <input type="hidden" name="produto_id" value="<?= $produtos['id_produtos'] ?>">
+                                    <button type="submit" class="btn-toggle-promocao" style="background-color: <?= ($produtos['em_promocao'] == 1) ? '#28a745' : '#dc3545' ?>">
+                                        <?= ($produtos['em_promocao'] == 1) ? 'Ativo' : 'Inativo' ?>
+                                    </button>
+                                </form>
+                            </td>
                             <td class="acoes">
-                                <a href="alterar_produto.php?id=<?= $produtos['id_produtos'] ?>"><i class="bi bi-pencil"></i></a> <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('deseja excluir esste produto?')" ><i class="bi bi-trash"></i></a> 
+                                <a href="alterar_produto.php?id=<?= $produtos['id_produtos'] ?>"><i class="bi bi-pencil"></i></a> <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('deseja excluir esste produto?')" ><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                         <?php

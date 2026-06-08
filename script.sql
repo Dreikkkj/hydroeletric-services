@@ -18,6 +18,7 @@ CREATE TABLE produtos(
     estoque INT,
     descricao TEXT,
     capa VARCHAR(500),
+    em_promocao TINYINT(1) DEFAULT 0,
     FOREIGN KEY (categoria_id_produtos)
     REFERENCES categoria(id_categorias)
 );
