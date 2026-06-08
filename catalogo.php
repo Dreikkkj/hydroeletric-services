@@ -32,9 +32,9 @@
             <?php foreach ($lista_promocoes as $produto):
                 $preco_original = $produto['preco'];
                 
-                // Aplica 20% de desconto (multiplica por 0.80)
+                
                 $preco_exibir = $preco_original * 0.80; 
-                $com_desconto = true; // Forçamos como true para exibir o preço cortado
+                $com_desconto = true;
             ?>
             <div class="card-promocao">
                 <p class="situacao <?= ($produto['estoque'] > 0) ? 'em-estoque' : 'fora-estoque' ?>">
