@@ -52,7 +52,25 @@
                 <h1><?php echo htmlspecialchars($produto['nome_produtos']); ?></h1>
                 <span class="sku-item"><?php echo htmlspecialchars($produto['sku']); ?></span>
 
-                <h2 class="preco">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></h2>
+                <?php
+                    $preco_exibir = $produto['preco'];
+                    $com_desconto = false;
+                    if ($produto['em_promocao'] == 1 && !empty($produto['preco_promocao'])) {
+                        $preco_exibir = $produto['preco_promocao'];
+                        $com_desconto = true;
+                    }
+                ?>
+
+                <?php if ($com_desconto): ?>
+                    <h2 class="preco" style="text-decoration: line-through; color: #ccc; font-size: 0.9em;">
+                        R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?>
+                    </h2>
+                    <h2 class="preco" style="color: #28a745; font-weight: bold;">
+                        R$ <?php echo number_format($preco_exibir, 2, ',', '.'); ?>
+                    </h2>
+                <?php else: ?>
+                    <h2 class="preco">R$ <?php echo number_format($preco_exibir, 2, ',', '.'); ?></h2>
+                <?php endif; ?>
 
                 <div class="desc">
                     <p><?php echo htmlspecialchars($produto['descricao']); ?></p>

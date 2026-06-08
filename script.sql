@@ -15,6 +15,7 @@ CREATE TABLE produtos(
     sku VARCHAR(100) NOT NULL,
     categoria_id_produtos INT,
     preco DECIMAL(10,2) NOT NULL,
+    preco_promocao DECIMAL(10,2) NULL DEFAULT NULL,
     estoque INT,
     descricao TEXT,
     capa VARCHAR(500),

@@ -16,13 +16,18 @@ if ($acao === 'adicionar' && isset($_POST['produto_id'])) {
         $produto = read($pdo, 'produtos', "id_produtos = $produto_id");
 
         if ($produto) {
+            $preco_item = $produto['preco'];
+            if ($produto['em_promocao'] == 1 && !empty($produto['preco_promocao'])) {
+                $preco_item = $produto['preco_promocao'];
+            }
+
             if (isset($_SESSION['carrinho'][$produto_id])) {
                 $_SESSION['carrinho'][$produto_id]['quantidade'] += $quantidade;
             } else {
                 $_SESSION['carrinho'][$produto_id] = [
                     'id' => $produto['id_produtos'],
                     'nome' => $produto['nome_produtos'],
-                    'preco' => $produto['preco'],
+                    'preco' => $preco_item,
                     'imagem' => $produto['capa'],
                     'quantidade' => $quantidade
                 ];
