@@ -8,7 +8,7 @@
             <p>Sua parceira ideal em soluções elétricas e hidráulicas com qualidade e segurança.</p>
             <div class="footer-links-secondary">
                 <a href="termos.php">Termos e condições</a>
-                <a href="#politica">Política de Privacidade</a>
+                <a href="termos.php">Política de Privacidade</a>
             </div>
         </div>
 
@@ -17,8 +17,8 @@
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="produtos.php">Produtos</a></li>
-                <li><a href="#">Catálogo</a></li>
-                <li><a href="#sobre">Sobre nós</a></li>
+                <li><a href="catalogo.php">Catálogo</a></li>
+                <li><a href="index.php#sobre-nos">Sobre nós</a></li>
             </ul>
         </div>
 
