@@ -7,7 +7,7 @@ try {
     $query = "SELECT
                 m.data_hora,
                 p.nome_produtos AS produto,
-                m.tipo AS acao,
+                m.tipo_movimentacoes AS acao,
                 m.quantidade AS qtd,
                 m.estoque_anterior AS anterior,
                 m.estoque_atual AS novo,
