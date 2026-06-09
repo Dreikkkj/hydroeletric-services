@@ -32,7 +32,7 @@ $isAdmin = isset($_SESSION['usuario_tipo']) && $_SESSION['usuario_tipo'] === 'Ad
 
             <?php if ($isAdmin): ?>
             <li class="header-admin-icon">
-                <a href="../admin/dashboard.php" title="Painel Admin">
+                <a href="admin/dashboard.php" title="Painel Admin">
                     <i class="bi bi-gear-fill"></i>
                 </a>
             </li>
