@@ -36,10 +36,16 @@
 
 
                 <div class="filtros">
-                    <form method="GET">
-                        <select name="categoria" onchange="this.form.submit()">
-                            <option value="">Todas</option>
-                            
+                    <form>
+                        <input type="search" placeholder="🔍︎ Buscar produto">
+                        <select>
+                            <option value="">Todos</option>
+                            <option value="">Fios</option>
+                            <option value="">Cabos</option>
+                            <option value="">Disjuntores</option>
+                            <option value="">Tubulaçoes</option>
+                            <option value="">Conexão Hidráulica</option>
+                            <option value="">Caixas d'água</option>
                         </select>
                     </form>
                 </div>
