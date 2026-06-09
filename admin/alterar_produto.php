@@ -47,9 +47,11 @@
         header('Location: estoque.php');
         exit;
     }
+
     $id = $_GET['id'] ?? null;
 
     $produtos = read($pdo, 'produtos', 'id_produtos = ' . $id);
+    
 ?>
 
 <!DOCTYPE html>
