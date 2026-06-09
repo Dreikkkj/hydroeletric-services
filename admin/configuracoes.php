@@ -1,6 +1,6 @@
 <?php
 require_once 'db.php';
-include 'header_adm.html';
+require_once __DIR__ . '/../CRUD/crud.php';
 
 $tab_ativa = $_GET['tab'] ?? 'loja';
 $mensagem = "";
@@ -129,11 +129,14 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user']
     <meta charset="UTF-8">
     <title>Configurações</title>
     <link rel="stylesheet" href="../CSS/config-style.css">
+    <link rel="stylesheet" href="../CSS/header_adm.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<?php 
+require_once __DIR__ . '/../partials/header_admin.php';
+?>
 <div class="config-container">
     <div class="config-header">
         <span class="badge-admin">
