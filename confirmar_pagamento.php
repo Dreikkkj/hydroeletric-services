@@ -14,8 +14,17 @@ if (!isset($_SESSION['carrinho']) || empty($_SESSION['carrinho'])) {
 
 $valor_total = 0;
 $quantidade_total = 0;
+$percentual_desconto = 0.20;
+
 foreach ($_SESSION['carrinho'] as $item) {
-    $valor_total += $item['preco'] * $item['quantidade'];
+    $preco_item = $item['preco'];
+    
+    // Se o item estiver em promoção, aplica o desconto no cálculo
+    if (isset($item['em_promocao']) && $item['em_promocao'] == 1) {
+        $preco_item = $item['preco'] * (1 - $percentual_desconto);
+    }
+
+    $valor_total += $preco_item * $item['quantidade'];
     $quantidade_total += $item['quantidade'];
 }
 
@@ -32,129 +41,10 @@ $valor_final = $valor_com_taxa + $valor_instalacao;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar Pagamento</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/confirmar_pagamento.css">
     <link rel="stylesheet" href="CSS/global.css">
-    <style>
-        .conteiner {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .card-pagamento {
-            background: #fff;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        .titulo-secao {
-            color: var(--primaryBlue);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--primaryOrange);
-            padding-bottom: 10px;
-        }
-
-        .usuario-info {
-            background: #f5f5f5;
-            padding: 15px;
-            border-radius: 6px;
-            margin-bottom: 30px;
-            color: var(--primaryBlue);
-        }
-
-        .tabela-itens {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .tabela-itens thead {
-            background: var(--primaryBlue);
-            color: white;
-        }
-
-        .tabela-itens th,
-        .tabela-itens td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .tabela-itens tbody tr:hover {
-            background: #f9f9f9;
-        }
-
-        .totais {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-
-        .linha-total {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            color: var(--primaryBlue);
-        }
-
-        .linha-total.total {
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-top: 2px solid #ddd;
-            padding-top: 10px;
-            margin-top: 10px;
-        }
-
-        .metodo-pagamento {
-            background: #f5f5f5;
-            padding: 20px;
-            border-radius: 6px;
-            margin: 20px 0;
-            color: var(--primaryBlue);
-        }
-
-        .acoes-pagamento {
-            display: flex;
-            gap: 15px;
-            margin-top: 30px;
-            justify-content: center;
-        }
-
-        .botao-confirmar,
-        .botao-voltar {
-            padding: 12px 30px;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: 0.3s ease;
-        }
-
-        .botao-confirmar {
-            background: var(--primaryOrange);
-            color: white;
-        }
-
-        .botao-confirmar:hover {
-            background: #e6920f;
-        }
-
-        .botao-voltar {
-            background: #ccc;
-            color: #333;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .botao-voltar:hover {
-            background: #bbb;
-        }
-    </style>
+    
 </head>
 <body>
     <?php include 'partials/header.php'; ?>
@@ -180,8 +70,8 @@ $valor_final = $valor_com_taxa + $valor_instalacao;
                         <tr>
                             <td><?php echo htmlspecialchars($item['nome']); ?></td>
                             <td><?php echo $item['quantidade']; ?></td>
-                            <td>R$ <?php echo number_format($item['preco'], 2, ',', '.'); ?></td>
-                            <td>R$ <?php echo number_format($item['preco'] * $item['quantidade'], 2, ',', '.'); ?></td>
+                            <td>R$ <?php echo number_format($preco_item, 2, ',', '.'); ?></td>
+                            <td>R$ <?php echo number_format($preco_item * $item['quantidade'], 2, ',', '.'); ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
