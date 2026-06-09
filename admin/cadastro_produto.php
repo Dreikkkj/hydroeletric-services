@@ -1,10 +1,10 @@
 <?php
+require_once __DIR__ . '/../CRUD/crud.php';
+$pagina = 'estoque';
 
-    $pagina = 'estoque';
+require_once __DIR__ . '/../CRUD/crud.php';
 
-    require_once 'CRUD/crud.php';
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $tipos_permitidos = ['image/jpeg', 'image/png', 'image/gif'];
 
@@ -38,7 +38,7 @@
         $produtoNovo = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
-            'sku' => $sku ,
+            'sku' => $sku,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
             'estoque' => $_POST['estoque'],
@@ -53,27 +53,29 @@
         } else {
             echo "Erro ao cadastrar.";
         }
-    } else { 
-        echo "Erro ao enviar imagem."; 
-    } 
+    } else {
+        echo "Erro ao enviar imagem.";
+    }
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastro de produtos</title>
-    <link rel="stylesheet" href="CSS/cadastro_produto.css">
-    <link rel="stylesheet" href="CSS/header_adm.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
+    <link rel="stylesheet" href="../CSS/cadastro_produto.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
+
 <body>
 
     <?php
-        include 'partials/header_admin.php';
+    require_once __DIR__ . '/../partials/header_admin.php';
     ?>
 
     <main>
@@ -81,8 +83,8 @@
             <div class="border">
 
                 <h2>Cadastro de produtos</h2>
-                
-                <form  method="POST" enctype="multipart/form-data" >
+
+                <form method="POST" enctype="multipart/form-data">
                     <label for="produto">Nome do produto</label>
                     <input type="text" name="produto" required>
 
@@ -131,4 +133,5 @@
         </section>
     </main>
 </body>
+
 </html>

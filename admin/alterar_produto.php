@@ -1,8 +1,9 @@
 <?php
+require_once __DIR__ . '/../CRUD/crud.php';
 
     $pagina = 'estoque';
 
-    require_once 'CRUD/crud.php';
+    
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -58,14 +59,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar produtos</title>
-    <link rel="stylesheet" href="CSS/alterar_produto.css">
-    <link rel="stylesheet" href="CSS/header_adm.css">
+    <link rel="stylesheet" href="../CSS/alterar_produto.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </head>
 <body>
 
     <?php
-        include 'partials/header_admin.php';
+        require_once __DIR__ . '/../partials/header_admin.php';
     ?>
     
     <main>

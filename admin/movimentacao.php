@@ -7,7 +7,7 @@ try {
     $query = "SELECT
                 m.data_hora,
                 p.nome_produtos AS produto,
-                m.tipo_movimentacoes AS acao,
+                COALESCE(m.tipo_movimentacoes, m.tipo) AS acao,
                 m.quantidade AS qtd,
                 m.estoque_anterior AS anterior,
                 m.estoque_atual AS novo,
@@ -19,6 +19,7 @@ ORDER BY m.data_hora DESC";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $movimentacoes = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $movCount = is_array($movimentacoes) ? count($movimentacoes) : 0;
 
 } catch (PDOException $e) {
 
@@ -46,7 +47,9 @@ function badgeAcao($acao)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estoque</title>
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
+    <link rel="stylesheet" href="../CSS/estoque.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
@@ -56,16 +59,31 @@ function badgeAcao($acao)
 <body>
     <div class="container-estoque">
 
-        <div class="header-estoque">
-            <div class="maintitleEST">
-                <h1>Controle de Estoque</h1>
-                <p>Gerencie produtos, estoque e movimentações.</p>
-            </div>
-        </div>
+        <div class="inicio">
+            <h2>Controle de Estoque</h2>
+            <h4>Gerencie proutos, estoque e movimentações</h4>
 
-        <div class="filtros">
-            <button class="tab-btn">Produtos</button>
-            <button class="tab-btn active">Movimentações</button>
+
+            <div class="l">
+                <a href="" class="p">Produtos</a>
+                <a href="" class="m">Movimentações</a>
+            </div>
+
+
+            <div class="filtros">
+                <form>
+                    <input type="search" placeholder="🔍︎ Buscar produto">
+                    <select>
+                        <option value="">Todos</option>
+                        <option value="">Fios</option>
+                        <option value="">Cabos</option>
+                        <option value="">Disjuntores</option>
+                        <option value="">Tubulaçoes</option>
+                        <option value="">Conexão Hidráulica</option>
+                        <option value="">Caixas d'água</option>
+                    </select>
+                </form>
+            </div>
         </div>
 
         <div class="tabela-produtos">
@@ -104,6 +122,19 @@ function badgeAcao($acao)
                         }
                     } else {
                         echo '<tr><td colspan="7" style="text-align:center; color:#999; padding: 20px;">Nenhuma movimentação registrada no banco de dados.</td></tr>';
+                        if (isset($_GET['debug']) && $_GET['debug'] == '1') {
+                            echo '<tr><td colspan="7" style="text-align:left; color:#333; padding: 20px; background:#fff;"><pre style="white-space:pre-wrap;">';
+                            echo "Query: " . htmlspecialchars($query) . "\n\n";
+                            echo "Row count: " . intval($movCount) . "\n\n";
+                            try {
+                                $err = $stmt->errorInfo();
+                                echo "PDO errorInfo: " . htmlspecialchars(print_r($err, true)) . "\n\n";
+                            } catch (Exception $e) {
+                                echo "No statement error info available.\n";
+                            }
+                            echo "Fetched data:\n" . htmlspecialchars(print_r($movimentacoes, true));
+                            echo '</pre></td></tr>';
+                        }
                     }
                     ?>
                 </tbody>

@@ -36,7 +36,7 @@ $qt_min = 50;
 
                 <div class="l">
                     <a href="" class="p">Produtos</a>
-                    <a href="" class="m">Movimentações</a>
+                    <a href="../admin/movimentacao.php" class="m">Movimentações</a>
                 </div>
 
 
