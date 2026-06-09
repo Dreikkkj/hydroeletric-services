@@ -56,7 +56,7 @@
     } else { 
         echo "Erro ao enviar imagem."; 
     } 
-};
+}
 
 ?>
 

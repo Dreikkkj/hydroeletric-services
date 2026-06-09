@@ -2,8 +2,6 @@ DROP DATABASE IF EXISTS db_hydro;
 CREATE DATABASE db_hydro;
 USE db_hydro;
 
-USE db_hydro;
-
 CREATE TABLE categoria(
     id_categorias INT AUTO_INCREMENT PRIMARY KEY,
     nome_categorias VARCHAR(100) NOT NULL
@@ -18,6 +16,7 @@ CREATE TABLE produtos(
     estoque INT,
     descricao TEXT,
     capa VARCHAR(500),
+    data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (categoria_id_produtos)
     REFERENCES categoria(id_categorias)
 );
@@ -50,8 +49,6 @@ INSERT INTO produtos(nome_produtos, sku, categoria_id_produtos, preco, estoque, 
 ('Te PVC 25mm', 'HID-TEE-025', 5, 1.52, 340, 'Conexão Tê de 90 graus em PVC marrom soldável de 25mm. Permite criar uma ramificação ou derivação limpa na rede de água do projeto.', 'https://cdn.awsli.com.br/800x800/1078/1078966/produto/43548503/22200208_te_sold_vel_iso_1-n5yzizmaka.jpg'),
 ('Tubo PVC 25mm - 2/3 m', 'HID-TUB-025', 4, 12.90, 370, 'Tubo de PVC rígido marrom soldável de 25mm para condução segura de água fria. Suporta a pressão interna de instalações hidráulicas prediais.', 'https://lojasolar.vtexassets.com/arquivos/ids/263317-800-auto?v=638962574588970000&width=800&height=auto&aspect=true');
 
-
-
 CREATE TABLE carrinho (
     id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
     produto_id INT NOT NULL,
@@ -62,7 +59,7 @@ CREATE TABLE carrinho (
 CREATE TABLE movimentacoes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     produto_id INT,
-    tipo ENUM('Entrada', 'Saída') NOT NULL,
+    tipo_movimentacoes ENUM('Entrada', 'Saída') NOT NULL,
     quantidade INT NOT NULL,
     estoque_anterior INT NOT NULL,
     estoque_atual INT NOT NULL,
