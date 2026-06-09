@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
 require_once __DIR__ . '/../CRUD/crud.php';
+include '../partials/header_admin.php';
 
 $tab_ativa = $_GET['tab'] ?? 'loja';
 $mensagem = "";
