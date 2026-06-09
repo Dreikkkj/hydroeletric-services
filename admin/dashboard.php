@@ -1,6 +1,6 @@
 <?php
-require_once 'db.php';
-include 'header_adm.html';
+require_once '../CRUD/crud.php';
+require_once __DIR__ . '/../partials/header_admin.php';
 
 // 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';
@@ -15,7 +15,7 @@ if ($filtro === 'mes') {
     $subtituloMov = "Neste mês";
 
     // Busca movimentações da tabela filtrando pelo mês atual
-    $sqlTabelaMov = "SELECT m.*, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
+    $sqlTabelaMov = "SELECT m.*, m.tipo_movimentacoes AS tipo, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
                      JOIN produtos p ON m.produto_id = p.id_produtos 
                      WHERE MONTH(m.data_hora) = MONTH(CURRENT_DATE()) AND YEAR(m.data_hora) = YEAR(CURRENT_DATE())
@@ -39,7 +39,6 @@ if ($filtro === 'mes') {
 // 2. CARDS DE RESUMO FIXOS (Estoque atual)
 $totalProdutos = $pdo->query("SELECT COUNT(*) FROM produtos")->fetchColumn();
 
-// CORREÇÃO AQUI: Filtrando por mês e ano corrente para evitar bugs futuros
 $novosEsteMes = $pdo->query("SELECT COUNT(*) FROM produtos WHERE MONTH(data_cadastro) = MONTH(CURRENT_DATE()) AND YEAR(data_cadastro) = YEAR(CURRENT_DATE())")->fetchColumn();
 
 $valorEstoque = $pdo->query("SELECT SUM(estoque * preco) FROM produtos")->fetchColumn() ?? 0;
@@ -79,6 +78,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
     <meta name="google" content="notranslate">
     <title>Dashboard - Gestão de Estoque</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -198,10 +198,10 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                         </tr>
                     <?php else: ?>
-                        <?php foreach ($movimentacoes as $mov):
-                            $badgeClass = ($mov['tipo'] == 'Entrada') ? 'badge-entrada' : 'badge-saida';
-                            $prefixo = ($mov['tipo'] == 'Entrada') ? '+' : '-';
-                            ?>
+                        <?php foreach ($movimentacoes as $mov): 
+                            $badgeClass = ($mov['tipo_movimentacoes'] == 'Entrada') ? 'badge-entrada' : 'badge-saida';
+                            $prefixo = ($mov['tipo_movimentacoes'] == 'Entrada') ? '+' : '-';
+                        ?>
                             <tr>
                                 <td><?= $mov['data_formatada'] ?></td>
                                 <td><strong><?= htmlspecialchars($mov['nome_produtos']) ?></strong></td>

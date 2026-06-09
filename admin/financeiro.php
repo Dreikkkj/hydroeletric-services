@@ -78,11 +78,12 @@ if (!empty($produtos) && is_array($produtos)) {
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../CSS/style_admin.css">
-    <link rel="stylesheet" href="../CSS/header_adm.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 
 <body>
-    <?php 
+    <?php
     require_once __DIR__ . '/../partials/header_admin.php';
     ?>
 

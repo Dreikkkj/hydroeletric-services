@@ -63,9 +63,9 @@ h4 {
 }
 
 
-.filtros {
+.filtros form {
     display: flex;
-    gap: 60px;
+    gap: 80px;
     padding: 10px 0 40px 0;
 }
 

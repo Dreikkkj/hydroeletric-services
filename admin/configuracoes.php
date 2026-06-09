@@ -1,6 +1,7 @@
 <?php
 require_once 'db.php';
-include 'header_adm.html';
+require_once __DIR__ . '/../CRUD/crud.php';
+include '../partials/header_admin.php';
 
 $tab_ativa = $_GET['tab'] ?? 'loja';
 $mensagem = "";
@@ -31,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar_usuario'])) {
     $id_usuario = $_POST['id_usuario'] ?? '';
     $nome = $_POST['nome'];
     $email = $_POST['email'];
-    $perfil = $_POST['perfil'];
+    $tipo = $_POST['tipo'];
     $status = $_POST['status'];
     $senha = $_POST['senha'];
 
@@ -39,12 +40,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar_usuario'])) {
         // Ação: EDITAR
         if (!empty($senha)) {
             // Se preencheu o campo senha, altera ela também
-            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha, perfil = :perfil, status = :status WHERE id = :id";
-            $params = [':nome' => $nome, ':email' => $email, ':senha' => $senha, ':perfil' => $perfil, ':status' => $status, ':id' => $id_usuario];
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha, tipo = :tipo, status = :status WHERE id = :id";
+            $params = [':nome' => $nome, ':email' => $email, ':senha' => $senha, ':tipo' => $tipo, ':status' => $status, ':id' => $id_usuario];
         } else {
             // Se deixou a senha em branco, mantém a senha atual
-            $sql = "UPDATE usuarios SET nome = :nome, email = :email, perfil = :perfil, status = :status WHERE id = :id";
-            $params = [':nome' => $nome, ':email' => $email, ':perfil' => $perfil, ':status' => $status, ':id' => $id_usuario];
+            $sql = "UPDATE usuarios SET nome = :nome, email = :email, tipo = :tipo, status = :status WHERE id = :id";
+            $params = [':nome' => $nome, ':email' => $email, ':tipo' => $tipo, ':status' => $status, ':id' => $id_usuario];
         }
         $stmt = $pdo->prepare($sql);
         $stmt->execute($params);
@@ -52,9 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar_usuario'])) {
     } else {
         // Ação: NOVO CADASTRO
         $senha_padrao = !empty($senha) ? $senha : '123456';
-        $sql = "INSERT INTO usuarios (nome, email, senha, perfil, status) VALUES (:nome, :email, :senha, :perfil, :status)";
+        $sql = "INSERT INTO usuarios (nome, email, senha, tipo, status) VALUES (:nome, :email, :senha, :tipo, :status)";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute([':nome' => $nome, ':email' => $email, ':senha' => $senha_padrao, ':perfil' => $perfil, ':status' => $status]);
+        $stmt->execute([':nome' => $nome, ':email' => $email, ':senha' => $senha_padrao, ':tipo' => $tipo, ':status' => $status]);
         $mensagem = "Novo usuário cadastrado com sucesso!";
     }
 }
@@ -94,14 +95,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['salvar_sistema'])) {
-        $pdo->query("
+        $stmt = $pdo->prepare("
             UPDATE configuracoes_sistema SET
-            alerta_estoque = ".(isset($_POST['alerta_estoque']) ? 1 : 0).",
-            alerta_venda = ".(isset($_POST['alerta_venda']) ? 1 : 0).",
-            relatorio_diario = ".(isset($_POST['relatorio_diario']) ? 1 : 0).",
-            dois_fatores = ".(isset($_POST['dois_fatores']) ? 1 : 0)."
+            alerta_estoque = :alerta_estoque,
+            alerta_venda = :alerta_venda,
+            relatorio_diario = :relatorio_diario,
+            dois_fatores = :dois_fatores
             WHERE id = 1
         ");
+        $stmt->execute([
+            ':alerta_estoque' => isset($_POST['alerta_estoque']) ? 1 : 0,
+            ':alerta_venda' => isset($_POST['alerta_venda']) ? 1 : 0,
+            ':relatorio_diario' => isset($_POST['relatorio_diario']) ? 1 : 0,
+            ':dois_fatores' => isset($_POST['dois_fatores']) ? 1 : 0
+        ]);
 
         $mensagem = "Preferências salvas com sucesso!";
     }
@@ -129,11 +136,15 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user']
     <meta charset="UTF-8">
     <title>Configurações</title>
     <link rel="stylesheet" href="../CSS/config-style.css">
+    <link rel="stylesheet" href="../CSS/header_adm.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<?php 
+require_once __DIR__ . '/../partials/header_admin.php';
+?>
 <div class="config-container">
     <div class="config-header">
         <span class="badge-admin">
@@ -230,15 +241,15 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user']
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label>Senha <?= $_GET['acao'] === 'editar' ? '<small style="color:#888;"></small>' : '' ?></label>
+                                <label>Senha <?= $_GET['acao'] === 'editar' ? '<small style="color:#888;">(opcional)</small>' : '' ?></label>
                                 <input type="password" name="senha" <?= $_GET['acao'] === 'novo' ? 'required' : '' ?>>
                             </div>
                             <div class="form-group">
-                                <label>Perfil de Acesso</label>
-                                <select name="perfil" required>
-                                    <option value="Admin" <?= (isset($usuario_em_edicao['perfil']) && $usuario_em_edicao['perfil'] == 'Admin') ? 'selected' : '' ?>>Admin</option>
-                                    <option value="Estoque" <?= (isset($usuario_em_edicao['perfil']) && $usuario_em_edicao['perfil'] == 'Estoque') ? 'selected' : '' ?>>Estoque</option>
-                                    <option value="Vendas" <?= (isset($usuario_em_edicao['perfil']) && $usuario_em_edicao['perfil'] == 'Vendas') ? 'selected' : '' ?>>Vendas</option>
+                                <label>Tipo de Acesso</label>
+                                <select name="tipo" required>
+                                    <option value="Admin" <?= (isset($usuario_em_edicao['tipo']) && $usuario_em_edicao['tipo'] == 'Admin') ? 'selected' : '' ?>>Admin</option>
+                                    <option value="Estoque" <?= (isset($usuario_em_edicao['tipo']) && $usuario_em_edicao['tipo'] == 'Estoque') ? 'selected' : '' ?>>Estoque</option>
+                                    <option value="Vendas" <?= (isset($usuario_em_edicao['tipo']) && $usuario_em_edicao['tipo'] == 'Vendas') ? 'selected' : '' ?>>Vendas</option>
                                 </select>
                             </div>
                         </div>
@@ -272,7 +283,7 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user']
                             <tr>
                                 <th>USUÁRIO</th>
                                 <th>E-MAIL</th>
-                                <th>PERFIL</th>
+                                <th>TIPO</th>
                                 <th>STATUS</th>
                                 <th>AÇÕES</th>
                             </tr>
@@ -283,7 +294,7 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user']
                                 <td><?= htmlspecialchars($user['nome']) ?></td>
                                 <td><?= htmlspecialchars($user['email']) ?></td>
                                 <td>
-                                    <span class="perfil-badge"><?= $user['perfil'] ?></span>
+                                    <span class="tipo-badge"><?= $user['tipo'] ?></span>
                                 </td>
                                 <td>
                                     <span style="font-weight: 600; color: <?= $user['status'] === 'Ativo' ? '#166534' : '#991b1b' ?>;">

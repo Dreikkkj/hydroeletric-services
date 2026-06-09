@@ -236,7 +236,6 @@ nav ul {
 .container-promocao {
     width: 100%;
     max-width: 80vw;
-    min-height: 33em;
     overflow-x: auto;
     display: flex;
     gap: 20px;
@@ -430,17 +429,4 @@ nav ul {
     background-color: #023047;
     color: #fff;
     border-color: #023047;
-}
-
-.card-promocao-preco-original p {
-    text-decoration: line-through;
-    color: #ccc;
-    font-size: 0.9em;
-    margin: 0;
-}
-
-.card-promocao-preco-desconto p {
-    color: #28a745;
-    font-weight: bold;
-    margin: 0;
 }
