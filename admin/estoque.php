@@ -1,7 +1,7 @@
 <?php
     $pagina = 'estoque';
 
-    require_once 'CRUD/crud.php';
+    require_once __DIR__ . '/../CRUD/crud.php';
 
     $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
     $lerProdutos = readAll($pdo, $tabela_join );
