@@ -33,10 +33,12 @@
 
     if (move_uploaded_file($_FILES['capa']['tmp_name'], $file)) {
 
+        $sku = strtoupper($_POST['sku']);
+
         $produtoNovo = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
-            'sku' => $_POST['sku'] = strtoupper($_POST['sku']),
+            'sku' => $sku ,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
             'estoque' => $_POST['estoque'],
@@ -65,7 +67,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadastro de produtos</title>
     <link rel="stylesheet" href="CSS/cadastro_produto.css">
-    <link rel="stylesheet" href="CSS/header_admin.css">
+    <link rel="stylesheet" href="CSS/header_adm.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </head>
 <body>
