@@ -16,6 +16,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     <link rel="stylesheet" href="CSS/global.css">
 </head>
 <body>
+    <?php include 'partials/header.php'; ?>
 
     <div class="container" style="padding: 40px 20px;">
         <div class="card">
@@ -59,5 +60,6 @@ if (!isset($_SESSION['usuario_nome'])) {
         </div>
     </div>
 
+    <?php include 'partials/footer.php'; ?>
 </body>
 </html>

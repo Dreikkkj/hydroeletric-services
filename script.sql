@@ -99,7 +99,7 @@ CREATE TABLE usuarios (
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    tipo ENUM('Admin', 'Estoque', 'Vendas', 'Usuário') NOT NULL,
+    tipo ENUM('Admin', 'Estoque', 'Vendas') NOT NULL,
     ultimo_acesso DATE,
     status ENUM('Ativo', 'Inativo') DEFAULT 'Ativo'
 );
@@ -129,8 +129,7 @@ INSERT INTO usuarios (nome, email, senha, tipo, ultimo_acesso, status) VALUES
 ('Administrador', 'admin@grupo3.com.br', '123', 'Admin', '2026-05-14', 'Ativo'),
 ('Carlos Ferreira', 'carlos@grupo3.com.br', '123456', 'Estoque', '2026-05-13', 'Ativo'),
 ('Ana Souza', 'ana@grupo3.com.br', '123456', 'Vendas', '2026-05-12', 'Ativo'),
-('Pedro Lima', 'pedro@grupo3.com.br', '123456', 'Vendas', '2026-05-01', 'Inativo'),
-('Mariana Costa', 'mariana@grupo3.com.br', '123456', 'Usuário', '2026-05-10', 'Ativo');
+('Pedro Lima', 'pedro@grupo3.com.br', '123456', 'Vendas', '2026-05-01', 'Inativo');
 
 ALTER TABLE produtos ADD COLUMN em_promocao TINYINT(1) DEFAULT 0 AFTER capa;
 
