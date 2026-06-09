@@ -1,5 +1,11 @@
 <?php
+    $pagina = 'estoque';
+
     require_once 'CRUD/crud.php';
+
+    $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+    $lerProdutos = readAll($pdo, $tabela_join );
+    $qt_min = 50;
 ?>
 
 <!DOCTYPE html>
@@ -33,16 +39,18 @@
 
 
                 <div class="filtros">
-                    <input type="search" placeholder="🔍︎ Buscar produto">
-                    <select>
-                        <option value="">Todos</option>
-                        <option value="">Fios</option>
-                        <option value="">Cabos</option>
-                        <option value="">Disjuntores</option>
-                        <option value="">Tubulaçoes</option>
-                        <option value="">Conexão Hidráulica</option>
-                        <option value="">Caixas d'água</option>
-                    </select>
+                    <form>
+                        <input type="search" placeholder="🔍︎ Buscar produto">
+                        <select>
+                            <option value="">Todos</option>
+                            <option value="">Fios</option>
+                            <option value="">Cabos</option>
+                            <option value="">Disjuntores</option>
+                            <option value="">Tubulaçoes</option>
+                            <option value="">Conexão Hidráulica</option>
+                            <option value="">Caixas d'água</option>
+                        </select>
+                    </form>
                 </div>
             </div>
 
@@ -61,16 +69,15 @@
                     </thead>
                     <tbody>
                         <?php
-                            $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
-                            $lerProdutos = readAll($pdo, $tabela_join );
-                            $qt_min = 50;
 
                             foreach($lerProdutos as $produtos){
                                 
                                 if ($produtos['estoque'] <= $qt_min) {
                                     $situacao = 'CRÍTICO';
+                                    $cor = 'vermelho';
                                 } else {
                                     $situacao = 'OK';
+                                    $cor = 'verde';
                                 };
                         ?>
                         <tr>
@@ -79,7 +86,7 @@
                             <td class="categoria"><?= $produtos['nome_categorias'] ?></td>
                             <td class="preco">R$ <?= $produtos['preco'] ?></td>
                             <td class="estoque"><?= $produtos['estoque'] ?></td>
-                            <td class="status"><span><?= $situacao ?></span></td>
+                            <td class="status"><span class="<?= $cor ?>"><?= $situacao ?></span></td>
                             <td class="acoes">
                                 <a href="alterar_produto.php?id=<?= $produtos['id_produtos'] ?>"><i class="bi bi-pencil"></i></a> <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('deseja excluir esste produto?')" ><i class="bi bi-trash"></i></a> 
                             </td>

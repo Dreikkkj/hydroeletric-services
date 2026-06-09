@@ -116,25 +116,7 @@
                         echo "<p class='codigo-produto'>Código: " . $produto["sku"] . "</p>";
                         echo "<p class='texto-produto'>Preço</p>";
                         echo "<div class='linha-card'>";
-                        
-                        // Verifica se o item está em promoção (valor 1)
-                        if (isset($produto['em_promocao']) && $produto['em_promocao'] == 1) {
-                            $preco_novo = $produto['preco'] * 0.80; // Calcula os 20% de desconto
-                            
-                            echo "<div style='display: flex; flex-direction: column;'>";
-                            // Preço antigo (cortado)
-                            echo "<span style='text-decoration: line-through; color: #aaa; font-size: 0.85rem;'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</span>";
-                            // Preço novo com desconto
-                            echo "<p class='preco-produto' style='color: #28a745; font-weight: bold; margin: 0;'>R$ " . number_format($preco_novo, 2, ',', '.') . "</p>";
-                            echo "</div>";
-                        } else {
-                            // Preço normal caso não esteja em promoção
-                            echo "<p class='preco-produto'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</p>";
-                        }
-
-                        echo "</div>";
-                        echo "<div class='linha-card'>";
-                        
+                        echo "<p class='preco-produto'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</p>";
                         echo "<p class='quantidade-produto'>" . $produto["estoque"] . " disp.</p>";
                         echo "</div>";
                         echo "<a href='detalhes.php?id=" . $produto["id_produtos"] . "'>";

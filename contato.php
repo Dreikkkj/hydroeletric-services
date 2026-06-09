@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/contato.css">
     <link rel="stylesheet" href="CSS/global.css">
-    <title>Contato</title>
+    <title>Document</title>
 </head>
 <body>
     <?php require_once 'partials/header.php'; ?>
@@ -23,7 +23,7 @@
             <div class="info-contato">
                 <p class="info-contato-title">Informações de Contato</p>
         
-                <div class="dado    s-loja">
+                <div class="dados-loja">
                     <div class="item-dado">
                         <span><i class="bi bi-geo-alt-fill"></i></span>
                         <p><span class="item-dado-title">Endereço:</span><br>Rua da Tecnologia, 123 - Res. Hipica Jaguari</p>

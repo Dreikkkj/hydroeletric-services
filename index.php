@@ -1,3 +1,9 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once 'CRUD/crud.php';
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -55,7 +61,7 @@
         <div class="container-sobre">
             <h2 class="texto-amarelo-sobre">Quem Somos</h2>
             <p>Com mais de 20 anos de tradição no mercado, a <strong>Hydroeletric Services</strong> nasceu com o propósito de oferecer soluções definitivas e seguras para obras e reformas. Nossa expertise vai muito além de fornecer os melhores fios, cabos, disjuntores, tubulações e conexões hidráulicas. Nós entendemos que uma obra bem-sucedida precisa da combinação perfeita entre materiais de ponta e uma execução técnica impecável.</p>
-            <img src="assets/icons/eletrica-e-hidraulica.jpg" alt="imagem sobre a empresa" class="imagem-sobre">
+            <img src="https://dudaxengenharia.com.br/wp-content/uploads/2022/11/srv-06-eletrica-e-hidraulica-v2.jpg" alt="imagem sobre a empresa" class="imagem-sobre">
             <p>É por isso que, além de nossa loja completa, oferecemos <strong>serviços especializados de instalação elétrica e hidráulica predial</strong>. Contamos com uma equipe de técnicos e engenheiros altamente capacitados, prontos para atuar em projetos residenciais, comerciais e industriais em toda a capital e Grande São Paulo.</p>
 
             <div class="parceiros-secao">

@@ -1,12 +1,8 @@
 <?php
     $pagina = 'estoque';
 
-   require_once __DIR__ . '/../CRUD/crud.php';
+    require_once 'CRUD/crud.php';
 
-    $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
-    $lerProdutos = readAll($pdo, $tabela_join );
-    $qt_min = 50;
-    $categorias = readAll($pdo, 'categoria')
 ?>
 
 <!DOCTYPE html>
@@ -14,19 +10,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estoque</title>
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../CSS/estoque.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
-        <link rel="stylesheet" href="../CSS/header_adm.css"> 
+    <title>estoque</title>
+    <link rel="stylesheet" href="CSS/header_adm.css">
+    <link rel="stylesheet" href="CSS/estoque.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </head>
 <body>
 
     <?php
-        require_once __DIR__ . '/../partials/header_admin.php';
+        include 'partials/header_admin.php';
     ?>
 
     <a href="cadastro_produto.php" class="cproduto">+ Novo produto</a>
@@ -34,7 +26,7 @@
         <section>
             <div class="inicio">
                 <h2>Controle de Estoque</h2>
-                <h4>Gerencie produtos, estoque e movimentações</h4>
+                <h4>Gerencie proutos, estoque e movimentações</h4>
 
 
                 <div class="l">
@@ -44,17 +36,16 @@
 
 
                 <div class="filtros">
-                    <form method="GET">
-                        <select name="categoria" onchange="this.form.submit()">
-                            <option value="">Todas</option>
-                            <?php foreach ($categorias as $categoria): ?>
-                                <option
-                                    value="<?= $categoria['id_categorias'] ?>"
-                                    <?= (($_GET['categoria'] ?? '') == $categoria['id_categorias']) ? 'selected' : '' ?>
-                                >
-                                    <?= $categoria['nome_categorias'] ?>
-                                </option>
-                            <?php endforeach; ?>
+                    <form>
+                        <input type="search" placeholder="🔍︎ Buscar produto">
+                        <select>
+                            <option value="">Todos</option>
+                            <option value="">Fios</option>
+                            <option value="">Cabos</option>
+                            <option value="">Disjuntores</option>
+                            <option value="">Tubulaçoes</option>
+                            <option value="">Conexão Hidráulica</option>
+                            <option value="">Caixas d'água</option>
                         </select>
                     </form>
                 </div>
@@ -76,6 +67,9 @@
                     </thead>
                     <tbody>
                         <?php
+                        $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+                        $lerProdutos = readAll($pdo, $tabela_join );
+                        $qt_min = 50;
 
                             foreach($lerProdutos as $produtos){
                                 
