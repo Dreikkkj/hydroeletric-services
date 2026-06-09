@@ -89,7 +89,7 @@ $valor_com_taxa = $valor_total * 1.177;
                                 if (isset($item['em_promocao']) && $item['em_promocao'] == 1): 
                                     $preco_final_item = $item['preco'] * (1 - $percentual_desconto);
                                 ?>
-                                    <span class="preco-antigo" style="text-decoration: line-through; color: #999; font-size: 13px; display: block; margin-bottom: 2px;">
+                                    <span class="preco-antigo" style="text-decoration: line-through; color: #888; font-size: 13px; display: block; margin-bottom: 2px;">
                                         R$ <?php echo number_format($item['preco'] * $item['quantidade'], 2, ',', '.'); ?>
                                     </span>
                                 <?php endif; ?>
