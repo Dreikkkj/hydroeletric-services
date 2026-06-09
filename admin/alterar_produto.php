@@ -22,8 +22,7 @@
         if ($_FILES['capa']['error'] == 0) {
 
             $extensao = pathinfo(
-                $_FILES['capa']['name'],
-                PATHINFO_EXTENSION
+                $_FILES['capa']['name'], PATHINFO_EXTENSION
             );
 
             $novoNome = 'capa_' . uniqid() . '.' . $extensao;
@@ -36,8 +35,7 @@
             $caminho = $dir . $novoNome;
 
             move_uploaded_file(
-                $_FILES['capa']['tmp_name'],
-                $caminho
+                $_FILES['capa']['tmp_name'], $caminho
             );
             $produtososAtualizados['capa'] = $caminho;
         }
@@ -51,7 +49,7 @@
     $id = $_GET['id'] ?? null;
 
     $produtos = read($pdo, 'produtos', 'id_produtos = ' . $id);
-    
+
 ?>
 
 <!DOCTYPE html>
