@@ -77,11 +77,15 @@ if (!empty($produtos) && is_array($produtos)) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/style_admin.css">
     <link rel="stylesheet" href="../CSS/header_admin.css">
 </head>
 
 <body>
+    <?php 
+    require_once __DIR__ . '/../partials/header_admin.php';
+    ?>
+
     <div class="containerFIN">
         <header class="maintitle">
             <h1>Resumo Financeiro</h1>

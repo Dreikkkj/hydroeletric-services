@@ -1,6 +1,6 @@
 <?php
-require_once 'db.php';
-include '../partials/header_admin.php';
+require_once '../CRUD/crud.php';
+require_once __DIR__ . '/../partials/header_admin.php';
 
 // 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';
@@ -79,6 +79,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
     <meta name="google" content="notranslate">
     <title>Dashboard - Gestão de Estoque</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
