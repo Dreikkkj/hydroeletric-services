@@ -109,7 +109,7 @@ INSERT INTO categoria (id_categorias, nome_categorias, quantidade) VALUES
 (5, 'Caixas', 93);        
 
 
-INSERT INTO movimentacoes (produto_id, tipo, quantidade, estoque_anterior, estoque_atual, motivo, data_hora) VALUES
+INSERT INTO movimentacoes (produto_id, tipo_movimentacoes, quantidade, estoque_anterior, estoque_atual, motivo, data_hora) VALUES
 (4, 'Entrada', 200, 650, 850, 'Reposição fornecedor', '2026-05-10 11:30:00'),
 (4, 'Saída', 50, 900, 850, 'Venda cliente #4521', '2026-05-09 07:15:00'),
 (5, 'Entrada', 30, 90, 120, 'Novo lote Siemens', '2026-05-08 13:00:00'),

@@ -79,7 +79,9 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
     <title>Dashboard - Gestão de Estoque</title>
     <link rel="stylesheet" href="../CSS/dashboard.css">
     <link rel="stylesheet" href="../CSS/header_admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
