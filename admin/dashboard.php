@@ -1,6 +1,6 @@
 <?php
 require_once 'db.php';
-include 'header_adm.html';
+include '../partials/header_admin.php';
 
 // 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';

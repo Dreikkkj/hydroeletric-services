@@ -1,6 +1,6 @@
 <?php
 require_once 'db.php';
-include 'header_adm.html';
+include '../partials/header_admin.php';
 
 $tab_ativa = $_GET['tab'] ?? 'loja';
 $mensagem = "";
@@ -130,6 +130,7 @@ if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user']
     <title>Configurações</title>
     <link rel="stylesheet" href="../CSS/config-style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../CSS/header_admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
