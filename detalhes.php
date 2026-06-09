@@ -16,6 +16,7 @@
     }
 
     $estoque_texto = $produto["estoque"] > 0 ? "Em estoque" : "Esgotado";
+    $percentual_desconto = 0.20; 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -55,9 +56,15 @@
                 <?php
                     $preco_exibir = $produto['preco'];
                     $com_desconto = false;
-                    if ($produto['em_promocao'] == 1 && !empty($produto['preco_promocao'])) {
-                        $preco_exibir = $produto['preco_promocao'];
+                    
+                    if (isset($produto['em_promocao']) && $produto['em_promocao'] == 1) {
                         $com_desconto = true;
+                        
+                        if (!empty($produto['preco_promocao'])) {
+                            $preco_exibir = $produto['preco_promocao'];
+                        } else {
+                            $preco_exibir = $produto['preco'] * (1 - $percentual_desconto); // Aplica os 20% de desconto
+                        }
                     }
                 ?>
 
