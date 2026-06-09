@@ -236,7 +236,6 @@ nav ul {
 .container-promocao {
     width: 100%;
     max-width: 80vw;
-    min-height: 33em;
     overflow-x: auto;
     display: flex;
     gap: 20px;

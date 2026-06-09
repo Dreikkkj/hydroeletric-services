@@ -16,13 +16,7 @@ if (!empty($email) && !empty($senha)) {
         $_SESSION['usuario_nome'] = $usuario['nome'];
         $_SESSION['usuario_tipo'] = $usuario['tipo'];
 
-        if (isset($_SESSION['redirect_apos_login'])) {
-            $redirect = $_SESSION['redirect_apos_login'];
-            unset($_SESSION['redirect_apos_login']);
-            header("Location: " . $redirect);
-        } else {
-            header("Location: index.php");
-        }
+        header("Location: index.php");
         exit;
     } else {
         echo "Dados incorretos.";

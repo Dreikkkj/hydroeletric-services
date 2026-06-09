@@ -30,11 +30,12 @@
 
         <div class="container-promocao">
             <?php foreach ($lista_promocoes as $produto):
-                $preco_original = $produto['preco'];
-                
-                
-                $preco_exibir = $preco_original * 0.80; 
-                $com_desconto = true;
+                $preco_exibir = $produto['preco'];
+                $com_desconto = false;
+                if ($produto['em_promocao'] == 1 && !empty($produto['preco_promocao'])) {
+                    $preco_exibir = $produto['preco_promocao'];
+                    $com_desconto = true;
+                }
             ?>
             <div class="card-promocao">
                 <p class="situacao <?= ($produto['estoque'] > 0) ? 'em-estoque' : 'fora-estoque' ?>">
@@ -57,7 +58,7 @@
                             <span class="card-promocao-descricao">Preço</span>
                             <?php if ($com_desconto): ?>
                                 <p style="text-decoration: line-through; color: #ccc; font-size: 0.9em; margin: 0;">
-                                    R$ <?= number_format($preco_original, 2, ',', '.') ?>
+                                    R$ <?= number_format($produto['preco'], 2, ',', '.') ?>
                                 </p>
                                 <p style="color: #28a745; font-weight: bold; margin: 0;">
                                     R$ <?= number_format($preco_exibir, 2, ',', '.') ?>

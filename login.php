@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
-    <a href="" class="h">
-        <img src="./imagem/Logo_i.png">
-    </a>
     <main>
         <section>
             <div class="border">

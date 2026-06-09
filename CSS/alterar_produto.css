@@ -64,6 +64,10 @@ textarea {
     outline: none;
 }
 
+.sku {
+    text-transform: uppercase;
+}
+
 .sc {
     display: grid;
     grid-template-columns: 1fr 1fr;

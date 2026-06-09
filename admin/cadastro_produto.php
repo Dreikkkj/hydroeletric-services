@@ -1,4 +1,7 @@
 <?php
+
+    $pagina = 'estoque';
+
     require_once 'CRUD/crud.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -30,10 +33,12 @@
 
     if (move_uploaded_file($_FILES['capa']['tmp_name'], $file)) {
 
+        $sku = strtoupper($_POST['sku']);
+
         $produtoNovo = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
-            'sku' => $_POST['sku'],
+            'sku' => $sku ,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
             'estoque' => $_POST['estoque'],
@@ -52,6 +57,7 @@
         echo "Erro ao enviar imagem."; 
     } 
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +92,7 @@
                     <div class="sc">
                         <div class="s">
                             <label for="sku">SKU</label>
-                            <input type="text" name="sku">
+                            <input type="text" name="sku" class="sku">
                         </div>
 
                         <div class="c">

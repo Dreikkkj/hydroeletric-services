@@ -1,14 +1,19 @@
 <?php
+
+    $pagina = 'estoque';
+
     require_once 'CRUD/crud.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $id = $_POST['id_produtos'];
 
+        $sku = strtoupper($_POST['sku']);
+
         $produtososAtualizados = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
-            'sku' => $_POST['sku'],
+            'sku' => $sku ,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
             'estoque' => $_POST['estoque']
@@ -17,8 +22,7 @@
         if ($_FILES['capa']['error'] == 0) {
 
             $extensao = pathinfo(
-                $_FILES['capa']['name'],
-                PATHINFO_EXTENSION
+                $_FILES['capa']['name'], PATHINFO_EXTENSION
             );
 
             $novoNome = 'capa_' . uniqid() . '.' . $extensao;
@@ -31,8 +35,7 @@
             $caminho = $dir . $novoNome;
 
             move_uploaded_file(
-                $_FILES['capa']['tmp_name'],
-                $caminho
+                $_FILES['capa']['tmp_name'], $caminho
             );
             $produtososAtualizados['capa'] = $caminho;
         }
@@ -42,9 +45,11 @@
         header('Location: estoque.php');
         exit;
     }
+
     $id = $_GET['id'] ?? null;
 
     $produtos = read($pdo, 'produtos', 'id_produtos = ' . $id);
+
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +86,7 @@
                     <div class="sc">
                         <div class="s">
                             <label for="sku">SKU</label>
-                            <input type="text" name="sku" value="<?= $produtos['sku'] ?>">
+                            <input type="text" name="sku" value="<?= $produtos['sku'] ?>" class="sku">
                         </div>
 
                         <div class="c">
