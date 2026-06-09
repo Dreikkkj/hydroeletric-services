@@ -1,7 +1,7 @@
 <?php
     $pagina = 'estoque';
 
-    require_once 'CRUD/crud.php';
+   require_once __DIR__ . '/../CRUD/crud.php';
 
     $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
     $lerProdutos = readAll($pdo, $tabela_join );
@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estoque</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/estoque.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
@@ -25,7 +26,7 @@
 <body>
 
     <?php
-        include 'partials/header_admin.php';
+        require_once __DIR__ . '/../partials/header_admin.php';
     ?>
 
     <a href="cadastro_produto.php" class="cproduto">+ Novo produto</a>
