@@ -3,10 +3,6 @@
 
     require_once 'CRUD/crud.php';
 
-    $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
-    $lerProdutos = readAll($pdo, $tabela_join );
-    $qt_min = 50;
-    $categorias = readAll($pdo, 'categoria')
 ?>
 
 <!DOCTYPE html>
@@ -43,14 +39,7 @@
                     <form method="GET">
                         <select name="categoria" onchange="this.form.submit()">
                             <option value="">Todas</option>
-                            <?php foreach ($categorias as $categoria): ?>
-                                <option
-                                    value="<?= $categoria['id_categorias'] ?>"
-                                    <?= (($_GET['categoria'] ?? '') == $categoria['id_categorias']) ? 'selected' : '' ?>
-                                >
-                                    <?= $categoria['nome_categorias'] ?>
-                                </option>
-                            <?php endforeach; ?>
+                            
                         </select>
                     </form>
                 </div>
@@ -72,6 +61,9 @@
                     </thead>
                     <tbody>
                         <?php
+                        $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+                        $lerProdutos = readAll($pdo, $tabela_join );
+                        $qt_min = 50;
 
                             foreach($lerProdutos as $produtos){
                                 
