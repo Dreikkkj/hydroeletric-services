@@ -29,7 +29,8 @@ if ($acao === 'adicionar' && isset($_POST['produto_id'])) {
                     'nome' => $produto['nome_produtos'],
                     'preco' => $preco_item,
                     'imagem' => $produto['capa'],
-                    'quantidade' => $quantidade
+                    'quantidade' => $quantidade,
+                    'em_promocao' => $produto['em_promocao'] // <--- Adicione esta linha
                 ];
             }
         }

@@ -23,8 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['cep'])) {
     }
 }
 
+$percentual_desconto = 0.20; 
+
 foreach ($_SESSION['carrinho'] as $item) {
-    $valor_total += $item['preco'] * $item['quantidade'];
+    $preco_item = $item['preco'];
+    
+    // Se o item estiver em promoção, aplica o desconto no cálculo
+    if (isset($item['em_promocao']) && $item['em_promocao'] == 1) {
+        $preco_item = $item['preco'] * (1 - $percentual_desconto);
+    }
+
+    $valor_total += $preco_item * $item['quantidade'];
     $quantidade_total += $item['quantidade'];
 }
 
@@ -74,7 +83,18 @@ $valor_com_taxa = $valor_total * 1.177;
                                 </form>
                             </td>
                             <td class="col-preco">
-                                <span class="preco-atual">R$ <?php echo number_format($item['preco'] * $item['quantidade'], 2, ',', '.'); ?></span>
+                                <?php 
+                                $preco_final_item = $item['preco'];
+                                
+                                if (isset($item['em_promocao']) && $item['em_promocao'] == 1): 
+                                    $preco_final_item = $item['preco'] * (1 - $percentual_desconto);
+                                ?>
+                                    <span class="preco-antigo" style="text-decoration: line-through; color: #999; font-size: 13px; display: block; margin-bottom: 2px;">
+                                        R$ <?php echo number_format($item['preco'] * $item['quantidade'], 2, ',', '.'); ?>
+                                    </span>
+                                <?php endif; ?>
+                                
+                                <span class="preco-atual">R$ <?php echo number_format($preco_final_item * $item['quantidade'], 2, ',', '.'); ?></span>
                             </td>
                             <td class="col-remover">
                                 <a href="CRUD/controle_carrinho.php?acao=remover&produto_id=<?php echo $produto_id; ?>" onclick="return confirm('Tem certeza que deseja remover este item?');">
