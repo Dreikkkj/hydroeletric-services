@@ -1,5 +1,6 @@
 <?php
-$pagina = 'estoque';
+
+    $pagina = 'estoque';
 
     require_once __DIR__ . '/../CRUD/crud.php';
 

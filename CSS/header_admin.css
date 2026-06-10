@@ -11,11 +11,10 @@ body {
     font-family: 'Montserrat';
 }
 
-.admin-topbar {
+header {
     background-color: #023047;
-    padding: 30px 30px 30px 30px;
-    margin: 0 -30px 24px;
-    width: calc(100% + 30px);
+    padding: 25px;
+    font-family: 'Montserrat';
 }
 
 nav {
@@ -40,35 +39,39 @@ nav a {
     gap: 8px;
 }
 
+nav a.active {
+    padding: 10px 35px;
+    font-size: 19px;
+    background-color: #fba21446;
+    color: #fba414;
+    border-radius: 10px;
+}
+
 nav a:hover {
     transform: scale(1.08);
     color: white;
 }
 
-.a {
-    display: flex;
-    align-items: center;
-}
-
 .user {
     position: absolute;
-    right: 10px;
+    right: 40px;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .adm {
     display: flex;
     gap: 10px;
-    padding: 10px 20px 10px 15px;
+    padding: 8px 20px 8px 15px;
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
 }
 
-.adm img{
+.adm i {
     background-color: #fba21477;
-    padding: 4px;
+    color: white;
+    padding: 8px 10px;
     border-radius: 20px;
 }
 
@@ -77,6 +80,6 @@ nav a:hover {
     align-items: center;
     text-decoration: 0;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
 }

@@ -1,4 +1,6 @@
 <?php
+$pagina = 'estoque'; 
+
 require_once __DIR__ . '/../CRUD/crud.php';
 
 $estoque_minimo = 50;
