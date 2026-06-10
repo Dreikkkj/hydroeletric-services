@@ -207,7 +207,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
                             <tr>
                                 <td><?= $mov['data_formatada'] ?></td>
                                 <td><strong><?= htmlspecialchars($mov['nome_produtos']) ?></strong></td>
-                                <td><span class="badge <?= $badgeClass ?> notranslate"><?= $mov['tipo'] ?></span></td>
+                                <td><span class="badge <?= $badgeClass ?> notranslate"><?= $mov['tipo_movimentacoes'] ?></span></td>
                                 <td><strong><?= $prefixo . $mov['quantidade'] ?></strong></td>
                                 <td class="table-stock"><?= $mov['estoque_anterior'] ?> &rarr; <?= $mov['estoque_atual'] ?></td>
                                 <td class="table-reason"><?= htmlspecialchars($mov['motivo']) ?></td>
