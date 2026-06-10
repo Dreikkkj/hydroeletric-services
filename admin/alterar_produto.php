@@ -9,13 +9,18 @@
 
         $sku = strtoupper($_POST['sku']);
 
+        // Obter estoque anterior do produto
+        $produtoAnterior = read($pdo, 'produtos', 'id_produtos = ' . $id);
+        $estoqueAnterior = $produtoAnterior['estoque'];
+        $novoEstoque = $_POST['estoque'];
+
         $produtososAtualizados = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
             'sku' => $sku ,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
-            'estoque' => $_POST['estoque']
+            'estoque' => $novoEstoque
         ];
 
         if ($_FILES['capa']['error'] == 0) {
@@ -42,6 +47,27 @@
         }
 
         update($pdo, 'produtos', $produtososAtualizados, 'id_produtos = ' . $id);
+
+        $estoqueAnteriorInt = (int)$estoqueAnterior;
+        $novoEstoqueInt = isset($_POST['estoque']) ? (int)$_POST['estoque'] : $estoqueAnteriorInt;
+
+        $diferenca = $novoEstoqueInt - $estoqueAnteriorInt;
+        $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
+        if ($diferenca === 0) {
+            $tipoMovimentacao = 'Entrada';
+        }
+        $quantidadeMovida = abs($diferenca);
+
+        $movimentacao = [
+            'produto_id' => (int)$id,
+            'tipo_movimentacoes' => $tipoMovimentacao,
+            'quantidade' => $quantidadeMovida,
+            'estoque_anterior' => $estoqueAnteriorInt,
+            'estoque_atual' => $novoEstoqueInt,
+            'motivo' => 'Produto alterado'
+        ];
+
+        create($pdo, 'movimentacoes', $movimentacao);
 
         header('Location: estoque.php');
         exit;
