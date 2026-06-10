@@ -8,7 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f9f9f9;
     color: #1a1a1a;
-    padding: 0 30px 30px;
+    padding: auto;
 }
 
 .admin-topbar {
