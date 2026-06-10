@@ -45,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="CSS/cadastro.css">
 </head>
 <body>
-    <a href="index.php" class="h">
-        <img src="assets/icons/Logo_i.png" alt="Logo">
+    <a href="login.php" class="h">
+        <img src="assets/icons/icon_logo.png" alt="Logo">
     </a>
     <main>
         <section>

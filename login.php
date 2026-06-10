@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="CSS/login.css">
 </head>
 <body>
+    <a href="index.php" class="h">
+        <img src="assets/icons/icon_logo.png" alt="Logo">
+    </a>
     <main>
         <section>
             <div class="border">

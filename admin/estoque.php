@@ -3,8 +3,29 @@ $pagina = 'estoque';
 
 require_once __DIR__ . '/../CRUD/crud.php';
 
+$busca = $_GET['busca'] ?? '';
+$categoria_filtro = $_GET['categoria'] ?? '';
+
+$condicoes = [];
+
+if (!empty($busca)) {
+    $busca_escaped = $pdo->quote('%' . $busca . '%');
+    $condicoes[] = "(produtos.nome_produtos LIKE $busca_escaped OR produtos.sku LIKE $busca_escaped)";
+}
+
+if (!empty($categoria_filtro)) {
+    $categoria_id = (int) $categoria_filtro;
+    $condicoes[] = "produtos.categoria_id_produtos = $categoria_id";
+}
+
+$where = !empty($condicoes) ? implode(' AND ', $condicoes) : null;
+
 $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
-$lerProdutos = readAll($pdo, $tabela_join);
+
+$lerProdutos = readAll($pdo, $tabela_join, $where);
+
+$categorias = readAll($pdo, 'categoria');
+
 $qt_min = 50;
 ?>
 
@@ -41,16 +62,17 @@ $qt_min = 50;
 
 
                 <div class="filtros">
-                    <form>
-                        <input type="search" placeholder="🔍︎ Buscar produto">
-                        <select>
-                            <option value="">Todos</option>
-                            <option value="">Fios</option>
-                            <option value="">Cabos</option>
-                            <option value="">Disjuntores</option>
-                            <option value="">Tubulaçoes</option>
-                            <option value="">Conexão Hidráulica</option>
-                            <option value="">Caixas d'água</option>
+                    <form method="GET" action="">
+                        <input type="search" name="busca" placeholder="🔍︎ Buscar produto ou SKU" value="<?= htmlspecialchars($busca) ?>">
+                        
+                        <select name="categoria" onchange="this.form.submit()">
+                            <option value="">Todas as categorias</option>
+                            
+                            <?php foreach ($categorias as $cat): ?>
+                                <option value="<?= $cat['id_categorias'] ?>" <?= $categoria_filtro == $cat['id_categorias'] ? 'selected' : '' ?>>
+                                    <?= htmlspecialchars($cat['nome_categorias']) ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </form>
                 </div>
