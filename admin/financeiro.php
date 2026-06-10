@@ -1,4 +1,7 @@
 <?php
+
+$pagina = 'financeiro'; 
+
 require_once __DIR__ . '/../CRUD/crud.php';
 
 $produtos = [];
@@ -88,10 +91,10 @@ if (!empty($produtos) && is_array($produtos)) {
     ?>
 
     <div class="containerFIN">
-        <header class="maintitle">
+        <div class="maintitle">
             <h1>Resumo Financeiro</h1>
             <p>Visão consolidada de receita, custos e lucratividade — maio/2026</p>
-        </header>
+        </div>
 
         <section class="kpi-grid">
             <div class="financeiro-card">

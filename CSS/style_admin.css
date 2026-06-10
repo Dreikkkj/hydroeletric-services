@@ -1,7 +1,7 @@
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -9,6 +9,13 @@ body {
     background-color: #f9f9f9;
     color: #1a1a1a;
     padding: 0 30px 30px;
+}
+
+.admin-topbar {
+    background-color: #023047;
+    padding: 30px 30px 30px 30px;
+    margin: 0 -30px 24px;
+    width: calc(100% + 30px);
 }
 
 /**Conteiners**/
