@@ -1,32 +1,30 @@
 <?php
 $pagina = 'estoque';
 
-require_once __DIR__ . '/../CRUD/crud.php';
+    require_once __DIR__ . '/../CRUD/crud.php';
 
-$busca = $_GET['busca'] ?? '';
-$categoria_filtro = $_GET['categoria'] ?? '';
+    $busca = $_GET['busca'] ?? '';
+    $categoria_filtro = $_GET['categoria'] ?? '';
 
-$condicoes = [];
+    $condicoes = [];
 
-if (!empty($busca)) {
-    $busca_escaped = $pdo->quote('%' . $busca . '%');
-    $condicoes[] = "(produtos.nome_produtos LIKE $busca_escaped OR produtos.sku LIKE $busca_escaped)";
-}
+    if (!empty($busca)) {
+        $busca_escaped = $pdo->quote('%' . $busca . '%');
+        $condicoes[] = "(produtos.nome_produtos LIKE $busca_escaped OR produtos.sku LIKE $busca_escaped)";
+    }
 
-if (!empty($categoria_filtro)) {
-    $categoria_id = (int) $categoria_filtro;
-    $condicoes[] = "produtos.categoria_id_produtos = $categoria_id";
-}
+    if (!empty($categoria_filtro)) {
+        $categoria_id = (int) $categoria_filtro;
+        $condicoes[] = "produtos.categoria_id_produtos = $categoria_id";
+    }
 
-$where = !empty($condicoes) ? implode(' AND ', $condicoes) : null;
+    $where = !empty($condicoes) ? implode(' AND ', $condicoes) : null;
 
-$tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+    $tabela_join = "produtos INNER JOIN categoria ON produtos.categoria_id_produtos = categoria.id_categorias";
+    $lerProdutos = readAll($pdo, $tabela_join, $where);
+    $categorias = readAll($pdo, 'categoria');
+    $qt_min = 50;
 
-$lerProdutos = readAll($pdo, $tabela_join, $where);
-
-$categorias = readAll($pdo, 'categoria');
-
-$qt_min = 50;
 ?>
 
 <!DOCTYPE html>
