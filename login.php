@@ -1,3 +1,14 @@
+<?php
+require_once 'CRUD/crud.php';
+require_once 'login_processar.php';
+
+if (isset($_GET['error'])) {
+    $erro = $_GET['error'];
+} else {
+    $erro = '';
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,13 +16,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar</title>
     <link rel="stylesheet" href="CSS/login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </head>
 <body>
     <main>
         <section>
+            <?php if (!empty($erro)): ?>
+                <div class="erro">
+                    <p><?php echo '<i class="bi bi-x-circle"></i> ' . htmlspecialchars($erro); ?></p>
+                </div>
+            <?php endif; ?>
             <div class="border">
                 <h2>Login</h2>
                 <form method="POST" action="login_processar.php">
+
+                    
 
                     <div class="e">
                         <label for="email">Email</label>

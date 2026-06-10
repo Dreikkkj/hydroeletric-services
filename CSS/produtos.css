@@ -183,9 +183,9 @@
 
 .linha-card {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .preco-produto {
