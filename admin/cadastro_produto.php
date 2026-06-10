@@ -24,14 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $novonome = 'capa_' . uniqid() . "." . $extensao;
 
-    $dir = 'uploads/';
+    $dir = __DIR__ . '/../uploads/';
     $file = $dir . $novonome;
+    $capa = 'uploads/' . $novonome;
 
     if (!is_dir($dir)) {
         mkdir($dir, 0755, true);
     }
 
-    if (move_uploaded_file($_FILES['capa']['tmp_name'], $file)) {
+    if (move_uploaded_file($_FILES['capa']['tmp_name'], $capa)) {
 
         $sku = strtoupper($_POST['sku']);
 
@@ -42,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
             'estoque' => $_POST['estoque'],
-            'capa' => $file
+            'capa' => $capa
         ];
 
         $idprodutoNovo = create($pdo, 'produtos', $produtoNovo);
