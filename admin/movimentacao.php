@@ -48,7 +48,6 @@ function badgeAcao($acao)
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estoque</title>
-    <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/header_admin.css">
     <link rel="stylesheet" href="../CSS/estoque.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +55,6 @@ function badgeAcao($acao)
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
-
 <body>
     <?php
     require_once __DIR__ . '/../partials/header_admin.php';
