@@ -13,7 +13,7 @@ body {
 
 
 main{
-    padding: 100px;
+    padding: 0 100px;
 }
 
 
@@ -25,7 +25,7 @@ h2 {
 
 h4 {
     font-size: 15px;
-    font-weight: lighter;
+    font-weight: normal;
     color: #424242;
 }
 

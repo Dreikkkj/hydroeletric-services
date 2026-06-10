@@ -52,8 +52,8 @@ function badgeAcao($acao)
     <link rel="stylesheet" href="../CSS/movimentacao.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 
 <body>
@@ -67,8 +67,8 @@ function badgeAcao($acao)
 
 
             <div class="l">
-                <a href="" class="p">Produtos</a>
-                <a href="" class="m">Movimentações</a>
+                <a href="../admin/estoque.php" class="p">Produtos</a>
+                <a href="../admin/movimentacao.php" class="m">Movimentações</a>
             </div>
 
 

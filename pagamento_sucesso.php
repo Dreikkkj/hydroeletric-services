@@ -13,11 +13,8 @@ if (!isset($_SESSION['usuario_nome'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento Realizado com Sucesso</title>
     <link rel="stylesheet" href="CSS/confirmar_pagamento.css">
-    <link rel="stylesheet" href="CSS/global.css">
 </head>
 <body>
-    <?php include 'partials/header.php'; ?>
-
     <div class="container" style="padding: 40px 20px;">
         <div class="card">
             <div class="header">
@@ -59,7 +56,5 @@ if (!isset($_SESSION['usuario_nome'])) {
             </div>
         </div>
     </div>
-
-    <?php include 'partials/footer.php'; ?>
 </body>
 </html>
