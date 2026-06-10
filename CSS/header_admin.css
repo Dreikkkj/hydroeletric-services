@@ -15,7 +15,7 @@ body {
     background-color: #023047;
     padding: 30px 30px 30px 30px;
     margin: 0 -30px 24px;
-    width: calc(100% + 60px);
+    width: calc(100% + 30px);
 }
 
 nav {
