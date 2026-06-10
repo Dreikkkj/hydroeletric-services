@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/catalogo.css">
     <link rel="stylesheet" href="CSS/global.css">
-    <title>Document</title>
+    <title>Catálogo</title>
 </head>
 <body>
     <?php
