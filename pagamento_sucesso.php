@@ -13,6 +13,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento Realizado com Sucesso</title>
     <link rel="stylesheet" href="CSS/confirmar_pagamento.css">
+    <link rel="stylesheet" href="CSS/global.css">
 </head>
 <body>
     <div class="container" style="padding: 40px 20px;">
