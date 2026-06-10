@@ -1,6 +1,7 @@
 <?php
 
     $pagina = 'estoque';
+    $nome = 'produtos';
 
     require_once __DIR__ . '/../CRUD/crud.php';
 
@@ -55,8 +56,8 @@
 
 
                 <div class="l">
-                    <a href="" class="p">Produtos</a>
-                    <a href="../admin/movimentacao.php" class="m">Movimentações</a>
+                    <a href=""  class="<?= $nome == 'produtos' ? 'pagina' : 'm' ?>">Produtos</a>
+                    <a href="../admin/movimentacao.php" class="<?= $nome == 'movimentacao' ? 'pagina' : 'm' ?>">Movimentações</a>
                 </div>
 
 
