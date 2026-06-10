@@ -49,7 +49,7 @@ function badgeAcao($acao)
     <title>Estoque</title>
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/header_admin.css">
-    <link rel="stylesheet" href="../CSS/estoque.css">
+    <link rel="stylesheet" href="../CSS/movimentacao.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
@@ -57,7 +57,9 @@ function badgeAcao($acao)
 </head>
 
 <body>
-    <div class="container-estoque">
+    <?php require_once __DIR__ . '/../partials/header_admin.php'; ?>
+
+    <main>
 
         <div class="inicio">
             <h2>Controle de Estoque</h2>
@@ -140,7 +142,7 @@ function badgeAcao($acao)
                 </tbody>
             </table>
         </div>
-    </div>
+    </main>
 </body>
 
 </html>
