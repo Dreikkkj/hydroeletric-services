@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../CRUD/crud.php';
+
 $pagina = 'estoque';
 
 require_once __DIR__ . '/../CRUD/crud.php';
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mkdir($dir, 0755, true);
     }
 
-    if (move_uploaded_file($_FILES['capa']['tmp_name'], $capa)) {
+    if (move_uploaded_file($_FILES['capa']['tmp_name'], $file)) {
 
         $sku = strtoupper($_POST['sku']);
 

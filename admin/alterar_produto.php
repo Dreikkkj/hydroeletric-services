@@ -3,8 +3,6 @@ require_once __DIR__ . '/../CRUD/crud.php';
 
     $pagina = 'estoque';
 
-    
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $id = $_POST['id_produtos'];
