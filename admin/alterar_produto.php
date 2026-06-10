@@ -9,13 +9,18 @@
 
         $sku = strtoupper($_POST['sku']);
 
+        // Obter estoque anterior do produto
+        $produtoAnterior = read($pdo, 'produtos', 'id_produtos = ' . $id);
+        $estoqueAnterior = $produtoAnterior['estoque'];
+        $novoEstoque = $_POST['estoque'];
+
         $produtososAtualizados = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
             'sku' => $sku ,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
-            'estoque' => $_POST['estoque']
+            'estoque' => $novoEstoque
         ];
 
         if ($_FILES['capa']['error'] == 0) {
@@ -42,6 +47,24 @@
         }
 
         update($pdo, 'produtos', $produtososAtualizados, 'id_produtos = ' . $id);
+
+        // Registrar movimentação se o estoque foi alterado
+        if ($estoqueAnterior != $novoEstoque) {
+            $diferenca = $novoEstoque - $estoqueAnterior;
+            $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
+            $quantidadeMovida = abs($diferenca);
+
+            $movimentacao = [
+                'produto_id' => $id,
+                'tipo_movimentacoes' => $tipoMovimentacao,
+                'quantidade' => $quantidadeMovida,
+                'estoque_anterior' => $estoqueAnterior,
+                'estoque_atual' => $novoEstoque,
+                'motivo' => 'Ajuste manual na edição do produto'
+            ];
+
+            create($pdo, 'movimentacoes', $movimentacao);
+        }
 
         header('Location: estoque.php');
         exit;
