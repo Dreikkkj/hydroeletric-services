@@ -31,8 +31,8 @@ require_once __DIR__ . '/../CRUD/crud.php';
                 mkdir($dir, 0755, true);
             }
 
-            $file = $dir . $novonome;
-            $capa = 'uploads/' . $novonome; 
+            $file = $dir . $novoNome;
+            $capa = 'uploads/' . $novoNome; 
             
 
             move_uploaded_file(
