@@ -7,7 +7,7 @@ try {
     $query = "SELECT
                 m.data_hora,
                 p.nome_produtos AS produto,
-                COALESCE(m.tipo_movimentacoes, m.tipo) AS acao,
+                m.tipo_movimentacoes AS acao,
                 m.quantidade AS qtd,
                 m.estoque_anterior AS anterior,
                 m.estoque_atual AS novo,
@@ -24,6 +24,7 @@ ORDER BY m.data_hora DESC";
 } catch (PDOException $e) {
 
     $movimentacoes = [];
+    $movCount = 0;
     echo "<script>console.error('Erro ao buscar movimentações: " . addslashes($e->getMessage()) . "');</script>";
 }
 
@@ -60,49 +61,47 @@ function badgeAcao($acao)
     <?php
     require_once __DIR__ . '/../partials/header_admin.php';
     ?>
-    <div class="container-estoque">
+    <main>
+        <section>
+            <div class="inicio">
+                <h2>Controle de Estoque</h2>
+                <h4>Gerencie proutos, estoque e movimentações</h4>
 
-        <div class="inicio">
-            <h2>Controle de Estoque</h2>
-            <h4>Gerencie proutos, estoque e movimentações</h4>
+                <div class="l">
+                    <a href="../admin/estoque.php" class="p">Produtos</a>
+                    <a href="../admin/movimentacao.php" class="m">Movimentações</a>
+                </div>
 
-
-            <div class="l">
-                <a href="../admin/estoque.php" class="p">Produtos</a>
-                <a href="../admin/movimentacao.php" class="m">Movimentações</a>
+                <div class="filtros">
+                    <form>
+                        <input type="search" placeholder="🔍︎ Buscar produto">
+                        <select>
+                            <option value="">Todos</option>
+                            <option value="">Fios</option>
+                            <option value="">Cabos</option>
+                            <option value="">Disjuntores</option>
+                            <option value="">Tubulaçoes</option>
+                            <option value="">Conexão Hidráulica</option>
+                            <option value="">Caixas d'água</option>
+                        </select>
+                    </form>
+                </div>
             </div>
 
-
-            <div class="filtros">
-                <form>
-                    <input type="search" placeholder="🔍︎ Buscar produto">
-                    <select>
-                        <option value="">Todos</option>
-                        <option value="">Fios</option>
-                        <option value="">Cabos</option>
-                        <option value="">Disjuntores</option>
-                        <option value="">Tubulaçoes</option>
-                        <option value="">Conexão Hidráulica</option>
-                        <option value="">Caixas d'água</option>
-                    </select>
-                </form>
-            </div>
-        </div>
-
-        <div class="b_tabela">
-            <table class="estoque-table">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>PRODUTO</th>
-                        <th>AÇÃO</th>
-                        <th>QTD.</th>
-                        <th>ANTERIOR</th>
-                        <th>NOVO</th>
-                        <th>MOTIVO</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="b_tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DATA</th>
+                            <th>PRODUTO</th>
+                            <th>AÇÃO</th>
+                            <th>QTD.</th>
+                            <th>ANTERIOR</th>
+                            <th>NOVO</th>
+                            <th>MOTIVO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php
                     if (!empty($movimentacoes)) {
                         foreach ($movimentacoes as $mov) {
@@ -143,7 +142,8 @@ function badgeAcao($acao)
                 </tbody>
             </table>
         </div>
-    </div>
+        </section>
+    </main>
 </body>
 
 </html>
