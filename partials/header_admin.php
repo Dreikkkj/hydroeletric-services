@@ -5,7 +5,7 @@
                 <a href="estoque.php" class="<?= $pagina == 'estoque' ? 'active' : '' ?>"><i class="bi bi-archive"></i> Estoque</a>
                 <a href="financeiro.php" class="<?= $pagina == 'financeiro' ? 'active' : '' ?>"><i class="bi bi-graph-up"></i> Financeiro</a>
                 <a href="configuracoes.php" class="<?= $pagina == 'configuracoes' ? 'active' : '' ?>"><i class="bi bi-gear"></i> Configurações</a>
-                <a href="../produtos.php" class="<?= $pagina == 'ver_loja' ? 'active' : '' ?>"><i class="bi bi-shop-window"></i> Ver Loja</a>
+                <a href="../produtos.php"><i class="bi bi-shop-window"></i> Ver Loja</a>
             </div>
             <div class="user">
                 <div class="adm">
