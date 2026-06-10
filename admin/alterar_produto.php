@@ -48,23 +48,26 @@
 
         update($pdo, 'produtos', $produtososAtualizados, 'id_produtos = ' . $id);
 
-        // Registrar movimentação se o estoque foi alterado
-        if ($estoqueAnterior != $novoEstoque) {
-            $diferenca = $novoEstoque - $estoqueAnterior;
-            $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
-            $quantidadeMovida = abs($diferenca);
+        $estoqueAnteriorInt = (int)$estoqueAnterior;
+        $novoEstoqueInt = isset($_POST['estoque']) ? (int)$_POST['estoque'] : $estoqueAnteriorInt;
 
-            $movimentacao = [
-                'produto_id' => $id,
-                'tipo_movimentacoes' => $tipoMovimentacao,
-                'quantidade' => $quantidadeMovida,
-                'estoque_anterior' => $estoqueAnterior,
-                'estoque_atual' => $novoEstoque,
-                'motivo' => 'Ajuste manual na edição do produto'
-            ];
-
-            create($pdo, 'movimentacoes', $movimentacao);
+        $diferenca = $novoEstoqueInt - $estoqueAnteriorInt;
+        $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
+        if ($diferenca === 0) {
+            $tipoMovimentacao = 'Entrada';
         }
+        $quantidadeMovida = abs($diferenca);
+
+        $movimentacao = [
+            'produto_id' => (int)$id,
+            'tipo_movimentacoes' => $tipoMovimentacao,
+            'quantidade' => $quantidadeMovida,
+            'estoque_anterior' => $estoqueAnteriorInt,
+            'estoque_atual' => $novoEstoqueInt,
+            'motivo' => 'Produto alterado'
+        ];
+
+        create($pdo, 'movimentacoes', $movimentacao);
 
         header('Location: estoque.php');
         exit;
