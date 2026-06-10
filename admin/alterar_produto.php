@@ -25,18 +25,20 @@ require_once __DIR__ . '/../CRUD/crud.php';
             );
 
             $novoNome = 'capa_' . uniqid() . '.' . $extensao;
-            $dir = 'uploads/';
+            $dir = __DIR__ . '/../uploads/';
 
             if (!is_dir($dir)) {
                 mkdir($dir, 0755, true);
             }
 
-            $caminho = $dir . $novoNome;
+            $file = $dir . $novonome;
+            $capa = 'uploads/' . $novonome; 
+            
 
             move_uploaded_file(
-                $_FILES['capa']['tmp_name'], $caminho
+                $_FILES['capa']['tmp_name'], $file
             );
-            $produtososAtualizados['capa'] = $caminho;
+            $produtososAtualizados['capa'] = $capa;
         }
 
         update($pdo, 'produtos', $produtososAtualizados, 'id_produtos = ' . $id);
