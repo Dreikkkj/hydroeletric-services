@@ -7,7 +7,7 @@ try {
     $query = "SELECT
                 m.data_hora,
                 p.nome_produtos AS produto,
-                COALESCE(m.tipo_movimentacoes, m.tipo) AS acao,
+                m.tipo_movimentacoes AS acao,
                 m.quantidade AS qtd,
                 m.estoque_anterior AS anterior,
                 m.estoque_atual AS novo,
@@ -24,6 +24,7 @@ ORDER BY m.data_hora DESC";
 } catch (PDOException $e) {
 
     $movimentacoes = [];
+    $movCount = 0;
     echo "<script>console.error('Erro ao buscar movimentações: " . addslashes($e->getMessage()) . "');</script>";
 }
 
@@ -52,54 +53,55 @@ function badgeAcao($acao)
     <link rel="stylesheet" href="../CSS/estoque.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 </head>
 
 <body>
-    <div class="container-estoque">
+    <?php
+    require_once __DIR__ . '/../partials/header_admin.php';
+    ?>
+    <main>
+        <section>
+            <div class="inicio">
+                <h2>Controle de Estoque</h2>
+                <h4>Gerencie proutos, estoque e movimentações</h4>
 
-        <div class="inicio">
-            <h2>Controle de Estoque</h2>
-            <h4>Gerencie proutos, estoque e movimentações</h4>
+                <div class="l">
+                    <a href="../admin/estoque.php" class="p">Produtos</a>
+                    <a href="../admin/movimentacao.php" class="m">Movimentações</a>
+                </div>
 
-
-            <div class="l">
-                <a href="" class="p">Produtos</a>
-                <a href="" class="m">Movimentações</a>
+                <div class="filtros">
+                    <form>
+                        <input type="search" placeholder="🔍︎ Buscar produto">
+                        <select>
+                            <option value="">Todos</option>
+                            <option value="">Fios</option>
+                            <option value="">Cabos</option>
+                            <option value="">Disjuntores</option>
+                            <option value="">Tubulaçoes</option>
+                            <option value="">Conexão Hidráulica</option>
+                            <option value="">Caixas d'água</option>
+                        </select>
+                    </form>
+                </div>
             </div>
 
-
-            <div class="filtros">
-                <form>
-                    <input type="search" placeholder="🔍︎ Buscar produto">
-                    <select>
-                        <option value="">Todos</option>
-                        <option value="">Fios</option>
-                        <option value="">Cabos</option>
-                        <option value="">Disjuntores</option>
-                        <option value="">Tubulaçoes</option>
-                        <option value="">Conexão Hidráulica</option>
-                        <option value="">Caixas d'água</option>
-                    </select>
-                </form>
-            </div>
-        </div>
-
-        <div class="tabela-produtos">
-            <table class="estoque-table">
-                <thead>
-                    <tr>
-                        <th>DATA</th>
-                        <th>PRODUTO</th>
-                        <th>AÇÃO</th>
-                        <th>QTD.</th>
-                        <th>ANTERIOR</th>
-                        <th>NOVO</th>
-                        <th>MOTIVO</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div class="b_tabela">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>DATA</th>
+                            <th>PRODUTO</th>
+                            <th>AÇÃO</th>
+                            <th>QTD.</th>
+                            <th>ANTERIOR</th>
+                            <th>NOVO</th>
+                            <th>MOTIVO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php
                     if (!empty($movimentacoes)) {
                         foreach ($movimentacoes as $mov) {
@@ -140,7 +142,8 @@ function badgeAcao($acao)
                 </tbody>
             </table>
         </div>
-    </div>
+        </section>
+    </main>
 </body>
 
 </html>
