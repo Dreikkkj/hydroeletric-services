@@ -16,7 +16,7 @@ main{
 }
 
 h2 {
-    font-size: 45px;
+    font-size: 40px;
     padding: 50px 20px 0 0;
 }
 
@@ -88,13 +88,13 @@ h4 {
 
 .b_tabela {
     width: 100%;
-    min-height: 450px;
-    max-height: 450px;
+    min-height: 470px;
+    max-height: 470px;
     border-radius: 6px;
     background-color: #efefef;
     box-shadow: 15px 25px 10px rgba(0, 0, 0, 0.2);
     overflow: auto;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 
 .b_tabela {
