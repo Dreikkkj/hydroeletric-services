@@ -1,11 +1,7 @@
 <?php
 require_once '../CRUD/crud.php';
 
-<<<<<<< HEAD
 $pagina = 'dashboard';
-
-=======
->>>>>>> 18a86d38a8a04fdf4a047f78160b486567b9acf2
 
 // 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';
@@ -90,13 +86,10 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-<<<<<<< HEAD
+
     <?php
     require_once __DIR__ . '/../partials/header_admin.php';
     ?>
-=======
-    <?php require_once "../partials/header_admin.php"; ?>
->>>>>>> 18a86d38a8a04fdf4a047f78160b486567b9acf2
 
     <div class="main-container">
 
