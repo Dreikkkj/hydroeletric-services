@@ -33,6 +33,8 @@
     $lista_produtos = readAll($pdo, $tabela_join, $condicao);
 
     $lista_categorias = readAll($pdo, 'categoria');
+
+    $percentual_desconto = 0.20;
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -116,7 +118,14 @@
                         echo "<p class='codigo-produto'>Código: " . $produto["sku"] . "</p>";
                         echo "<p class='texto-produto'>Preço</p>";
                         echo "<div class='linha-card'>";
-                        echo "<p class='preco-produto'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</p>";
+
+                        if ($produto["em_promocao"] == 1) {
+                            echo "<p class='preco-antigo' style='text-decoration: line-through; color: #ccc; font-size: 0.9em; margin: 0;'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</p>";
+                            $preco_com_desconto = $produto["preco"] * (1 - $percentual_desconto);
+                            echo "<p class='preco-promocao' style='color: #28a745; font-weight: bold; margin: 0;'>R$ " . number_format($preco_com_desconto, 2, ',', '.') . "</p>";
+                        } else {
+                            echo "<p class='preco-produto'>R$ " . number_format($produto["preco"], 2, ',', '.') . "</p>";
+                        }
                         echo "<p class='quantidade-produto'>" . $produto["estoque"] . " disp.</p>";
                         echo "</div>";
                         echo "<a href='detalhes.php?id=" . $produto["id_produtos"] . "'>";

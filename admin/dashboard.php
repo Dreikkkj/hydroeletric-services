@@ -1,8 +1,11 @@
 <?php
 require_once '../CRUD/crud.php';
 
+<<<<<<< HEAD
 $pagina = 'dashboard';
 
+=======
+>>>>>>> 18a86d38a8a04fdf4a047f78160b486567b9acf2
 
 // 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';
@@ -87,9 +90,13 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+<<<<<<< HEAD
     <?php
     require_once __DIR__ . '/../partials/header_admin.php';
     ?>
+=======
+    <?php require_once "../partials/header_admin.php"; ?>
+>>>>>>> 18a86d38a8a04fdf4a047f78160b486567b9acf2
 
     <div class="main-container">
 
@@ -205,14 +212,15 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
                             </td>
                         </tr>
                     <?php else: ?>
-                        <?php foreach ($movimentacoes as $mov): 
+                        <?php foreach ($movimentacoes as $mov):
                             $badgeClass = ($mov['tipo_movimentacoes'] == 'Entrada') ? 'badge-entrada' : 'badge-saida';
                             $prefixo = ($mov['tipo_movimentacoes'] == 'Entrada') ? '+' : '-';
-                        ?>
+                            ?>
                             <tr>
                                 <td><?= $mov['data_formatada'] ?></td>
                                 <td><strong><?= htmlspecialchars($mov['nome_produtos']) ?></strong></td>
-                                <td><span class="badge <?= $badgeClass ?> notranslate"><?= $mov['tipo_movimentacoes'] ?></span></td>
+                                <td><span class="badge <?= $badgeClass ?> notranslate"><?= $mov['tipo_movimentacoes'] ?></span>
+                                </td>
                                 <td><strong><?= $prefixo . $mov['quantidade'] ?></strong></td>
                                 <td class="table-stock"><?= $mov['estoque_anterior'] ?> &rarr; <?= $mov['estoque_atual'] ?></td>
                                 <td class="table-reason"><?= htmlspecialchars($mov['motivo']) ?></td>

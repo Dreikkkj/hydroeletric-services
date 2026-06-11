@@ -19,6 +19,8 @@ if (!empty($email) && !empty($senha)) {
         header("Location: index.php");
         exit;
     } else {
-        echo "Dados incorretos.";
+        $erro = "Email ou senha inválidos.";
+        header("Location: login.php?error=" . urlencode($erro));
+        exit;
     }
 }
