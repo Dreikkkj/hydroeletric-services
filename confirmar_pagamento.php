@@ -47,7 +47,6 @@ $valor_final = $valor_com_taxa + $valor_instalacao;
     
 </head>
 <body>
-    <?php include 'partials/header.php'; ?>
 
     <div class="conteiner">
         <div class="card-pagamento">

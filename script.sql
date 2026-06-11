@@ -83,8 +83,6 @@ CREATE TABLE configuracoes_loja (
 
 CREATE TABLE configuracoes_sistema (
     id INT PRIMARY KEY,
-    moeda VARCHAR(50) DEFAULT 'BRL — Real Brasileiro',
-    idioma VARCHAR(50) DEFAULT 'Português (Brasil)',
     alerta_estoque BOOLEAN DEFAULT 1,
     alerta_venda BOOLEAN DEFAULT 1,
     relatorio_diario BOOLEAN DEFAULT 0,
@@ -119,8 +117,8 @@ INSERT INTO movimentacoes (produto_id, tipo_movimentacoes, quantidade, estoque_a
 INSERT INTO configuracoes_loja (id, nome_empresa, cnpj, telefone, email_comercial, endereco, cidade, estado, cep, horario_funcionamento)
 VALUES (1, 'Grupo 3 — Material Elétrico e Hidráulico', '12.345.678/0001-99', '(11) 98765-4321', 'hydroeletric@gmail.com', 'Rua das Indústrias, 450', 'São Paulo', 'SP', '01310-100', 'Seg-Sex: 08h-18h | Sáb: 08h-13h');
 
-INSERT INTO configuracoes_sistema (id, moeda, idioma, alerta_estoque, alerta_venda, relatorio_diario, dois_fatores)
-VALUES (1, 'BRL — Real Brasileiro', 'Português (Brasil)', 1, 1, 0, 1);
+INSERT INTO configuracoes_sistema (id, alerta_estoque, alerta_venda, relatorio_diario, dois_fatores)
+VALUES (1, 1, 1, 0, 1);
 
 INSERT INTO usuarios (nome, email, senha, tipo, ultimo_acesso, status) VALUES
 ('Administrador', 'admin@grupo3.com.br', '123', 'Admin', '2026-05-14', 'Ativo'),

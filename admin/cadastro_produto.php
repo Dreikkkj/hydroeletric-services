@@ -37,9 +37,9 @@ if (isset($_GET['error'])) {
 
                 <h2>Cadastro de produtos</h2>
 
-                <?php if (!empty($erro_imagem)): ?>
+                <?php if (!empty($erro)): ?>
                     <div class="erro">
-                        <p><i class="bi bi-x-circle"></i> <?php echo htmlspecialchars($erro_imagem); ?></p>
+                        <p><i class="bi bi-x-circle"></i> <?php echo htmlspecialchars($erro); ?></p>
                     </div>
                 <?php endif; ?>
 
