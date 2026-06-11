@@ -117,9 +117,8 @@
                                     <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('deseja excluir esste produto?')"><i class="bi bi-trash"></i></a>
                                 </td>
                             </tr>
-                            <?php
-                        }
-                        ;
+                        <?php
+                            };
                         ?>
                     </tbody>
                 </table>
