@@ -182,7 +182,7 @@ $valor_com_taxa = $valor_total * 1.177;
                 <form method="POST">
                     <div class="caixa-cep">
                         <input type="text" name="cep" class="cep" value="<?php echo htmlspecialchars($cep_digitado); ?>" placeholder="00000-000" required>
-                        <button type="submit" class="btn-calcular">calcular</button>
+                        <button type="submit" class="btn-calcular">Calcular</button>
                     </div>
                 </form>
             </div>
