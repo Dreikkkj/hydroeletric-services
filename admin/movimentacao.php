@@ -116,9 +116,7 @@ function badgeAcao($acao)
 
                 <div class="filtros">
                     <form method="GET" action="">
-                        <input type="search" name="busca" placeholder="🔍︎ Buscar produto ou SKU"
-                            value="<?= htmlspecialchars($busca) ?>">
-
+                        <input type="search" name="busca" placeholder="🔍︎ Buscar produto ou SKU" value="<?= htmlspecialchars($busca) ?>">
                     </form>
                 </div>
             </div>
