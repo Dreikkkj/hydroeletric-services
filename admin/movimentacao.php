@@ -110,8 +110,8 @@ function badgeAcao($acao)
                 <h4>Gerencie proutos, estoque e movimentações</h4>
 
                 <div class="l">
-                    <a href="../admin/estoque.php"  class="<?= $nome == 'produtos' ? 'pagina' : 'm' ?>">Produtos</a>
-                    <a href="../admin/movimentacao.php" class="<?= $nome == 'movimentacao' ? 'pagina' : 'm' ?>">Movimentações</a>
+                    <a href="../admin/estoque.php"  class="m">Produtos</a>
+                    <a href="../admin/movimentacao.php" class="p">Movimentações</a>
                 </div>
 
                 <div class="filtros">
