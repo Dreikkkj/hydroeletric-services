@@ -184,7 +184,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
                     <h3>Últimas Movimentações</h3>
                     <p class="subtitle">Registro das últimas alterações no estoque</p>
                 </div>
-                <a href="historico.php" class="view-all">Ver Todas</a>
+                <a href="movimentacao.php" class="view-all">Ver Todas</a>
             </div>
 
             <table class="data-table">
