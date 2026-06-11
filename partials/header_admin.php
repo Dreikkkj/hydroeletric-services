@@ -12,7 +12,7 @@
                     <i class="bi bi-person"></i>
                     <p>admininistrador</p>
                 </div>
-                <a href="../logout.php" class="s">sair</a>
+                <a href="../logout.php" class="s">Sair</a>
             </div>
         </nav>
 </header>

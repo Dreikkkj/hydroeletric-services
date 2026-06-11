@@ -1,6 +1,6 @@
 <?php
 require_once '../CRUD/crud.php';
-require_once __DIR__ . '/../partials/header_admin.php';
+
 
 // 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';
@@ -85,6 +85,7 @@ $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+    <?php require_once "../partials/header_admin.php"; ?>
 
     <div class="main-container">
 
