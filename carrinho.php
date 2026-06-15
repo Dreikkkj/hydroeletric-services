@@ -48,6 +48,7 @@ $valor_com_taxa = $valor_total * 1.177;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/carrinho.css">
     <link rel="stylesheet" href="CSS/global.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/Icon_logo.ico">
 </head>
 <body>
     <?php

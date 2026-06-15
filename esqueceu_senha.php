@@ -40,6 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Senha</title>
     <link rel="stylesheet" href="CSS/esqueceu_senha.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/Icon_logo.ico">
 </head>
 
 <body>

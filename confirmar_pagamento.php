@@ -44,7 +44,7 @@ $valor_final = $valor_com_taxa + $valor_instalacao;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/confirmar_pagamento.css">
     <link rel="stylesheet" href="CSS/global.css">
-    
+    <link rel="icon" type="image/x-icon" href="assets/icons/Icon_logo.ico">
 </head>
 <body>
     <?php include 'partials/header.php'; ?>

@@ -28,6 +28,7 @@ $percentual_desconto = 0.20;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/busca.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/Icon_logo.ico">
     <title>Resultados da Busca - Hidroelétrica Services</title>
 </head>
 <body>

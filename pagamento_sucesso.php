@@ -14,6 +14,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     <title>Pagamento Realizado com Sucesso</title>
     <link rel="stylesheet" href="CSS/confirmar_pagamento.css">
     <link rel="stylesheet" href="CSS/global.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/Icon_logo.ico">
 </head>
 <body>
     <div class="container" style="padding: 40px 20px;">
