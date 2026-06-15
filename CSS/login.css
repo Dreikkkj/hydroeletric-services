@@ -63,22 +63,6 @@ input {
     outline: 0;
 }
 
-.h {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 40px;
-    left: 40px;
-    width: 55px;
-    height: 55px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.h:hover {
-    transform: scale(1.2);
-}
-
 .e {
     margin: 10px 5px 8px;
 }
