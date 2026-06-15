@@ -16,6 +16,8 @@ if (!empty($termo_pesquisa)) {
     $stmt->execute([$termo_busca]);
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+$percentual_desconto = 0.20;
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +56,14 @@ if (!empty($termo_pesquisa)) {
                             <p class="sku">SKU: <?php echo htmlspecialchars($produto['sku']); ?></p>
                             <p class="descricao"><?php echo substr(htmlspecialchars($produto['descricao'] ?? ''), 0, 80); ?>...</p>
                             <div class="produto-footer">
-                                <span class="preco">R$ <?php echo number_format($produto['preco'], 2, ',', '.'); ?></span>
+                                <?php if ($produto['em_promocao'] == 1) {
+                                    $preco_com_desconto = $produto['preco'] * (1 - $percentual_desconto);
+                                    echo "<span class='preco-antigo' style='text-decoration: line-through; color: #ccc; font-size: 0.9em; margin: 0;'>R$ " . number_format($produto['preco'], 2, ',', '.') . "</span>";
+                                    echo "<span class='preco-promocao' style='color: #28a745; font-weight: bold; margin: 0;'>R$ " . number_format($preco_com_desconto, 2, ',', '.') . "</span>";
+                                } else {
+                                    echo "<span class='preco'>R$ " . number_format($produto['preco'], 2, ',', '.') . "</span>";
+                                }
+                                ?>
                                 <span class="estoque">
                                     <?php echo $produto['estoque'] > 0 ? 'Em estoque' : 'Indisponível'; ?>
                                 </span>

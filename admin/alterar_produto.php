@@ -1,9 +1,7 @@
 <?php
-require_once __DIR__ . '/../CRUD/crud.php';
+    require_once __DIR__ . '/../CRUD/crud.php';
 
     $pagina = 'estoque';
-
-    
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -11,13 +9,18 @@ require_once __DIR__ . '/../CRUD/crud.php';
 
         $sku = strtoupper($_POST['sku']);
 
+        // Obter estoque anterior do produto
+        $produtoAnterior = read($pdo, 'produtos', 'id_produtos = ' . $id);
+        $estoqueAnterior = $produtoAnterior['estoque'];
+        $novoEstoque = $_POST['estoque'];
+
         $produtososAtualizados = [
             'nome_produtos' => $_POST['produto'],
             'descricao' => $_POST['descricao'],
             'sku' => $sku ,
             'categoria_id_produtos' => $_POST['categoria_id_produtos'],
             'preco' => $_POST['preco'],
-            'estoque' => $_POST['estoque']
+            'estoque' => $novoEstoque
         ];
 
         if ($_FILES['capa']['error'] == 0) {
@@ -27,21 +30,44 @@ require_once __DIR__ . '/../CRUD/crud.php';
             );
 
             $novoNome = 'capa_' . uniqid() . '.' . $extensao;
-            $dir = 'uploads/';
+            $dir = __DIR__ . '/../uploads/';
 
             if (!is_dir($dir)) {
                 mkdir($dir, 0755, true);
             }
 
-            $caminho = $dir . $novoNome;
+            $file = $dir . $novoNome;
+            $capa = 'uploads/' . $novoNome; 
+            
 
             move_uploaded_file(
-                $_FILES['capa']['tmp_name'], $caminho
+                $_FILES['capa']['tmp_name'], $file
             );
-            $produtososAtualizados['capa'] = $caminho;
+            $produtososAtualizados['capa'] = $capa;
         }
 
         update($pdo, 'produtos', $produtososAtualizados, 'id_produtos = ' . $id);
+
+        $estoqueAnteriorInt = (int)$estoqueAnterior;
+        $novoEstoqueInt = isset($_POST['estoque']) ? (int)$_POST['estoque'] : $estoqueAnteriorInt;
+
+        $diferenca = $novoEstoqueInt - $estoqueAnteriorInt;
+        $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
+        if ($diferenca === 0) {
+            $tipoMovimentacao = 'Entrada';
+        }
+        $quantidadeMovida = abs($diferenca);
+
+        $movimentacao = [
+            'produto_id' => (int)$id,
+            'tipo_movimentacoes' => $tipoMovimentacao,
+            'quantidade' => $quantidadeMovida,
+            'estoque_anterior' => $estoqueAnteriorInt,
+            'estoque_atual' => $novoEstoqueInt,
+            'motivo' => 'Produto alterado'
+        ];
+
+        create($pdo, 'movimentacoes', $movimentacao);
 
         header('Location: estoque.php');
         exit;

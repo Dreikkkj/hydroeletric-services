@@ -1,5 +1,7 @@
 <?php
-$pagina = 'estoque';
+
+    $pagina = 'estoque';
+    $nome = 'produtos';
 
     require_once __DIR__ . '/../CRUD/crud.php';
 
@@ -54,8 +56,8 @@ $pagina = 'estoque';
 
 
                 <div class="l">
-                    <a href="" class="p">Produtos</a>
-                    <a href="../admin/movimentacao.php" class="m">Movimentações</a>
+                    <a href=""  class="<?= $nome == 'produtos' ? 'pagina' : 'm' ?>">Produtos</a>
+                    <a href="../admin/movimentacao.php" class="<?= $nome == 'movimentacao' ? 'pagina' : 'm' ?>">Movimentações</a>
                 </div>
 
 
@@ -115,9 +117,8 @@ $pagina = 'estoque';
                                     <a href="delete.php?id=<?= $produtos['id_produtos'] ?>" onclick="return confirm('deseja excluir esste produto?')"><i class="bi bi-trash"></i></a>
                                 </td>
                             </tr>
-                            <?php
-                        }
-                        ;
+                        <?php
+                            };
                         ?>
                     </tbody>
                 </table>

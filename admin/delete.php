@@ -1,5 +1,5 @@
 <?php
-    require_once 'CRUD/crud.php';
+    require_once __DIR__ . '/../CRUD/crud.php';
 
     $id = $_GET['id'] ?? null;
 

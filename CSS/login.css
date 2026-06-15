@@ -19,6 +19,13 @@ main {
     align-items: center;
 }
 
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .border {
     width: 360px;
     height: 480px;
@@ -105,4 +112,43 @@ button:hover {
 .cadastro {
     text-align: center;
     margin: 30px 0 ;
+}
+
+.h {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    top: 40px;
+    left: 40px;
+    width: 55px;
+    height: 55px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.h:hover {
+    transform: scale(1.2);
+}
+
+.erro {
+    background-color: #ffebed;
+    color: #d33343;
+    border: 1px solid #d19ca1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: center;
+    width: fit-content;
+    margin-top: -70px;
+    margin-bottom: 50px;
+    box-shadow: 5px 10px 15px rgba(128, 128, 128, 0.3);
+}
+
+.erro i {
+    margin-right: 8px;
+}
+
+.erro p {
+    margin: 0;
+    font-size: 14px;
 }
