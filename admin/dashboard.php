@@ -15,12 +15,12 @@ if ($filtro === 'mes') {
     $sqlCardMov = "SELECT COUNT(*) FROM movimentacoes WHERE MONTH(data_hora) = MONTH(CURRENT_DATE()) AND YEAR(data_hora) = YEAR(CURRENT_DATE())";
     $subtituloMov = "Neste mês";
 
-    // Busca movimentações da tabela filtrando pelo mês atual
+    // Busca movimentações da tabela filtrando pelo mês atual - ALTERADO PARA LIMIT 5
     $sqlTabelaMov = "SELECT m.*, m.tipo_movimentacoes AS tipo, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
                      JOIN produtos p ON m.produto_id = p.id_produtos 
                      WHERE MONTH(m.data_hora) = MONTH(CURRENT_DATE()) AND YEAR(m.data_hora) = YEAR(CURRENT_DATE())
-                     ORDER BY m.data_hora DESC LIMIT 10";
+                     ORDER BY m.data_hora DESC LIMIT 5";
 } else {
     $activeSemana = "active";
     $activeMes = "";
@@ -29,12 +29,12 @@ if ($filtro === 'mes') {
     $sqlCardMov = "SELECT COUNT(*) FROM movimentacoes WHERE data_hora >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
     $subtituloMov = "Últimos 7 dias";
 
-    // Busca movimentações da tabela filtrando pelos últimos 7 dias reais
+    // Busca movimentações da tabela filtrando pelos últimos 7 dias reais - ALTERADO PARA LIMIT 5
     $sqlTabelaMov = "SELECT m.*, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
                      JOIN produtos p ON m.produto_id = p.id_produtos 
                      WHERE m.data_hora >= DATE_SUB(NOW(), INTERVAL 7 DAY)
-                     ORDER BY m.data_hora DESC LIMIT 10";
+                     ORDER BY m.data_hora DESC LIMIT 5";
 }
 
 // 2. CARDS DE RESUMO FIXOS (Estoque atual)

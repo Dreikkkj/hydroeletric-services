@@ -52,22 +52,23 @@
         $novoEstoqueInt = isset($_POST['estoque']) ? (int)$_POST['estoque'] : $estoqueAnteriorInt;
 
         $diferenca = $novoEstoqueInt - $estoqueAnteriorInt;
-        $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
-        if ($diferenca === 0) {
-            $tipoMovimentacao = 'Entrada';
+        
+        // Apenas cria a movimentação SE o valor do estoque foi alterado
+        if ($diferenca !== 0) {
+            $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
+            $quantidadeMovida = abs($diferenca);
+
+            $movimentacao = [
+                'produto_id' => (int)$id,
+                'tipo_movimentacoes' => $tipoMovimentacao,
+                'quantidade' => $quantidadeMovida,
+                'estoque_anterior' => $estoqueAnteriorInt,
+                'estoque_atual' => $novoEstoqueInt,
+                'motivo' => 'Ajuste de estoque (Edição manual)'
+            ];
+
+            create($pdo, 'movimentacoes', $movimentacao);
         }
-        $quantidadeMovida = abs($diferenca);
-
-        $movimentacao = [
-            'produto_id' => (int)$id,
-            'tipo_movimentacoes' => $tipoMovimentacao,
-            'quantidade' => $quantidadeMovida,
-            'estoque_anterior' => $estoqueAnteriorInt,
-            'estoque_atual' => $novoEstoqueInt,
-            'motivo' => 'Produto alterado'
-        ];
-
-        create($pdo, 'movimentacoes', $movimentacao);
 
         header('Location: estoque.php');
         exit;

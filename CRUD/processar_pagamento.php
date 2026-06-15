@@ -15,11 +15,29 @@ foreach ($_SESSION['carrinho'] as $item) {
     $id_produto = $item['id'];
     $quantidade_comprada = $item['quantidade'];
 
-    $sql_estoque = "UPDATE produtos SET estoque = estoque - :quantidade WHERE id_produtos = :id";
-    $stmt = $pdo->prepare($sql_estoque);
-    $stmt->execute([
-        ':quantidade' => $quantidade_comprada,
+    $stmt_estoque = $pdo->prepare("SELECT estoque FROM produtos WHERE id_produtos = :id");
+    $stmt_estoque->execute([':id' => $id_produto]);
+    $produto = $stmt_estoque->fetch(PDO::FETCH_ASSOC);
+    
+    $estoque_anterior = $produto['estoque'];
+    $estoque_atual = $estoque_anterior - $quantidade_comprada;
+
+    $sql_update_estoque = "UPDATE produtos SET estoque = :estoque_atual WHERE id_produtos = :id";
+    $stmt_update = $pdo->prepare($sql_update_estoque);
+    $stmt_update->execute([
+        ':estoque_atual' => $estoque_atual,
         ':id' => $id_produto
+    ]);
+
+    $sql_movimentacao = "INSERT INTO movimentacoes (produto_id, tipo_movimentacoes, quantidade, estoque_anterior, estoque_atual, motivo) 
+                         VALUES (:produto_id, 'Saída', :quantidade, :estoque_anterior, :estoque_atual, :motivo)";
+    $stmt_mov = $pdo->prepare($sql_movimentacao);
+    $stmt_mov->execute([
+        ':produto_id' => $id_produto,
+        ':quantidade' => $quantidade_comprada,
+        ':estoque_anterior' => $estoque_anterior,
+        ':estoque_atual' => $estoque_atual,
+        ':motivo' => 'Venda pelo site'
     ]);
 }
 
