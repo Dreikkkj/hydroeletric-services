@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost";
+$host = "127.0.0.1";
 $user = "dev";
 $pass = "123";
 $banco = "db_hydro";
