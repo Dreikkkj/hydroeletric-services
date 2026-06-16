@@ -11,11 +11,9 @@ $mensagem = "";
    LÓGICA DOS USUÁRIOS (CADASTRAR / EDITAR / EXCLUIR)
    ========================================= */
 
-// 1. Excluir Usuário (via GET)
 if (isset($_GET['excluir_usuario'])) {
     $id_excluir = (int)$_GET['excluir_usuario'];
     
-    // Evita que o usuário logado se auto-exclua (opcional, mas seguro)
     $stmt = $pdo->prepare("DELETE FROM usuarios WHERE id = :id");
     $stmt->execute([':id' => $id_excluir]);
     
@@ -23,12 +21,10 @@ if (isset($_GET['excluir_usuario'])) {
     exit();
 }
 
-// Mensagens vindas de redirecionamento GET
 if (isset($_GET['msg']) && $_GET['msg'] === 'sucesso_del') {
     $mensagem = "Usuário removido com sucesso!";
 }
 
-// 2. Salvar ou Atualizar Usuário (via POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar_usuario'])) {
     $id_usuario = $_POST['id_usuario'] ?? '';
     $nome = $_POST['nome'];
@@ -38,13 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar_usuario'])) {
     $senha = $_POST['senha'];
 
     if (!empty($id_usuario)) {
-        // Ação: EDITAR
         if (!empty($senha)) {
-            // Se preencheu o campo senha, altera ela também
             $sql = "UPDATE usuarios SET nome = :nome, email = :email, senha = :senha, tipo = :tipo, status = :status WHERE id = :id";
             $params = [':nome' => $nome, ':email' => $email, ':senha' => $senha, ':tipo' => $tipo, ':status' => $status, ':id' => $id_usuario];
         } else {
-            // Se deixou a senha em branco, mantém a senha atual
             $sql = "UPDATE usuarios SET nome = :nome, email = :email, tipo = :tipo, status = :status WHERE id = :id";
             $params = [':nome' => $nome, ':email' => $email, ':tipo' => $tipo, ':status' => $status, ':id' => $id_usuario];
         }
@@ -52,7 +45,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['salvar_usuario'])) {
         $stmt->execute($params);
         $mensagem = "Usuário atualizado com sucesso!";
     } else {
-        // Ação: NOVO CADASTRO
         $senha_padrao = !empty($senha) ? $senha : '123456';
         $sql = "INSERT INTO usuarios (nome, email, senha, tipo, status) VALUES (:nome, :email, :senha, :tipo, :status)";
         $stmt = $pdo->prepare($sql);
@@ -122,7 +114,6 @@ $dadosLoja = $pdo->query("SELECT * FROM configuracoes_loja WHERE id = 1")->fetch
 $dadosSistema = $pdo->query("SELECT * FROM configuracoes_sistema WHERE id = 1")->fetch(PDO::FETCH_ASSOC);
 $listaUsuarios = $pdo->query("SELECT * FROM usuarios ORDER BY id ASC")->fetchAll(PDO::FETCH_ASSOC);
 
-// Se estiver editando um usuário específico, busca os dados dele
 $usuario_em_edicao = null;
 if (isset($_GET['acao']) && $_GET['acao'] === 'editar' && isset($_GET['id_user'])) {
     $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE id = ?");

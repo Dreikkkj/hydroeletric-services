@@ -36,7 +36,6 @@
                 $preco_exibir = $produto['preco'];
                 $com_desconto = false;
                 
-                // Verifica se está em promoção
                 if (isset($produto['em_promocao']) && $produto['em_promocao'] == 1) {
                     $com_desconto = true;
                     

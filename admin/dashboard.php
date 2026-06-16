@@ -3,19 +3,15 @@ require_once '../CRUD/crud.php';
 
 $pagina = 'dashboard';
 
-// 1. IDENTIFICAR O FILTRO ESCOLHIDO PELA URL (Padrão: semana)
 $filtro = $_GET['filtro'] ?? 'semana';
 
-// Configurações das variáveis baseadas no filtro
 if ($filtro === 'mes') {
     $activeSemana = "";
     $activeMes = "active";
 
-    // Conta movimentações do mês atual
     $sqlCardMov = "SELECT COUNT(*) FROM movimentacoes WHERE MONTH(data_hora) = MONTH(CURRENT_DATE()) AND YEAR(data_hora) = YEAR(CURRENT_DATE())";
     $subtituloMov = "Neste mês";
 
-    // Busca movimentações da tabela filtrando pelo mês atual - ALTERADO PARA LIMIT 5
     $sqlTabelaMov = "SELECT m.*, m.tipo_movimentacoes AS tipo, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
                      JOIN produtos p ON m.produto_id = p.id_produtos 
@@ -25,11 +21,9 @@ if ($filtro === 'mes') {
     $activeSemana = "active";
     $activeMes = "";
 
-    // Conta movimentações dos últimos 7 dias reais
     $sqlCardMov = "SELECT COUNT(*) FROM movimentacoes WHERE data_hora >= DATE_SUB(NOW(), INTERVAL 7 DAY)";
     $subtituloMov = "Últimos 7 dias";
 
-    // Busca movimentações da tabela filtrando pelos últimos 7 dias reais - ALTERADO PARA LIMIT 5
     $sqlTabelaMov = "SELECT m.*, p.nome_produtos, DATE_FORMAT(m.data_hora, '%d/%m, %H:%i') as data_formatada 
                      FROM movimentacoes m 
                      JOIN produtos p ON m.produto_id = p.id_produtos 
@@ -37,7 +31,6 @@ if ($filtro === 'mes') {
                      ORDER BY m.data_hora DESC LIMIT 5";
 }
 
-// 2. CARDS DE RESUMO FIXOS (Estoque atual)
 $totalProdutos = $pdo->query("SELECT COUNT(*) FROM produtos")->fetchColumn();
 
 $novosEsteMes = $pdo->query("SELECT COUNT(*) FROM produtos WHERE MONTH(data_cadastro) = MONTH(CURRENT_DATE()) AND YEAR(data_cadastro) = YEAR(CURRENT_DATE())")->fetchColumn();
@@ -45,10 +38,8 @@ $novosEsteMes = $pdo->query("SELECT COUNT(*) FROM produtos WHERE MONTH(data_cada
 $valorEstoque = $pdo->query("SELECT SUM(estoque * preco) FROM produtos")->fetchColumn() ?? 0;
 $estoqueBaixo = $pdo->query("SELECT COUNT(*) FROM produtos WHERE estoque < 50")->fetchColumn();
 
-// Executa a query de contagem de movimentações baseada no filtro
 $movimentacoesRecentes = $pdo->query($sqlCardMov)->fetchColumn();
 
-// 3. GRÁFICO DINÂMICO
 $categoriasGrafico = ['Fios' => 0, 'Disjuntores' => 0, 'Tubulações' => 0, 'Conexões' => 0, 'Caixas' => 0];
 $queryGrafico = $pdo->query("SELECT c.nome_categorias, SUM(p.estoque) as total 
                              FROM produtos p 
@@ -62,11 +53,9 @@ while ($row = $queryGrafico->fetch(PDO::FETCH_ASSOC)) {
 }
 $maxGrafico = 2800;
 
-// 4. ESTOQUE CRÍTICO
 $stmtCritico = $pdo->query("SELECT nome_produtos, estoque FROM produtos WHERE estoque < 50 ORDER BY estoque ASC LIMIT 3");
 $produtosCriticos = $stmtCritico->fetchAll(PDO::FETCH_ASSOC);
 
-// 5. TABELA DE MOVIMENTAÇÕES (Executa a query baseada no filtro)
 $stmtMov = $pdo->query($sqlTabelaMov);
 $movimentacoes = $stmtMov->fetchAll(PDO::FETCH_ASSOC);
 ?>

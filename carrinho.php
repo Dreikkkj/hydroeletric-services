@@ -28,7 +28,6 @@ $percentual_desconto = 0.20;
 foreach ($_SESSION['carrinho'] as $item) {
     $preco_item = $item['preco'];
     
-    // Se o item estiver em promoção, aplica o desconto no cálculo
     if (isset($item['em_promocao']) && $item['em_promocao'] == 1) {
         $preco_item = $item['preco'] * (1 - $percentual_desconto);
     }

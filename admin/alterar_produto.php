@@ -9,7 +9,6 @@
 
         $sku = strtoupper($_POST['sku']);
 
-        // Obter estoque anterior do produto
         $produtoAnterior = read($pdo, 'produtos', 'id_produtos = ' . $id);
         $estoqueAnterior = $produtoAnterior['estoque'];
         $novoEstoque = $_POST['estoque'];
@@ -52,8 +51,7 @@
         $novoEstoqueInt = isset($_POST['estoque']) ? (int)$_POST['estoque'] : $estoqueAnteriorInt;
 
         $diferenca = $novoEstoqueInt - $estoqueAnteriorInt;
-        
-        // Apenas cria a movimentação SE o valor do estoque foi alterado
+
         if ($diferenca !== 0) {
             $tipoMovimentacao = $diferenca > 0 ? 'Entrada' : 'Saída';
             $quantidadeMovida = abs($diferenca);
