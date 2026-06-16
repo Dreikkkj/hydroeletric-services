@@ -157,7 +157,7 @@ $valor_com_taxa = $valor_total * 1.177;
                                 $valor_formatado = number_format($valor_parcela, 2, ',', '.');
                                 $selected = ($i == 12) ? 'selected' : '';
 
-                                echo "<option value=\"$i\" $selected>{$i}x de R$ {$valor_formatado} s/ juros</option>";
+                                echo "<option value=\"$i\" $selected>{$i}x de R$ {$valor_formatado} com juros</option>";
                             }
                             ?>
                         </select>
@@ -171,7 +171,7 @@ $valor_com_taxa = $valor_total * 1.177;
                     </div>
                     <div class="detalhes-pagamento">
                         <strong>R$ <?php echo number_format($valor_total, 2, ',', '.'); ?></strong>
-                        <span>com desconto à vista no boleto ou pix</span>
+                        <span>à vista no boleto ou pix</span>
                     </div>
                 </label>
                 <button type="submit" class="botao-continuar">CONTINUAR</button>
