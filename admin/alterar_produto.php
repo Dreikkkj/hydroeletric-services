@@ -88,6 +88,7 @@
     <title>Alterar produtos</title>
     <link rel="stylesheet" href="../CSS/alterar_produto.css">
     <link rel="stylesheet" href="../CSS/header_admin.css">
+    <link rel="icon" type="image/x-icon" href="../assets/icons/Icon_logo.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"/>
 </head>
 <body>
