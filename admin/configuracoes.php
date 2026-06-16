@@ -205,12 +205,12 @@ require_once __DIR__ . '/../partials/header_admin.php';
 
             <?php elseif ($tab_ativa == 'seguranca'): ?>
                 <h2>Segurança</h2>
-                <div class="security-card">
+                <form class="security-card">
                     <div class="form-group"><label>Senha Atual</label><input type="password"></div>
                     <div class="form-group"><label>Nova Senha</label><input type="password"></div>
                     <div class="form-group"><label>Confirmar Nova Senha</label><input type="password"></div>
                     <button class="btn-save">Atualizar Senha</button>
-                </div>
+                </form>
 
             <?php elseif ($tab_ativa == 'usuarios'): ?>
                 
